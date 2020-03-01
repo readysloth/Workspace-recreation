@@ -16,15 +16,15 @@ download_misc(){
 }
 
 install_misc(){
-    echo
+    echo    
 
 }
 
 install(){
     pushd tmux
-    sh autogen.sh
-    ./configure && make -j$(nproc)
-    make install
+        sh autogen.sh
+        ./configure && make -j$(nproc)
+        sudo make install
     popd
 }
 

@@ -6,7 +6,9 @@ download(){
 }
 
 install_dependencies(){
-    apt-get -y install 
+    apt-get -y install \
+                        ncurses-dev \
+                        cmake 
 }
 
 download_misc(){
@@ -14,6 +16,8 @@ download_misc(){
     pushd vim_plugins
 
     git clone http://github.com/lyokha/vim-xkbswitch
+    git clone https://github.com/ierton/xkb-switch.git
+
     git clone http://github.com/scrooloose/nerdtree
     git clone http://github.com/godlygeek/tabular
     git clone http://github.com/scrooloose/syntastic
@@ -29,20 +33,27 @@ download_misc(){
 }
 
 install_misc(){
-    дописать
+    pushd vim_plugins/xkb-switch
+        mkdir build; cd build
+            cmake ..
+            make -j$(nproc)
+            make install
+
     vim +PluginInstall +qall
 
+    popd
 }
 
 install(){
     pushd vim
-    ./configure --enable-pythoninterp=on \
-              --enable-python3interp=on \
-              --enable-multibyte=on \
-              --with-x
-    make distclean
-    make -j$(nproc)
-    make install
+        ./configure --enable-pythoninterp=on \
+                  --enable-python3interp=on \
+                  --enable-multibyte=on \
+                  --with-x
+        make distclean
+        make -j$(nproc)
+        sudo make install
+    popd
 }
 
 "$@"
