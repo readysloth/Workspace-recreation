@@ -6,7 +6,7 @@ download(){
 }
 
 install_dependencies(){
-    apt-get -y install \
+    sudo apt-get -y install \
                         ncurses-dev \
                         cmake 
 }
@@ -37,7 +37,7 @@ install_misc(){
         mkdir build; cd build
             cmake ..
             make -j$(nproc)
-            make install
+            sudo make install
 
     vim +PluginInstall +qall
 

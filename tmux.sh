@@ -4,19 +4,19 @@ download(){
 }
 
 install_dependencies(){
-    apt-get -y install \
+    sudo apt-get -y install \
                         autoconf \
                         automake \
                         pkg-config
 }
 
 download_misc(){
-    echo
+    wget https://tmux.reconquest.io/pkg/deb/tmux-autocomplete_2.0.5.gc0658bf.deb -O tmux-autocomplete.deb
 
 }
 
 install_misc(){
-    echo    
+    sudo dpkg -i tmux-autocomplete.deb
 
 }
 
