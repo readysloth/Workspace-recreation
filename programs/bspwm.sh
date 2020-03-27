@@ -6,11 +6,13 @@ download_dependencies(){
     pushd bspwm
     	mkdir dependencies
 	pushd dependencies
-            git clone https://gitlab.freedesktop.org/xorg/lib/libxcb.git &
-            git clone https://gitlab.freedesktop.org/xorg/proto/xcbproto.git &
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git &
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git &
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git &
+            git clone https://gitlab.freedesktop.org/xorg/lib/libxcb.git 1libxcb&
+            git clone https://gitlab.freedesktop.org/xorg/proto/xcbproto.git 2xcbproto&
+	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git 3libxcb-util&
+	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git 3libxcb-wm&
+	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git 3libxcb-keysyms&
+	    git clone https://gitlab.freedesktop.org/xorg/util/macros.git 4macros&
+	    git clone https://gitlab.freedesktop.org/xorg/lib/libxinerama.git 5libxinerama&
 	    wait $(jobs -p)
 	popd
     popd
@@ -23,8 +25,9 @@ install_dependencies(){
                                 autoconf \
                                 automake \
                                 pkg-config \
-	    		        libtool
-	    for dependency in $(ls)
+	    		        libtool \
+				xutils-dev
+	    for dependency in $(ls | sort)
 	    do
 	        pushd $dependency
                     sh autogen.sh
