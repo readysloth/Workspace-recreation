@@ -2,44 +2,46 @@
 download(){
     git clone https://github.com/vim/vim.git
     # Install plugin manager
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git
 }
 
 install_dependencies(){
     sudo apt-get -y install \
-                        ncurses-dev \
-                        cmake 
+                    ncurses-dev \
+                    cmake 
 }
 
 download_misc(){
     mkdir vim_plugins
     pushd vim_plugins
-
-    git clone http://github.com/lyokha/vim-xkbswitch
-    git clone https://github.com/ierton/xkb-switch.git
-
-    git clone http://github.com/scrooloose/nerdtree
-    git clone http://github.com/godlygeek/tabular
-    git clone http://github.com/scrooloose/syntastic
-    git clone http://github.com/tpope/vim-fugitive
-    git clone http://github.com/sheerun/vim-polyglot
-    git clone http://github.com/easymotion/vim-easymotion
-    git clone http://github.com/mbbill/undotree
-    git clone http://github.com/valloric/youcompleteme
-    git clone http://github.com/davidhalter/jedi-vim
-    git clone http://github.com/mkitt/tabline.vim
-    
+        git clone --depth=1 http://github.com/lyokha/vim-xkbswitch      &
+        git clone --depth=1 http://github.com/ierton/xkb-switch.git     &
+        git clone --depth=1 http://github.com/scrooloose/nerdtree       &
+        git clone --depth=1 http://github.com/godlygeek/tabular         &
+        git clone --depth=1 http://github.com/scrooloose/syntastic      &
+        git clone --depth=1 http://github.com/tpope/vim-fugitive        &
+        git clone --depth=1 http://github.com/sheerun/vim-polyglot      &
+        git clone --depth=1 http://github.com/easymotion/vim-easymotion &
+        git clone --depth=1 http://github.com/mbbill/undotree           &
+        git clone --depth=1 http://github.com/valloric/youcompleteme    &
+        git clone --depth=1 http://github.com/davidhalter/jedi-vim      &
+        git clone --depth=1 http://github.com/mkitt/tabline.vim         &
     popd
 }
 
 install_misc(){
-    pushd vim_plugins/xkb-switch
-        mkdir build; cd build
-            cmake ..
-            make -j$(nproc)
-            sudo make install
+    pushd vim_plugins
+        pushd xkb-switch
+            mkdir build; cd build
+                cmake ..
+                make -j$(nproc)
+                sudo make install
+        popd 
 
-    vim +PluginInstall +qall
+        mkdir -p ~/.vim/bundle/
+        cp -r Vundle.vim ~/.vim/bundle/Vundle.vim
+
+        vim +PluginInstall +qall
 
     popd
 }

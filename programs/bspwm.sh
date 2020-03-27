@@ -1,18 +1,18 @@
 download(){
-    git clone https://github.com/baskerville/bspwm.git
+    git clone --depth=1 https://github.com/baskerville/bspwm.git
 }
 
 download_dependencies(){
     pushd bspwm
     	mkdir dependencies
 	pushd dependencies
-            git clone https://gitlab.freedesktop.org/xorg/lib/libxcb.git 1libxcb&
-            git clone https://gitlab.freedesktop.org/xorg/proto/xcbproto.git 2xcbproto&
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git 3libxcb-util&
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git 3libxcb-wm&
-	    git clone --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git 3libxcb-keysyms&
-	    git clone https://gitlab.freedesktop.org/xorg/util/macros.git 4macros&
-	    git clone https://gitlab.freedesktop.org/xorg/lib/libxinerama.git 5libxinerama&
+            git clone --depth=1 https://gitlab.freedesktop.org/xorg/lib/libxcb.git 1libxcb                             &
+            git clone --depth=1 https://gitlab.freedesktop.org/xorg/proto/xcbproto.git 2xcbproto                       &
+	    git clone --depth=1 --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git 3libxcb-util       &
+	    git clone --depth=1 --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git 3libxcb-wm           &
+	    git clone --depth=1 --recursive https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git 3libxcb-keysyms &
+	    git clone --depth=1 https://gitlab.freedesktop.org/xorg/util/macros.git 4macros                            &
+	    git clone --depth=1 https://gitlab.freedesktop.org/xorg/lib/libxinerama.git 5libxinerama                   &
 	    wait $(jobs -p)
 	popd
     popd
@@ -21,12 +21,12 @@ download_dependencies(){
 install_dependencies(){
     pushd bspwm
 	pushd dependencies
-            sudo apt-get -y install \
-                                autoconf \
-                                automake \
-                                pkg-config \
-	    		        libtool \
-				xutils-dev
+            sudo apt-get -y install    \
+                            autoconf   \
+                            automake   \
+                            pkg-config \
+	    		    libtool    \
+			    xutils-dev
 	    for dependency in $(ls | sort)
 	    do
 	        pushd $dependency
