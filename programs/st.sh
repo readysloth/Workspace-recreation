@@ -2,6 +2,10 @@ download(){
     git clone --depth=1 https://git.suckless.org/st
 }
 
+download_dependencies(){
+    echo
+}
+
 install_dependencies(){
     echo
 }

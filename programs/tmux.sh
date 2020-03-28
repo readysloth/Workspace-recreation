@@ -3,6 +3,10 @@ download(){
     git clone --depth=1 https://github.com/tmux/tmux.git
 }
 
+download_dependencies(){
+    echo
+}
+
 install_dependencies(){
     sudo apt-get -y install  \
                     autoconf \
@@ -17,7 +21,6 @@ download_misc(){
 install_misc(){
     sudo dpkg -i tmux-autocomplete.deb
     cp configs/.tmux.conf ~/
-
 }
 
 install(){

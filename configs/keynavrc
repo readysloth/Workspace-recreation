@@ -1,0 +1,80 @@
+# This is a keynavrc file. Yours should live in 
+# $HOME/.keynavrc
+#
+# Lines beginning with '#' are comments.
+# Format is:
+#   keysequence cmd1,cmd2,cmd3...
+# 
+# The 'start' command alone is handled specially, in that any key sequence
+# mapped to 'start' will be grabbed when keynav starts up so you can invoke it
+# to activate keynav. The remaining keys are only recognized while keynav is
+# active
+#
+# Project page; http://www.semicomplete.com/projects/keynav
+
+
+daemonize  # background keynav
+clear      # clear all previous keybindings
+ctrl+r restart
+
+
+1 click 1 # left mouse button
+2 click 2 # middle mouse button
+3 click 3 # right mouse button
+
+8 doubleclick 1
+9 doubleclick 2
+0 doubleclick 3
+
+q record ~/.keynav_macros
+shift+2 playback
+
+a grid-nav toggle
+
+d drag 1
+
+ctrl+semicolon start
+Escape end
+o history-back
+h cut-left
+j cut-down
+k cut-up
+l cut-right
+shift+h move-left 
+shift+j move-down
+shift+k move-up
+shift+l move-right
+space warp,click 1,end
+Return warp,click 1,end
+semicolon warp,end
+w warp
+t windowzoom
+x cursorzoom 50 50
+c cursorzoom 300 300
+e end
+ctrl+h cut-left, cut-left
+ctrl+j cut-down, cut-down
+ctrl+k cut-up, cut-up
+ctrl+l cut-right, cut-right
+u cut-left,cut-up
+i cut-right,cut-up
+n cut-left,cut-down
+m cut-right,cut-down
+shift+u move-left,move-up
+shift+i move-right,move-up
+shift+n move-left,move-down
+shift+m move-right,move-down
+ctrl+u cut-left,cut-up, cut-left,cut-up
+ctrl+i cut-right,cut-up, cut-right,cut-up
+ctrl+n cut-left,cut-down, cut-left,cut-down
+ctrl+m cut-right,cut-down, cut-right,cut-down
+
+
+ctrl+shift+h move-left           ,move-left 
+ctrl+shift+j move-down           ,move-down
+ctrl+shift+k move-up             ,move-up
+ctrl+shift+l move-right          ,move-right
+ctrl+shift+u move-left,move-up   ,move-left,move-up
+ctrl+shift+i move-right,move-up  ,move-right,move-up
+ctrl+shift+n move-left,move-down ,move-left,move-down
+ctrl+shift+m move-right,move-down,move-right,move-down

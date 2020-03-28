@@ -5,6 +5,10 @@ download(){
     git clone https://github.com/VundleVim/Vundle.vim.git
 }
 
+download_dependencies(){
+    echo
+}
+
 install_dependencies(){
     sudo apt-get -y install \
                     ncurses-dev \
