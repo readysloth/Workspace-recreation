@@ -1,9 +1,10 @@
+PROJECT_NAME=bspwm
 download(){
-    git clone --depth=1 https://github.com/baskerville/bspwm.git
+    git clone --depth=1 https://github.com/baskerville/$PROJECT_NAME.git
 }
 
 download_dependencies(){
-    pushd bspwm
+    pushd $PROJECT_NAME
     	mkdir dependencies
 	pushd dependencies
             git clone --depth=1 https://gitlab.freedesktop.org/xorg/lib/libxcb.git 1libxcb                             &
@@ -19,7 +20,7 @@ download_dependencies(){
 }
 
 install_dependencies(){
-    pushd bspwm
+    pushd $PROJECT_NAME
 	pushd dependencies
             sudo apt-get -y install    \
                             autoconf   \
@@ -50,7 +51,7 @@ install_misc(){
 }
 
 install(){
-    pushd bspwm
+    pushd $PROJECT_NAME
         make -j$(nproc)
         sudo make install
     popd

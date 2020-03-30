@@ -1,6 +1,6 @@
-
+PROJECT_NAME=tmux
 download(){
-    git clone --depth=1 https://github.com/tmux/tmux.git
+    git clone --depth=1 https://github.com/$PROJECT_NAME/$PROJECT_NAME.git
 }
 
 download_dependencies(){
@@ -15,16 +15,16 @@ install_dependencies(){
 }
 
 download_misc(){
-    wget https://tmux.reconquest.io/pkg/deb/tmux-autocomplete_2.0.5.gc0658bf.deb -O tmux-autocomplete.deb
+    wget https://$PROJECT_NAME.reconquest.io/pkg/deb/$PROJECT_NAME-autocomplete_2.0.5.gc0658bf.deb -O $PROJECT_NAME-autocomplete.deb
 }
 
 install_misc(){
-    sudo dpkg -i tmux-autocomplete.deb
-    cp configs/.tmux.conf ~/
+    sudo dpkg -i $PROJECT_NAME-autocomplete.deb
+    cp configs/.$PROJECT_NAME.conf ~/
 }
 
 install(){
-    pushd tmux
+    pushd $PROJECT_NAME
         sh autogen.sh
         ./configure && make -j$(nproc)
         sudo make install
