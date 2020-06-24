@@ -13,7 +13,12 @@ DISK_PART1="${DISK}1"
 DISK_PART2="${DISK}2"
 DISK_PART3="${DISK}3"
 
+LVM_GROUP_NAME="vg01"
+
 wipefs -a "$DISK"
+
+EXISTING_LVM_GROUPS="$(vgs | sed -n 2,\$p | awk '{print $1}')"
+vgremove -y "${EXISTING_LVM_GROUPS}"
 
 parted -a optimal --script "$DISK" 'mklabel gpt'
 parted -a optimal --script "$DISK" 'mkpart primary 1MiB 3MiB'
@@ -37,6 +42,6 @@ print_if_verbatim pvdisplay
 
 vgcreate vg01 "$DISK_PART3"
 
-lvcreate -L 1024M -n swap vg01
-lvcreate -l 20%FREE -n rootfs vg01
-lvcreate -l 80%FREE -n home vg01
+lvcreate -L 1024M -n swap "$LVM_GROUP_NAME"
+lvcreate -l 20%FREE -n rootfs "$LVM_GROUP_NAME"
+lvcreate -l 80%FREE -n home "$LVM_GROUP_NAME"
