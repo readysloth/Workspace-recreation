@@ -42,9 +42,18 @@ print_if_verbatim pvdisplay
 
 vgcreate vg01 "${DISK_PART3}"
 
-lvcreate -L 1024M -n swap     "${LVM_GROUP_NAME}"
-lvcreate -l 20%FREE -n rootfs "${LVM_GROUP_NAME}"
-lvcreate -l 80%FREE -n home   "${LVM_GROUP_NAME}"
+lvcreate -y -L 1024M   -n swap   "${LVM_GROUP_NAME}"
+lvcreate -y -l 20%FREE -n rootfs "${LVM_GROUP_NAME}"
+lvcreate -y -l 80%FREE -n home   "${LVM_GROUP_NAME}"
 
 mkfs.ext4 /dev/"${LVM_GROUP_NAME}"/rootfs
 mkfs.ext4 /dev/"${LVM_GROUP_NAME}"/home
+
+mkswap /dev/"${LVM_GROUP_NAME}"/swap
+swapon /dev/"${LVM_GROUP_NAME}"/swap
+
+mount /dev/"${LVM_GROUP_NAME}"/rootfs /mnt/gentoo
+
+mkdir /mnt/gentoo/home
+mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
+
