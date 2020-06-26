@@ -36,7 +36,7 @@ pushd /mnt/gentoo
 
     download_list "${MIRROR}/${PATH_TO_AUTOBUILDS}" | sed '/\//!d' > "${SORTED_OUT}"
 
-    FOLDER_COOSER='musl-hardened'
+    FOLDER_COOSER='[0-9]\{8\}T[0-9]\{6\}Z'
     FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}')
 
     URL_TO_CHOOSED_STAGE="${MIRROR}/${PATH_TO_AUTOBUILDS}/${FOLDER}"
