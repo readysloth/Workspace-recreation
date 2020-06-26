@@ -70,4 +70,5 @@ pushd /mnt/gentoo
 
 popd
 
-chroot /mnt/gentoo installation.sh
+cp ./installation.sh /mnt/gentoo
+chroot /mnt/gentoo bash ./installation.sh
