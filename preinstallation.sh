@@ -50,7 +50,7 @@ pushd /mnt/gentoo
     tar xpf stage3-*.tar.* --xattrs-include='*.*' --numeric-owner
 
     # adding -march=native flag
-    sed -i 's/\("[^"]*\)"/\1 -march=native"/' etc/portage/make.conf
+    sed -i '/COMMON_FLAGS=/ s/\("[^"]*\)"/\1 -march=native"/' etc/portage/make.conf
 
 
     # selecting mirror interactively

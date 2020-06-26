@@ -12,5 +12,5 @@ source /etc/profile
 mount /dev/sda2 /boot
 
 emerge-webrsync
-
 emerge --sync
+emerge --oneshot sys/apps/portage
