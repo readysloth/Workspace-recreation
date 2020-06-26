@@ -49,5 +49,25 @@ pushd /mnt/gentoo
 
     tar xpf stage3-*.tar.* --xattrs-include='*.*' --numeric-owner
 
+    # adding -march=native flag
+    sed -i 's/\("[^"]*\)"/\1 -march=native"/' etc/portage/make.conf
+
+
+    # selecting mirror interactively
+    mirrorselect -i -o >> etc/portage/make.conf
+
+    mkdir --parents etc/portage/repos.conf
+    cp usr/share/portage/config/repos.conf etc/portage/repos.conf/gentoo.conf
+
+    cp --dereference /etc/resolv.conf etc/
+
+    # mounting livecd folders
+    mount --types proc  /proc proc
+    mount --rbind       /sys  sys
+    mount --make-rslave       sys
+    mount --rbind       /dev  dev
+    mount --make-rslave       dev
+
 popd
 
+chroot /mnt/gentoo installation.sh
