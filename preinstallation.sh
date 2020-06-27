@@ -37,12 +37,16 @@ pushd /mnt/gentoo
     download_list "${MIRROR}/${PATH_TO_AUTOBUILDS}" | sed '/\//!d' > "${SORTED_OUT}"
 
     FOLDER_COOSER='[0-9]\{8\}T[0-9]\{6\}Z'
-    FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}')
+    FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}' | sed 1q)
 
     URL_TO_CHOOSED_STAGE="${MIRROR}/${PATH_TO_AUTOBUILDS}/${FOLDER}"
     URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/$(download_list "${URL_TO_CHOOSED_STAGE}" | 
                                                     grep "${FOLDER_COOSER}" |
-                                                    sed -e '/CONTENTS/Id' -e '/DIGESTS/Id' |
+                                                    grep "stage3-amd64-${FOLDER_COOSER}" |
+                                                    sed -e '/CONTENTS/Id'\
+                                                        -e '/DIGESTS/Id' \
+                                                        -e '/nomultilib/Id' |
+                                                    sed 1q |
                                                     awk '{print $1}')"
 
     wget "${URL_TO_STAGE_FILES}"
