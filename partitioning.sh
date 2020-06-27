@@ -25,11 +25,11 @@ parted -a optimal --script "${DISK}" 'mkpart primary 1MiB 3MiB'
 parted -a optimal --script "${DISK}" 'name 1 grub'
 parted -a optimal --script "${DISK}" 'set 1 bios_grub on'
 
-parted -a optimal --script "${DISK}" 'mkpart primary 3MiB 131MiB'
+parted -a optimal --script "${DISK}" 'mkpart primary 3MiB 259MiB'
 parted -a optimal --script "${DISK}" 'name 2 boot'
 parted -a optimal --script "${DISK}" 'set 2 boot on'
 
-parted -a optimal --script "${DISK}" 'mkpart primary 131MiB -1'
+parted -a optimal --script "${DISK}" 'mkpart primary 259MiB -1'
 parted -a optimal --script "${DISK}" 'name 3 lvm01'
 parted -a optimal --script "${DISK}" 'set 3 lvm on'
 
