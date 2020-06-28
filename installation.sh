@@ -9,7 +9,9 @@ print_if_verbatim(){
 
 source /etc/profile
 
-mount /dev/sda2 /boot
+BOOT_PARTITION="$(lsblk | sed -n '/\/boot/ s@.*\(sd[a-z][0-9]\).*@\1@p')"
+
+mount /dev/"${BOOT_PARTITION}" /boot
 
 emerge-webrsync
 emerge --sync
@@ -24,5 +26,4 @@ eselect profile set "${profile_choice}"
 
 eselect profile list
 
-emerge --update --deep --newuse @world
-emerge sys-kernel/gentoo-sources
+./compiling
