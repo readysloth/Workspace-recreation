@@ -43,8 +43,8 @@ print_if_verbatim pvdisplay
 vgcreate vg01 "${DISK_PART3}"
 
 lvcreate -y -L 1024M   -n swap   "${LVM_GROUP_NAME}"
-lvcreate -y -l 30%FREE -n rootfs "${LVM_GROUP_NAME}"
-lvcreate -y -l 70%FREE -n home   "${LVM_GROUP_NAME}"
+lvcreate -y -l 40%FREE -n rootfs "${LVM_GROUP_NAME}"
+lvcreate -y -l 60%FREE -n home   "${LVM_GROUP_NAME}"
 
 mkfs.fat -F 32 "${DISK_PART2}"
 mkfs.ext4 /dev/"${LVM_GROUP_NAME}"/rootfs
