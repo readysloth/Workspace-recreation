@@ -15,7 +15,7 @@ DISK_PART3="${DISK}3"
 
 LVM_GROUP_NAME="vg01"
 
-wipefs -a "${DISK}"
+wipefs -af "${DISK}"
 
 EXISTING_LVM_GROUPS="$(vgs | sed -n 2,\$p | awk '{print $1}')"
 vgremove -y "${EXISTING_LVM_GROUPS}"
