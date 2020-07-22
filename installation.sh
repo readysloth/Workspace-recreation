@@ -6,12 +6,13 @@ print_if_verbatim(){
     fi
 }
 
+DISK="$1"
 
 source /etc/profile
 
-BOOT_PARTITION="$(lsblk | sed -n '/\/boot/ s@.*\(sd[a-z][0-9]\).*@\1@p')"
+BOOT_PARTITION=$(parted --script "${DISK}" | grep 'boot' | awk '{print $1}')
 
-mount /dev/"${BOOT_PARTITION}" /boot
+mount /dev/"${DISK}${BOOT_PARTITION}" /boot
 
 emerge-webrsync
 emerge --sync

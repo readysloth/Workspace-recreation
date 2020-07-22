@@ -6,6 +6,9 @@ print_if_verbatim(){
     fi
 }
 
+
+DISK="$1"
+
 print_if_verbatim set -x
 
 print_if_verbatim echo "date before ntpd launch: $(date)"
@@ -76,4 +79,4 @@ popd
 
 cp ./installation.sh /mnt/gentoo
 cp ./compiling.sh /mnt/gentoo
-chroot /mnt/gentoo bash ./installation.sh
+chroot /mnt/gentoo bash ./installation.sh "${DISK}"

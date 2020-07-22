@@ -58,3 +58,4 @@ mount /dev/"${LVM_GROUP_NAME}"/rootfs /mnt/gentoo
 mkdir /mnt/gentoo/home
 mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
 
+./preinstallation.sh "${DISK}"
