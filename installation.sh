@@ -26,4 +26,4 @@ eselect profile set "${profile_choice}"
 
 eselect profile list
 
-./compiling
+./compiling.sh
