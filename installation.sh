@@ -6,13 +6,12 @@ print_if_verbatim(){
     fi
 }
 
-DISK="$1"
+
+BOOT="$1"
 
 source /etc/profile
 
-BOOT_PARTITION=$(parted --script "${DISK}" | grep 'boot' | awk '{print $1}')
-
-mount /dev/"${DISK}${BOOT_PARTITION}" /boot
+mount "${BOOT}" /boot
 
 emerge-webrsync
 emerge --sync

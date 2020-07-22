@@ -79,4 +79,4 @@ popd
 
 cp ./installation.sh /mnt/gentoo
 cp ./compiling.sh /mnt/gentoo
-chroot /mnt/gentoo bash ./installation.sh "${DISK}"
+chroot /mnt/gentoo bash ./installation.sh "${DISK}"$(parted --script "${DISK}" | grep 'boot' | awk '{print $1}')
