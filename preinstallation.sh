@@ -9,6 +9,8 @@ print_if_verbatim(){
 
 DISK="$1"
 
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+
 print_if_verbatim set -x
 
 print_if_verbatim echo "date before ntpd launch: $(date)"
