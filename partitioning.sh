@@ -32,9 +32,9 @@ parted -a optimal --script "${DISK}" 'set 3 lvm on'
 
 print_if_verbatim parted -a optimal --script "${DISK}" 'print'
 
-DISK_PART1="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 1p | awk '{print $1}')"
-DISK_PART2="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 2p | awk '{print $1}')"
-DISK_PART3="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 3p | awk '{print $1}')"
+DISK_PART1="$(fdisk -l | grep ${DISK} | tail -n +2 | sed -n 1p | awk '{print $1}')"
+DISK_PART2="$(fdisk -l | grep ${DISK} | tail -n +2 | sed -n 2p | awk '{print $1}')"
+DISK_PART3="$(fdisk -l | grep ${DISK} | tail -n +2 | sed -n 3p | awk '{print $1}')"
 
 /etc/init.d/lvm start
 pvcreate "${DISK_PART3}"
