@@ -9,9 +9,6 @@ print_if_verbatim(){
 print_if_verbatim set -x
 
 DISK="$1"
-DISK_PART1="${DISK}1"
-DISK_PART2="${DISK}2"
-DISK_PART3="${DISK}3"
 
 LVM_GROUP_NAME="vg01"
 
@@ -34,6 +31,10 @@ parted -a optimal --script "${DISK}" 'name 3 lvm01'
 parted -a optimal --script "${DISK}" 'set 3 lvm on'
 
 print_if_verbatim parted -a optimal --script "${DISK}" 'print'
+
+DISK_PART1="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 1p | awk '{print $1}')"
+DISK_PART2="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 2p | awk '{print $1}')"
+DISK_PART3="$(fdisk | grep ${DISK} | tail -n +2 | sed -n 3p | awk '{print $1}')"
 
 /etc/init.d/lvm start
 pvcreate "${DISK_PART3}"
