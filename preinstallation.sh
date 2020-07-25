@@ -9,6 +9,7 @@ print_if_verbatim(){
 
 DISK="$1"
 
+# Disabling ipv6, as it breaks connection on my device
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 print_if_verbatim set -x
@@ -79,6 +80,7 @@ pushd /mnt/gentoo
 
 popd
 
-cp ./installation.sh /mnt/gentoo
-cp ./compiling.sh /mnt/gentoo
+# Copying installation scripts before chroot
+
+cp *.sh /mnt/gentoo
 chroot /mnt/gentoo bash ./installation.sh "${DISK}"$(parted --script "${DISK}" | grep 'boot' | awk '{print $1}')

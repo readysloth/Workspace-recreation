@@ -21,7 +21,4 @@ genkernel all
 emerge sys-kernel/linux-firmware
 emerge vim
 
-blkid >> /etc/fstab
-echo  >> /etc/fstab
-lsblk >> /etc/fstab
-vim /etc/fstab
+./configuring.sh
