@@ -24,3 +24,34 @@ pushd /etc/init.d
     ln -s net.lo net.eth0
     rc-update add net.eth0 default
 popd
+
+passwd
+
+emerge app-admin/sysklogd
+rc-update add sysklogd default
+
+emerge sys-process/cronie
+rc-update add cronie default
+
+emerge sys-apps/mlocate
+
+emerge sys-fs/e2fsprogs
+
+emerge net-misc/dhcpcd
+
+emerge net-wireless/iw net-wireless/wpa_supplicant
+
+
+#installing bootloader
+
+echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
+emerge sys-boot/grub:2
+
+grub-install --target=x86_64-efi --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
+    cd
+    umount -l /mnt/gentoo/dev{/shm,/pts,}
+    umount -R /mnt/gentoo
+    reboot
