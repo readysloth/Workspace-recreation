@@ -7,7 +7,7 @@ print_if_verbatim(){
 }
 
 printf 'Enter hostname: '
-read hostname
+read -t 20 hostname || hostname=gentoo
 
 echo hostname="$hostname" > /etc/conf.d/hostname
 

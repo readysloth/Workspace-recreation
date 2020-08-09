@@ -20,7 +20,8 @@ emerge --oneshot sys/apps/portage
 eselect profile list
 
 printf 'select profile: '
-read profile_choice
+# Magick number for desktop version. Would it change some day?...
+read profile_choice || profile_choice=20
 
 eselect profile set "${profile_choice}"
 
