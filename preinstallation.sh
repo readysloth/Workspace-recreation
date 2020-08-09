@@ -83,4 +83,4 @@ popd
 # Copying installation scripts before chroot
 
 cp *.sh /mnt/gentoo
-chroot /mnt/gentoo bash ./installation.sh "${DISK}"$(parted --script "${DISK}" 'print' | grep 'boot' | awk '{print $1}')
+chroot /mnt/gentoo bash ./installation.sh $(fdisk -l | grep "${DISK}" | grep -i 'efi' | awk '{print $1}')
