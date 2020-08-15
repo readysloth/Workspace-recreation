@@ -8,15 +8,19 @@ print_if_verbatim(){
 
 set -o errexit
 
-
 BOOT="$1"
 
 source /etc/profile
 
 mount "${BOOT}" /boot
 
+
 emerge-webrsync
-emerge --sync
+
+set +o errexit
+    emerge --sync
+set -o errexit
+
 emerge --oneshot sys/apps/portage
 
 eselect profile list

@@ -18,7 +18,8 @@ emerge --autounmask-write sys-kernel/genkernel
 echo -5 | etc-update
 emerge sys-kernel/genkernel
 
-genkernel all
+GENKERNEL_OPTIONS="--lvm --disklabel --mountboot --busybox"
+genkernel $GENKERNEL_OPTIONS all
 
 emerge sys-kernel/linux-firmware
 emerge vim
