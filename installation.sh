@@ -16,7 +16,6 @@ mount "${BOOT}" /boot
 
 
 emerge-webrsync
-emerge --sync
 emerge --oneshot sys-apps/portage
 
 eselect profile list
