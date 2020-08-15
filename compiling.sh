@@ -6,6 +6,8 @@ print_if_verbatim(){
     fi
 }
 
+set -o errexit
+
 
 emerge --update --deep --newuse @world
 

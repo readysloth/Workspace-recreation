@@ -1,3 +1,5 @@
+set -o errexit
+
 BASE_URL='https://raw.githubusercontent.com/readysloth/Workspace-recreation/gentoo'
 
 mkdir installation

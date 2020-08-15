@@ -6,6 +6,8 @@ print_if_verbatim(){
     fi
 }
 
+set -o errexit
+
 printf 'Enter hostname: '
 read -t 20 hostname || hostname=gentoo
 

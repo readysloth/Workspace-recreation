@@ -6,6 +6,7 @@ print_if_verbatim(){
     fi
 }
 
+set -o errexit
 
 DISK="$1"
 
@@ -34,7 +35,12 @@ pushd /mnt/gentoo
     download_list(){
         URL="$1"
 
-        wget "${URL}" -O - 2>/dev/null | 
+        wget --retry-connrefused \
+             --waitretry=1 \
+             --read-timeout=20 \
+             --timeout=15 \
+             -t 0 \
+            "${URL}" -O - 2>/dev/null | 
             sed -n -e '/^<a[[:space:]]\+href/p' | 
             sed 's/<[^>]*>//g' |
             sort -k 2,2r 

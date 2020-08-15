@@ -6,6 +6,7 @@ print_if_verbatim(){
         eval "$@"
     fi
 }
+set -o errexit
 
 # Setting bash debugging print
 print_if_verbatim set -x
