@@ -6,7 +6,6 @@ print_if_verbatim(){
         eval "$@"
     fi
 }
-set -o errexit
 
 # Setting bash debugging print
 print_if_verbatim set -x
@@ -23,6 +22,7 @@ wipefs -af "${DISK}"
 EXISTING_LVM_GROUPS="$(vgs | sed -n 2,\$p | awk '{print $1}')"
 vgremove -y "${EXISTING_LVM_GROUPS}"
 
+set -o errexit
 # Making bootloader partition
 parted -a optimal --script "${DISK}" 'mklabel gpt'
 parted -a optimal --script "${DISK}" 'mkpart primary 1MiB 3MiB'
