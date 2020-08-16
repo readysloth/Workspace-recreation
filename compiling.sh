@@ -8,6 +8,9 @@ print_if_verbatim(){
 
 set -o errexit
 
+emerge dev-util/ccache
+echo 'FEATURES="ccache"' >> /etc/portage/make.conf
+echo 'CCACHE_DIR="/var/tmp/ccache"' >> /etc/portage/make.conf
 
 emerge --update --deep --newuse @world
 
