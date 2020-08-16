@@ -57,7 +57,7 @@ print_if_verbatim pvdisplay
 vgcreate vg01 "${DISK_PART3}"
 
 # Allocating space for logical volumes
-lvcreate -y -L 1024M   -n swap   "${LVM_GROUP_NAME}"
+lvcreate -y -L 3072M   -n swap   "${LVM_GROUP_NAME}"
 lvcreate -y -l 40%FREE -n rootfs "${LVM_GROUP_NAME}"
 lvcreate -y -l 60%FREE -n home   "${LVM_GROUP_NAME}"
 
