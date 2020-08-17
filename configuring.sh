@@ -45,11 +45,13 @@ emerge net-wireless/iw net-wireless/wpa_supplicant
 
 
 #installing bootloader
+emerge sys-boot/os-prober
 
 echo 'GRUB_PLATFORMS="emu efi-32 efi-64 pc"' >> /etc/portage/make.conf
 emerge sys-boot/grub:2
+emerge sys-boot/grub:2
 
-grub-install --target=x86_64-efi --efi-directory=/boot
+grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 exit
