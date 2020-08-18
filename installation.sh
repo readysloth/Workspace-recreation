@@ -18,11 +18,14 @@ mount "${BOOT}" /boot
 emerge-webrsync
 emerge --oneshot sys-apps/portage
 
+# For queries in future
+emerge app-portage/gentoolkit
+
 eselect profile list
 
 printf 'select profile: '
 # Magick number for desktop version. Would it change some day?...
-read profile_choice || profile_choice=20
+read -t 30 profile_choice || profile_choice=20
 
 eselect profile set "${profile_choice}"
 

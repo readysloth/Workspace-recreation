@@ -15,6 +15,8 @@ if ! [ -z "$CCACHE" ]; then
     echo 'CCACHE_DIR="/var/tmp/ccache"' >> /etc/portage/make.conf
 fi
 
+mount -t tmpfs -o size=30%,nr_inodes=1M /var/tmp/portage
+
 emerge --update --deep --newuse @world
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
