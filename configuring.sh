@@ -27,8 +27,6 @@ pushd /etc/init.d
     rc-update add net.eth0 default
 popd
 
-passwd
-
 emerge app-admin/sysklogd
 rc-update add sysklogd default
 
@@ -43,9 +41,7 @@ emerge net-misc/dhcpcd
 
 emerge net-wireless/iw net-wireless/wpa_supplicant
 
-
 #installing bootloader
-emerge sys-boot/os-prober
 
 echo 'GRUB_PLATFORMS="emu efi-32 efi-64 pc"' >> /etc/portage/make.conf
 emerge sys-boot/grub:2
@@ -53,6 +49,10 @@ emerge sys-boot/grub:2
 
 grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
+
+emerge sys-boot/os-prober
+
+passwd
 
 exit
     cd
