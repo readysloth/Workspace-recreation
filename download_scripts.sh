@@ -10,6 +10,7 @@ pushd installation
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/installation.sh"
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/partitioning.sh"
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/preinstallation.sh"
+    wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/with_tmpfs.sh"
     chmod +x *
 popd
 

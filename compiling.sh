@@ -15,21 +15,21 @@ if ! [ -z "$CCACHE" ]; then
     echo 'CCACHE_DIR="/var/tmp/ccache"' >> /etc/portage/make.conf
 fi
 
-mount -t tmpfs -o size=30%,nr_inodes=1M /var/tmp/portage
-
-emerge --update --deep --newuse @world
+./with_tmpfs.sh '--update --deep --newuse' '@world'
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
-emerge sys-kernel/gentoo-sources
-emerge --autounmask-write sys-kernel/genkernel
-echo -5 | etc-update
-emerge sys-kernel/genkernel
 
-GENKERNEL_OPTIONS="--lvm --disklabel --mountboot --busybox"
+./with_tmpfs.sh ' ' 'sys-kernel/gentoo-sources'
+./with_tmpfs.sh ' ' '--autounmask-write sys-kernel/genkernel'
+echo -5 | etc-update
+
+./with_tmpfs ' ' 'sys-kernel/genkernel'
+
+GENKERNEL_OPTIONS='--lvm --disklabel --mountboot --busybox'
 genkernel $GENKERNEL_OPTIONS all
 
-emerge sys-kernel/linux-firmware
-emerge vim
+./with_tmpfs.sh ' ' 'sys-kernel/linux-firmware'
+./with_tmpfs.sh ' ' 'vim'
 
 ./configuring.sh

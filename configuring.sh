@@ -33,19 +33,20 @@ rc-update add sysklogd default
 emerge sys-process/cronie
 rc-update add cronie default
 
-emerge sys-apps/mlocate
+./with_tmpfs.sh ' ' 'sys-apps/mlocate'
 
-emerge sys-fs/e2fsprogs
+./with_tmpfs.sh ' ' 'sys-fs/e2fsprogs'
 
-emerge net-misc/dhcpcd
+./with_tmpfs.sh ' ' 'net-misc/dhcpcd'
 
-emerge net-wireless/iw net-wireless/wpa_supplicant
+./with_tmpfs.sh ' ' 'net-wireless/iw'
+
+./with_tmpfs.sh ' ' 'net-wireless/wpa_supplicant'
 
 #installing bootloader
 
 echo 'GRUB_PLATFORMS="emu efi-32 efi-64 pc"' >> /etc/portage/make.conf
-emerge sys-boot/grub:2
-emerge sys-boot/grub:2
+./with_tmpfs.sh ' ' 'sys-boot/grub:2'
 
 grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
