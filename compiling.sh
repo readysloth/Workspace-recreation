@@ -21,7 +21,7 @@ echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
 
 ./with_tmpfs.sh ' ' 'sys-kernel/gentoo-sources'
-./with_tmpfs.sh ' ' '--autounmask-write sys-kernel/genkernel'
+./with_tmpfs.sh '--autounmask-write' 'sys-kernel/genkernel'
 echo -5 | etc-update
 
 ./with_tmpfs ' ' 'sys-kernel/genkernel'
