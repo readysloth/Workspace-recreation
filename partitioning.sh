@@ -77,4 +77,4 @@ mkdir /mnt/gentoo/home
 mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
 
 # Going to preinstallation phase, passing disk name further
-./preinstallation.sh "${DISK}"
+printf "\n\n\nInstallation took : $(time ./preinstallation.sh \"${DISK}\")"
