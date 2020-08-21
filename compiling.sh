@@ -24,7 +24,7 @@ echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
 ./with_tmpfs.sh '--autounmask-write' 'sys-kernel/genkernel'
 echo -5 | etc-update
 
-./with_tmpfs ' ' 'sys-kernel/genkernel'
+./with_tmpfs.sh ' ' 'sys-kernel/genkernel'
 
 GENKERNEL_OPTIONS='--lvm --disklabel --mountboot --busybox'
 genkernel $GENKERNEL_OPTIONS all
