@@ -78,3 +78,11 @@ mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
 
 # Going to preinstallation phase, passing disk name further
 time ./preinstallation.sh "${DISK}"
+
+passwd
+
+exit
+cd
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+reboot

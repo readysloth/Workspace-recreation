@@ -48,15 +48,9 @@ rc-update add cronie default
 echo 'GRUB_PLATFORMS="emu efi-32 efi-64 pc"' >> /etc/portage/make.conf
 ./with_tmpfs.sh ' ' 'sys-boot/grub:2'
 
-grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot
+grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
+echo 'GRUB_CMDLINE_LINUX="dolvm"' >> /etc/default/grub
+
 emerge sys-boot/os-prober
-
-passwd
-
-exit
-    cd
-    umount -l /mnt/gentoo/dev{/shm,/pts,}
-    umount -R /mnt/gentoo
-    reboot
