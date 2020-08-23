@@ -97,5 +97,5 @@ chroot /mnt/gentoo bash ./installation.sh $(fdisk -l | grep "${DISK}" | grep -i 
 # adding back -pipe flag
 sed -i '/COMMON_FLAGS=/ s/\("[^"]*\)"/\1 -pipe"/' etc/portage/make.conf
     
-    #removing -pipe flag, because we will use tmpfs
-    sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf
+#removing -pipe flag, because we will use tmpfs
+sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf

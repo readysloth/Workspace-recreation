@@ -79,7 +79,11 @@ mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
 # Going to preinstallation phase, passing disk name further
 time ./preinstallation.sh "${DISK}"
 
+# Removing our installation tmpfs from fstab
+sed -i '/\/var\/tmp\/portage/d' /etc/fstab && umount /var/tmp/portage
+
 passwd
+
 
 exit
 cd

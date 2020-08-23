@@ -13,6 +13,7 @@ BOOT="$1"
 source /etc/profile
 
 mount "${BOOT}" /boot
+mkdir /home/gentoo
 
 
 emerge-webrsync
