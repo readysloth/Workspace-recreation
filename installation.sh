@@ -33,3 +33,5 @@ eselect profile set "${profile_choice}"
 eselect profile list
 
 ./compiling.sh
+
+rc-update add dhcpcd default
