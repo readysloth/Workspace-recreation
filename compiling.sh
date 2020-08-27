@@ -16,6 +16,7 @@ if ! [ -z "$CCACHE" ]; then
 fi
 
 ./with_tmpfs.sh '--update --deep --newuse' '@world'
+./with_tmpfs.sh ' ' 'vim'
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
@@ -33,6 +34,5 @@ set -o errexit
 genkernel $GENKERNEL_OPTIONS all
 
 ./with_tmpfs.sh ' ' 'sys-kernel/linux-firmware'
-./with_tmpfs.sh ' ' 'vim'
 
 ./configuring.sh
