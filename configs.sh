@@ -20,6 +20,30 @@ echo 'set expandtab'      >> ~/.vimrc
 echo 'set shiftwidth=4'   >> ~/.vimrc
 echo 'set smarttab'       >> ~/.vimrc
 echo                      >> ~/.vimrc
+echo 'syntax on'          >> ~/.vimrc
+echo                      >> ~/.vimrc
+
+echo "call plug#begin('~/.vim/plugged')"             >> ~/.vimrc
+echo                                                 >> ~/.vimrc
+echo 'Plug easymotion/vim-easymotion'                >> ~/.vimrc
+echo 'Plug godlygeek/tabular'                        >> ~/.vimrc
+echo 'Plug luochen1990/rainbow'                      >> ~/.vimrc
+echo 'Plug mbbill/undotree'                          >> ~/.vimrc
+echo 'Plug mkitt/tabline.vim'                        >> ~/.vimrc
+echo 'Plug nathanaelkane/vim-indent-guides'          >> ~/.vimrc
+echo 'Plug scrooloose/nerdtree'                      >> ~/.vimrc
+echo 'Plug sheerun/vim-polyglot'                     >> ~/.vimrc
+echo 'Plug tpope/vim-fugitive'                       >> ~/.vimrc
+echo 'Plug tpope/vim-surround'                       >> ~/.vimrc
+echo 'Plug chrisbra/csv.vim'                         >> ~/.vimrc
+echo 'Plug lyokha/vim-xkbswitch'                     >> ~/.vimrc
+echo                                                 >> ~/.vimrc
+echo 'call plug#end()'                               >> ~/.vimrc
+echo                                                 >> ~/.vimrc
+echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
+echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
+echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
+
 
 # tmux
 echo 'set -g prefix C-a'                                      >> ~/.tmux.conf
