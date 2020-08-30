@@ -42,8 +42,11 @@ echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
+echo 'map U :UndotreeToggle<CR>'                     >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
+
+vim +PlugInstall +qa
 
 
 # tmux
