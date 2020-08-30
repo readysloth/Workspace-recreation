@@ -1,5 +1,9 @@
 # I'm aware about heredocuments, but don't like them
 
+# bashrc
+echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
+echo 'export EDITOR=vim' >> ~/.bashrc
+
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc
 echo 'exec bspwm' >> ~/.xinitrc
@@ -38,11 +42,14 @@ echo "Plug 'tpope/vim-surround'"              >> ~/.vimrc
 echo "Plug 'chrisbra/csv.vim'"                >> ~/.vimrc
 echo "Plug 'lyokha/vim-xkbswitch'"            >> ~/.vimrc
 echo "Plug 'kovetskiy/sxhkd-vim'"             >> ~/.vimrc
+echo "Plug 'maralla/completor.vim'"           >> ~/.vimrc
+echo "Plug 'tpope/vim-repeat'"                >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
 echo 'map U :UndotreeToggle<CR>'                     >> ~/.vimrc
+echo 'map gG :G<CR>'                                 >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
 
