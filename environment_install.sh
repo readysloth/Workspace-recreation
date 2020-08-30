@@ -47,17 +47,18 @@ st.sh install
 emerge media-gfx/imagemagick
 emerge media-gfx/feh
 
-# vimb
-emerge x11-libs/gtk+
-emerge net-libs/webkit-gtk
-git clone https://github.com/fanglingsu/vimb.git
-pushd vimb
-    make -j$(nproc) PREFIX=/usr
-    make -j$(nproc) PREFIX=/usr install
-popd 
-rm -rf vimb
+# rust
+emerge dev-lang/rust
 
-
+# librewolf
+echo '[librewolf]'                                                          >> /etc/portage/repos.conf/librewolf.conf
+echo 'priority = 50'                                                        >> /etc/portage/repos.conf/librewolf.conf
+echo 'location = /etc/librewolf'                                            >> /etc/portage/repos.conf/librewolf.conf
+echo 'sync-type = git'                                                      >> /etc/portage/repos.conf/librewolf.conf
+echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /etc/portage/repos.conf/librewolf.conf
+echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
+emaint -r librewolf sync
+emerge librewolf
 
 
 ./configs.sh

@@ -1,11 +1,11 @@
 # I'm aware about heredocuments, but don't like them
 
 # Xinit
-echo 'sxhkd &'    >> ~/.xinitrc
+echo 'sxhkd &'     > ~/.xinitrc
 echo 'exec bspwm' >> ~/.xinitrc
 
 # Vim
-echo 'set number'         >> ~/.vimrc
+echo 'set number'          > ~/.vimrc
 echo 'set relativenumber' >> ~/.vimrc
 echo                      >> ~/.vimrc
 echo 'set hlsearch'       >> ~/.vimrc
@@ -23,31 +23,31 @@ echo                      >> ~/.vimrc
 echo 'syntax on'          >> ~/.vimrc
 echo                      >> ~/.vimrc
 
-echo "call plug#begin('~/.vim/plugged')"    >> ~/.vimrc
-echo                                        >> ~/.vimrc
-echo 'Plug easymotion/vim-easymotion'       >> ~/.vimrc
-echo 'Plug godlygeek/tabular'               >> ~/.vimrc
-echo 'Plug luochen1990/rainbow'             >> ~/.vimrc
-echo 'Plug mbbill/undotree'                 >> ~/.vimrc
-echo 'Plug mkitt/tabline.vim'               >> ~/.vimrc
-echo 'Plug nathanaelkane/vim-indent-guides' >> ~/.vimrc
-echo 'Plug scrooloose/nerdtree'             >> ~/.vimrc
-echo 'Plug sheerun/vim-polyglot'            >> ~/.vimrc
-echo 'Plug tpope/vim-fugitive'              >> ~/.vimrc
-echo 'Plug tpope/vim-surround'              >> ~/.vimrc
-echo 'Plug chrisbra/csv.vim'                >> ~/.vimrc
-echo 'Plug lyokha/vim-xkbswitch'            >> ~/.vimrc
-echo 'Plug kovetskiy/sxhkd-vim'             >> ~/.vimrc
-echo                                        >> ~/.vimrc
-echo 'call plug#end()'                      >> ~/.vimrc
-echo                                        >> ~/.vimrc
+echo "call plug#begin('~/.vim/plugged')"      >> ~/.vimrc
+echo                                          >> ~/.vimrc
+echo "Plug 'easymotion/vim-easymotion'"       >> ~/.vimrc
+echo "Plug 'godlygeek/tabular'"               >> ~/.vimrc
+echo "Plug 'luochen1990/rainbow'"             >> ~/.vimrc
+echo "Plug 'mbbill/undotree'"                 >> ~/.vimrc
+echo "Plug 'mkitt/tabline.vim'"               >> ~/.vimrc
+echo "Plug 'nathanaelkane/vim-indent-guides'" >> ~/.vimrc
+echo "Plug 'scrooloose/nerdtree'"             >> ~/.vimrc
+echo "Plug 'sheerun/vim-polyglot'"            >> ~/.vimrc
+echo "Plug 'tpope/vim-fugitive'"              >> ~/.vimrc
+echo "Plug 'tpope/vim-surround'"              >> ~/.vimrc
+echo "Plug 'chrisbra/csv.vim'"                >> ~/.vimrc
+echo "Plug 'lyokha/vim-xkbswitch'"            >> ~/.vimrc
+echo "Plug 'kovetskiy/sxhkd-vim'"             >> ~/.vimrc
+echo                                          >> ~/.vimrc
+echo "call plug#end()"                        >> ~/.vimrc
+echo                                          >> ~/.vimrc
 echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
 
 
 # tmux
-echo 'set -g prefix C-a'                                      >> ~/.tmux.conf
+echo 'set -g prefix C-a'                                       > ~/.tmux.conf
 echo 'bind C-a send-prefix'                                   >> ~/.tmux.conf
 echo 'unbind C-b'                                             >> ~/.tmux.conf
 echo 'set -sg escape-time 1'                                  >> ~/.tmux.conf
@@ -78,10 +78,15 @@ echo 'set -g default-terminal "screen-256color"'              >> ~/.tmux.conf
 
 
 # bspwm
+mkdir ~/.config/bspwm
+touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
 
 # sxhkd
-echo 'super + enter'                          >> ~/.config/sxhkd/sxhkdr
+mkdir ~/.config/sxhkd
+touch ~/.config/bspwm/bspwmrc
+
+echo 'super + enter'                           > ~/.config/sxhkd/sxhkdr
 echo '  st -e tmux'                           >> ~/.config/sxhkd/sxhkdr
 echo 'super + shift + enter'                  >> ~/.config/sxhkd/sxhkdr
 echo '  pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdr
