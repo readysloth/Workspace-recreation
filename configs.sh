@@ -55,6 +55,8 @@ echo                                                 >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
 echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
+echo                                                 >> ~/.vimrc
+echo 'autocmd VimEnter * DimInactiveOn'              >> ~/.vimrc
 
 vim +PlugInstall +qa
 
@@ -99,9 +101,9 @@ chmod +x ~/.config/bspwm/bspwmrc
 mkdir ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
-echo 'super + enter'                           > ~/.config/sxhkd/sxhkdrc
-echo '  st -e tmux'                           >> ~/.config/sxhkd/sxhkdrc
-echo 'super + shift + enter'                  >> ~/.config/sxhkd/sxhkdrc
-echo '  pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
-echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc
-echo '  bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdrc
+echo 'super + enter'                          > ~/.config/sxhkd/sxhkdrc
+echo ' st -e tmux'                           >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + enter'                 >> ~/.config/sxhkd/sxhkdrc
+echo ' pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {h,j,k,l}'                     >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdrc
