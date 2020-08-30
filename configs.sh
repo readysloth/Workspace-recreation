@@ -42,16 +42,19 @@ echo "Plug 'tpope/vim-surround'"              >> ~/.vimrc
 echo "Plug 'chrisbra/csv.vim'"                >> ~/.vimrc
 echo "Plug 'lyokha/vim-xkbswitch'"            >> ~/.vimrc
 echo "Plug 'kovetskiy/sxhkd-vim'"             >> ~/.vimrc
-echo "Plug 'maralla/completor.vim'"           >> ~/.vimrc
 echo "Plug 'tpope/vim-repeat'"                >> ~/.vimrc
+echo "Plug 'junegunn/fzf.vim'"                >> ~/.vimrc
+echo "Plug 'blueyed/vim-diminactive'"         >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
 echo 'map U :UndotreeToggle<CR>'                     >> ~/.vimrc
 echo 'map gG :G<CR>'                                 >> ~/.vimrc
+echo                                                 >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
+echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
 
 vim +PlugInstall +qa
 
@@ -94,11 +97,11 @@ chmod +x ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd
-touch ~/.config/bspwm/bspwmrc
+touch ~/.config/sxhkd/sxhkdrc
 
-echo 'super + enter'                           > ~/.config/sxhkd/sxhkdr
-echo '  st -e tmux'                           >> ~/.config/sxhkd/sxhkdr
-echo 'super + shift + enter'                  >> ~/.config/sxhkd/sxhkdr
-echo '  pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdr
-echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdr
-echo '  bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdr
+echo 'super + enter'                           > ~/.config/sxhkd/sxhkdrc
+echo '  st -e tmux'                           >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + enter'                  >> ~/.config/sxhkd/sxhkdrc
+echo '  pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc
+echo '  bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdrc

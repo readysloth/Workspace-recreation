@@ -16,7 +16,10 @@ if ! [ -z "$CCACHE" ]; then
 fi
 
 ./with_tmpfs.sh '--update --deep --newuse' '@world'
-./with_tmpfs.sh ' ' 'vim'
+
+# Adding vim USE flags
+echo 'app-editors/vim X python vim-pager perl terminal' >> /etc/portage/package.use/vim
+./with_tmpfs.sh ' ' 'app-editors/vim'
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
 echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
