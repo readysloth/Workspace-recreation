@@ -3,6 +3,7 @@
 # bashrc
 echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
 echo 'export EDITOR=vim' >> ~/.bashrc
+echo 'alias ls=exa' >> ~/.bashrc
 
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc

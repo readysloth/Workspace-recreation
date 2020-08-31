@@ -1,11 +1,6 @@
 
 mkdir ~/.config
 
-# Terminal things
-emerge app-shells/bash-completion
-emerge app-shells/fzf
-emerge app-misc/tmux
-
 # dev
 emerge dev-vcs/git
 emerge dev-util/cmake
@@ -42,10 +37,12 @@ pushd xkb-switch
 popd
 rm -rf xkb-switch
 
+# emulation
+emerge app-emulation/docker
+rc-update add docker default
 
-# terminal
-emerge st
-
+emerge app-emulation/qemu
+emerge app-emulation/wine-staging
 
 # graphics
 echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick
@@ -58,6 +55,15 @@ emerge media-gfx/feh
 echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
 emerge dev-lang/rust
 
+# Terminal things
+emerge app-shells/bash-completion
+emerge app-shells/fzf
+emerge app-misc/tmux
+emerge sys-apps/bat
+emerge sys-apps/ripgrep
+emerge x11-terms/alacritty
+emerge sys-apps/exa
+
 # librewolf
 echo '[librewolf]'                                                          >> /etc/portage/repos.conf/librewolf.conf
 echo 'priority = 50'                                                        >> /etc/portage/repos.conf/librewolf.conf
@@ -68,5 +74,7 @@ echo 'auto-sync = Yes'                                                      >> /
 emaint -r librewolf sync
 USE="postproc" emerge librewolf
 
+# office
+emerge app-office/libreoffice
 
 ./configs.sh
