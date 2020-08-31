@@ -9,6 +9,7 @@ emerge app-misc/tmux
 # dev
 emerge dev-vcs/git
 emerge dev-util/cmake
+emerge sys-devel/gdb
 
 # X11
 echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server
@@ -43,10 +44,7 @@ rm -rf xkb-switch
 
 
 # terminal
-st.sh download
-st.sh download_misc
-st.sh install_misc
-st.sh install
+emerge st
 
 
 # graphics
@@ -68,7 +66,7 @@ echo 'sync-type = git'                                                      >> /
 echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /etc/portage/repos.conf/librewolf.conf
 echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
 emaint -r librewolf sync
-emerge librewolf
+USE="postproc" emerge librewolf
 
 
 ./configs.sh

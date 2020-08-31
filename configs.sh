@@ -96,12 +96,14 @@ echo 'set -g default-terminal "screen-256color"'              >> ~/.tmux.conf
 mkdir ~/.config/bspwm
 touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
+echo '#!/bin/sh' > ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
-echo 'super + enter'                          > ~/.config/sxhkd/sxhkdrc
+echo '#!/bin/sh'                              > ~/.config/sxhkd/sxhkdrc
+echo 'super + enter'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' st -e tmux'                           >> ~/.config/sxhkd/sxhkdrc
 echo 'super + shift + enter'                 >> ~/.config/sxhkd/sxhkdrc
 echo ' pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
