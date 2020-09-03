@@ -92,6 +92,16 @@ echo                                                          >> ~/.tmux.conf
 echo 'set -g default-terminal "screen-256color"'              >> ~/.tmux.conf
 
 
+# alacritty
+mkdir ~/.config/alacritty
+pushd ~/.config/alacritty
+    wget https://github.com/alacritty/alacritty/releases/download/v0.5.0/alacritty.yml
+    sed -i  -e 's/#env:/env:/' \
+            -e 's/#TERM:/TERM:/' \
+            -e 's/#window:/window:/' \
+            -e 's/#decorations:.*/decorations: none/' alacritty.yml
+popd
+
 
 # bspwm
 mkdir ~/.config/bspwm
