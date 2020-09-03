@@ -100,6 +100,39 @@ pushd ~/.config/alacritty
             -e 's/#TERM:/TERM:/' \
             -e 's/#window:/window:/' \
             -e 's/#decorations:.*/decorations: none/' alacritty.yml
+
+    # theme
+    echo "# Colors (Hyper)"           >> alacritty.yml
+    echo "colors:"                    >> alacritty.yml
+    echo "  # Default colors"         >> alacritty.yml
+    echo "  primary:"                 >> alacritty.yml
+    echo "    background: '0x000000'" >> alacritty.yml
+    echo "    foreground: '0xffffff'" >> alacritty.yml
+    echo "  cursor:"                  >> alacritty.yml
+    echo "    text: '0xF81CE5'"       >> alacritty.yml
+    echo "    cursor: '0xffffff'"     >> alacritty.yml
+    echo ""                           >> alacritty.yml
+    echo "  # Normal colors"          >> alacritty.yml
+    echo "  normal:"                  >> alacritty.yml
+    echo "    black:   '0x000000'"    >> alacritty.yml
+    echo "    red:     '0xfe0100'"    >> alacritty.yml
+    echo "    green:   '0x33ff00'"    >> alacritty.yml
+    echo "    yellow:  '0xfeff00'"    >> alacritty.yml
+    echo "    blue:    '0x0066ff'"    >> alacritty.yml
+    echo "    magenta: '0xcc00ff'"    >> alacritty.yml
+    echo "    cyan:    '0x00ffff'"    >> alacritty.yml
+    echo "    white:   '0xd0d0d0'"    >> alacritty.yml
+    echo ""                           >> alacritty.yml
+    echo "  # Bright colors"          >> alacritty.yml
+    echo "  bright:"                  >> alacritty.yml
+    echo "    black:   '0x808080'"    >> alacritty.yml
+    echo "    red:     '0xfe0100'"    >> alacritty.yml
+    echo "    green:   '0x33ff00'"    >> alacritty.yml
+    echo "    yellow:  '0xfeff00'"    >> alacritty.yml
+    echo "    blue:    '0x0066ff'"    >> alacritty.yml
+    echo "    magenta: '0xcc00ff'"    >> alacritty.yml
+    echo "    cyan:    '0x00ffff'"    >> alacritty.yml
+    echo "    white:   '0xFFFFFF'"    >> alacritty.yml
 popd
 
 

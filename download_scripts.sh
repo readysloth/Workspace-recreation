@@ -13,7 +13,6 @@ pushd installation
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/with_tmpfs.sh"
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/environment_install.sh"
     wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/configs.sh"
-    wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 "${BASE_URL}/user_programs/st.sh"
     chmod +x *
 popd
 
