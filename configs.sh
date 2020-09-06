@@ -2,8 +2,11 @@
 
 # bashrc
 echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
-echo 'export EDITOR=vim' >> ~/.bashrc
-echo 'alias ls=exa' >> ~/.bashrc
+echo 'export EDITOR=vim'                    >> ~/.bashrc
+echo 'alias ls=exa'                         >> ~/.bashrc
+echo 'alias l=exa'                          >> ~/.bashrc
+echo 'alias cat=bat'                        >> ~/.bashrc
+echo 'export PATH=$PATH:~/.cargo/bin'
 
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc
@@ -135,21 +138,24 @@ pushd ~/.config/alacritty
     echo "    white:   '0xFFFFFF'"    >> alacritty.yml
 popd
 
+# polybar
+
 
 # bspwm
 mkdir ~/.config/bspwm
 touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
 echo '#!/bin/sh' > ~/.config/bspwm/bspwmrc
+echo 'bspc monitor -d I II III IV V VI VII VIII IX X' > ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
 echo '#!/bin/sh'                              > ~/.config/sxhkd/sxhkdrc
-echo 'super + enter'                         >> ~/.config/sxhkd/sxhkdrc
-echo ' st -e tmux'                           >> ~/.config/sxhkd/sxhkdrc
-echo 'super + shift + enter'                 >> ~/.config/sxhkd/sxhkdrc
+echo 'super + Return'                        >> ~/.config/sxhkd/sxhkdrc
+echo ' alacritty -e tmux'                    >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + Return'                >> ~/.config/sxhkd/sxhkdrc
 echo ' pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {h,j,k,l}'                     >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdrc

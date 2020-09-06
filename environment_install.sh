@@ -5,14 +5,18 @@ mkdir ~/.config
 emerge dev-vcs/git
 emerge dev-util/cmake
 emerge sys-devel/gdb
+emerge dev-python/bpython
+etc-update -5
 
 # X11
 echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server
 emerge x11-base/xorg-server
+etc-update -5
 
 # Tiling wm
 emerge x11-wm/bspwm
 emerge x11-misc/sxhkd
+etc-update -5
 
 echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton
 emerge x11-misc/compton
@@ -20,6 +24,7 @@ emerge x11-misc/polybar
 
 echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu
 emerge x11-misc/dmenu
+etc-update -5
 
 # Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -36,6 +41,7 @@ pushd xkb-switch
     popd
 popd
 rm -rf xkb-switch
+etc-update -5
 
 # emulation
 emerge app-emulation/docker
@@ -43,6 +49,7 @@ rc-update add docker default
 
 emerge app-emulation/qemu
 emerge app-emulation/wine-staging
+etc-update -5
 
 # graphics
 echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick
@@ -50,19 +57,26 @@ emerge media-gfx/imagemagick
 
 echo 'media-gfx/feh xinerama' >> /etc/portage/package.use/feh
 emerge media-gfx/feh
+etc-update -5
 
 # rust
 echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
 emerge dev-lang/rust
+etc-update -5
 
 # Terminal things
 emerge app-shells/bash-completion
 emerge app-shells/fzf
 emerge app-misc/tmux
 emerge sys-apps/bat
+emerge sys-apps/fd
 emerge sys-apps/ripgrep
 emerge x11-terms/alacritty
 emerge sys-apps/exa
+emerge sys-process/htop
+etc-update -5
+cargo install ytop
+cargo install procs
 
 # librewolf
 echo '[librewolf]'                                                          >> /etc/portage/repos.conf/librewolf.conf
@@ -73,8 +87,10 @@ echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /
 echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
 emaint -r librewolf sync
 USE="postproc" emerge librewolf
+etc-update -5
 
 # office
 emerge app-office/libreoffice
+etc-update -5
 
 ./configs.sh
