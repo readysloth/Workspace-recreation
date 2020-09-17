@@ -1,12 +1,12 @@
 # I'm aware about heredocuments, but don't like them
 
 # bashrc
-echo "bind 'set completion-ignore-case on'" >> ~/.bashrc
+echo "bind 'set completion-ignore-case on'"  > ~/.bashrc
 echo 'export EDITOR=vim'                    >> ~/.bashrc
 echo 'alias ls=exa'                         >> ~/.bashrc
 echo 'alias l=exa'                          >> ~/.bashrc
 echo 'alias cat=bat'                        >> ~/.bashrc
-echo 'export PATH=$PATH:~/.cargo/bin'
+echo 'export PATH=$PATH:~/.cargo/bin'       >> ~/.bashrc
 
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc
@@ -139,14 +139,52 @@ pushd ~/.config/alacritty
 popd
 
 # polybar
+mkdir ~/.config/polybar
+touch ~/.config/polybar/config
+echo '[colors]'                          >> ~/.config/polybar/config
+echo 'background = #000000'              >> ~/.config/polybar/config
+echo 'foreground = #ffffff'              >> ~/.config/polybar/config
+echo ''                                  >> ~/.config/polybar/config
+echo '[module/cpu]'                      >> ~/.config/polybar/config
+echo 'type = internal/cpu'               >> ~/.config/polybar/config
+echo 'format = <label> <ramp-coreload>'  >> ~/.config/polybar/config
+echo 'label = CPU %percentage%%'         >> ~/.config/polybar/config
+echo 'ramp-coreload-spacing = 1'         >> ~/.config/polybar/config
+echo 'ramp-coreload-0 = ▁'               >> ~/.config/polybar/config
+echo 'ramp-coreload-1 = ▂'               >> ~/.config/polybar/config
+echo 'ramp-coreload-2 = ▃'               >> ~/.config/polybar/config
+echo 'ramp-coreload-3 = ▄'               >> ~/.config/polybar/config
+echo 'ramp-coreload-4 = ▅'               >> ~/.config/polybar/config
+echo 'ramp-coreload-5 = ▆'               >> ~/.config/polybar/config
+echo 'ramp-coreload-6 = ▇'               >> ~/.config/polybar/config
+echo 'ramp-coreload-7 = █'               >> ~/.config/polybar/config
+echo ''                                  >> ~/.config/polybar/config
+echo '[module/filesystem]'               >> ~/.config/polybar/config
+echo 'type = internal/fs'                >> ~/.config/polybar/config
+echo 'mount-0 = /'                       >> ~/.config/polybar/config
+echo 'mount-1 = /home'                   >> ~/.config/polybar/config
+echo 'mount-1 = /mnt'                    >> ~/.config/polybar/config
+echo ''                                  >> ~/.config/polybar/config
+echo '[bar/bar]'                         >> ~/.config/polybar/config
+echo 'monitor ='                         >> ~/.config/polybar/config
+echo 'bottom = true'                     >> ~/.config/polybar/config
+echo 'width = 100%'                      >> ~/.config/polybar/config
+echo 'height = 5%'                       >> ~/.config/polybar/config
+echo 'radius = 0'                        >> ~/.config/polybar/config
+echo 'background = ${colors.background}' >> ~/.config/polybar/config
+echo 'foreground = ${colors.foreground}' >> ~/.config/polybar/config
+echo ''                                  >> ~/.config/polybar/config
+echo 'modules-left = bspwm'              >> ~/.config/polybar/config
+echo 'modules-center = date memory cpu battery temperature' >> ~/.config/polybar/config
+echo 'modules-right = alsa xkeyboard xbacklight dpowermenu' >> ~/.config/polybar/config
 
 
 # bspwm
 mkdir ~/.config/bspwm
 touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
-echo '#!/bin/sh' > ~/.config/bspwm/bspwmrc
-echo 'bspc monitor -d I II III IV V VI VII VIII IX X' > ~/.config/bspwm/bspwmrc
+echo '#!/bin/sh'                                      > ~/.config/bspwm/bspwmrc
+echo 'bspc monitor -d I II III IV V VI VII VIII IX X' >> ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd
