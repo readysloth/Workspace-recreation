@@ -28,7 +28,7 @@ echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
 ./with_tmpfs.sh '--autounmask-write' 'sys-kernel/genkernel'
 echo -5 | etc-update
 
-GENKERNEL_OPTIONS='--lvm --disklabel --mountboot --busybox'
+GENKERNEL_OPTIONS='--lvm --mountboot --busybox'
 
 set +o errexit
 [ "$(grep -i memtotal /proc/meminfo | awk '{print $2}')" -lt '6000000' ] && sed -i '/\/var\/tmp\/portage/d' /etc/fstab && umount /var/tmp/portage
