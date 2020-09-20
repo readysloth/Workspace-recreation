@@ -48,7 +48,12 @@ emerge app-emulation/docker
 rc-update add docker default
 
 emerge app-emulation/qemu
+
 emerge app-emulation/wine-staging
+emerge app-emulation/wine-mono
+emerge app-emulation/winetricks
+
+emerge app-emulation/virtualbox
 etc-update -5
 
 # graphics
@@ -90,7 +95,12 @@ USE="postproc" emerge librewolf
 etc-update -5
 
 # office
+emerge net-fs/samba
 emerge app-office/libreoffice
+
 etc-update -5
+
+# misc
+emerge app-admin/sudo
 
 ./configs.sh
