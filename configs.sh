@@ -26,7 +26,8 @@ echo 'alias cat=bat'                             >> ~/.bashrc
 echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
 # Xinit
-echo 'sxhkd &'     > ~/.xinitrc
+echo 'sxhkd &'      > ~/.xinitrc
+echo 'compton &'   >> ~/.xinitrc
 echo '~/.config/polybar/launch.sh &' >> ~/.xinitrc
 echo '~/.scripts/autochanging_wallpaper.sh &' >> ~/.xinitrc
 echo 'exec bspwm' >> ~/.xinitrc
@@ -169,15 +170,28 @@ touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
 echo '#!/bin/sh'                                      > ~/.config/bspwm/bspwmrc
 echo 'bspc monitor -d I II III IV V VI VII VIII IX X' >> ~/.config/bspwm/bspwmrc
+echo 'bspc config border_width 2'                     >> ~/.config/bspwm/bspwmrc
+echo 'bspc borderless_monocle true'                     >> ~/.config/bspwm/bspwmrc
+echo 'bspc gapless_monocle true'                     >> ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
-echo '#!/bin/sh'                              > ~/.config/sxhkd/sxhkdrc
-echo 'super + Return'                        >> ~/.config/sxhkd/sxhkdrc
-echo ' alacritty -e tmux'                    >> ~/.config/sxhkd/sxhkdrc
-echo 'super + shift + Return'                >> ~/.config/sxhkd/sxhkdrc
-echo ' pkill -USR1 -x sxhkd'                 >> ~/.config/sxhkd/sxhkdrc
-echo 'super + {h,j,k,l}'                     >> ~/.config/sxhkd/sxhkdrc
-echo ' bspc node -f {west,south,north,east}' >> ~/.config/sxhkd/sxhkdrc
+echo '#!/bin/sh'                               > ~/.config/sxhkd/sxhkdrc
+echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
+echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + Return'                 >> ~/.config/sxhkd/sxhkdrc
+echo ' pkill -USR1 -x sxhkd'                  >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node -f {west,south,north,east}'  >> ~/.config/sxhkd/sxhkdrc
+echo 'super + d'                              >> ~/.config/sxhkd/sxhkdrc
+echo ' rofi -show run'                        >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + d'                      >> ~/.config/sxhkd/sxhkdrc
+echo ' rofi -show drun'                       >> ~/.config/sxhkd/sxhkdrc
+echo 'super + shift + q'                      >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node -{c,k}'                      >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {_,shift + }{1-9,0}'            >> ~/.config/sxhkd/sxhkdrc
+echo " bspc {desktop -f,node -d} '^{1-9,10}'" >> ~/.config/sxhkd/sxhkdrc
+ 
+    

@@ -106,6 +106,7 @@ echo -5 | etc-update
 # misc
 emerge app-admin/sudo
 emerge x11-apps/xkill
+emerge x11-misc/rofi
 
 
 RECREATION_DIR="$(mktemp -d)"
