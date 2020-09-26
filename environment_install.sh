@@ -6,17 +6,17 @@ emerge dev-vcs/git
 emerge dev-util/cmake
 emerge sys-devel/gdb
 emerge dev-python/bpython
-etc-update -5
+echo -5 | etc-update
 
 # X11
 echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server
 emerge x11-base/xorg-server
-etc-update -5
+echo -5 | etc-update
 
 # Tiling wm
 emerge x11-wm/bspwm
 emerge x11-misc/sxhkd
-etc-update -5
+echo -5 | etc-update
 
 echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton
 emerge x11-misc/compton
@@ -24,7 +24,7 @@ emerge x11-misc/polybar
 
 echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu
 emerge x11-misc/dmenu
-etc-update -5
+echo -5 | etc-update
 
 # Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -41,7 +41,7 @@ pushd xkb-switch
     popd
 popd
 rm -rf xkb-switch
-etc-update -5
+echo -5 | etc-update
 
 # emulation
 emerge app-emulation/docker
@@ -54,7 +54,7 @@ emerge app-emulation/wine-mono
 emerge app-emulation/winetricks
 
 emerge app-emulation/virtualbox
-etc-update -5
+echo -5 | etc-update
 
 # graphics
 echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick
@@ -62,12 +62,12 @@ emerge media-gfx/imagemagick
 
 echo 'media-gfx/feh xinerama' >> /etc/portage/package.use/feh
 emerge media-gfx/feh
-etc-update -5
+echo -5 | etc-update
 
 # rust
 echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
 emerge dev-lang/rust
-etc-update -5
+echo -5 | etc-update
 
 # Terminal things
 emerge app-shells/bash-completion
@@ -79,7 +79,7 @@ emerge sys-apps/ripgrep
 emerge x11-terms/alacritty
 emerge sys-apps/exa
 emerge sys-process/htop
-etc-update -5
+echo -5 | etc-update
 cargo install ytop
 cargo install procs
 
@@ -92,13 +92,13 @@ echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /
 echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
 emaint -r librewolf sync
 USE="postproc" emerge librewolf
-etc-update -5
+echo -5 | etc-update
 
 # office
 emerge net-fs/samba
 emerge app-office/libreoffice
 
-etc-update -5
+echo -5 | etc-update
 
 # misc
 emerge app-admin/sudo
