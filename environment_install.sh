@@ -1,4 +1,6 @@
 
+set -o errexit
+
 mkdir ~/.config
 
 # dev
@@ -77,6 +79,7 @@ emerge sys-apps/bat
 emerge sys-apps/fd
 emerge sys-apps/ripgrep
 emerge x11-terms/alacritty
+emerge x11-terms/cool-retro-term
 emerge sys-apps/exa
 emerge sys-process/htop
 echo -5 | etc-update
@@ -102,6 +105,7 @@ echo -5 | etc-update
 
 # misc
 emerge app-admin/sudo
+emerge x11-apps/xkill
 
 
 RECREATION_DIR="$(mktemp -d)"

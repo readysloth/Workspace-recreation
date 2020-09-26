@@ -27,7 +27,8 @@ echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc
-echo '~/.config/polybar/launch.sh' >> ~/.xinitrc
+echo '~/.config/polybar/launch.sh &' >> ~/.xinitrc
+echo '~/.scripts/autochanging_wallpaper.sh &' >> ~/.xinitrc
 echo 'exec bspwm' >> ~/.xinitrc
 
 # Vim
