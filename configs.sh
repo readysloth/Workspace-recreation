@@ -1,12 +1,29 @@
 # I'm aware about heredocuments, but don't like them
 
+RECREATION_DIR="$1"
+
+# misc
+mkdir ~/Images
+cp -r "${RECREATION_DIR}/wallpapers" ~/Images
+
+# scripts
+mkdir ~/.scripts
+echo '#!/bin/bash'                                      > ~/.scripts/autochanging_wallpaper.sh
+echo 'while true'                                      >> ~/.scripts/autochanging_wallpaper.sh
+echo 'do'                                              >> ~/.scripts/autochanging_wallpaper.sh
+echo '  feh --randomize --bg-fill ~/Images/wallpapers' >> ~/.scripts/autochanging_wallpaper.sh
+echo '  sleep 1h'                                      >> ~/.scripts/autochanging_wallpaper.sh
+echo 'done'                                            >> ~/.scripts/autochanging_wallpaper.sh
+
+chmod +x ~/.scripts/autochanging_wallpaper.sh
+
 # bashrc
-echo "bind 'set completion-ignore-case on'"  > ~/.bashrc
-echo 'export EDITOR=vim'                    >> ~/.bashrc
-echo 'alias ls=exa'                         >> ~/.bashrc
-echo 'alias l=exa'                          >> ~/.bashrc
-echo 'alias cat=bat'                        >> ~/.bashrc
-echo 'export PATH=$PATH:~/.cargo/bin'       >> ~/.bashrc
+echo "bind 'set completion-ignore-case on'"       > ~/.bashrc
+echo 'export EDITOR=vim'                         >> ~/.bashrc
+echo 'alias ls=exa'                              >> ~/.bashrc
+echo 'alias l=exa'                               >> ~/.bashrc
+echo 'alias cat=bat'                             >> ~/.bashrc
+echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
 # Xinit
 echo 'sxhkd &'     > ~/.xinitrc

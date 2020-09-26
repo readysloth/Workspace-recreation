@@ -103,4 +103,8 @@ etc-update -5
 # misc
 emerge app-admin/sudo
 
-./configs.sh
+
+RECREATION_DIR="$(mktemp -d)"
+git clone https://github.com/readysloth/Workspace-recreation.git "$RECREATION_DIR"
+
+./configs.sh "$RECREATION_DIR"
