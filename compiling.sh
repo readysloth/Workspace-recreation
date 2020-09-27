@@ -22,11 +22,14 @@ echo 'app-editors/vim X python vim-pager perl terminal' >> /etc/portage/package.
 ./with_tmpfs.sh ' ' 'app-editors/vim'
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
-echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf
+echo 'ACCEPT_LICENSE="*"'     >> /etc/portage/make.conf
+echo 'ACCEPTED_KEYWORDS="**"' >> /etc/portage/make.conf
+echo 'USE="abi_x86_32 abi_x86_64"' >> /etc/portage/make.conf
 
 ./with_tmpfs.sh ' ' 'sys-kernel/gentoo-sources'
 ./with_tmpfs.sh '--autounmask-write' 'sys-kernel/genkernel'
 echo -5 | etc-update
+./with_tmpfs.sh '' 'sys-kernel/genkernel'
 
 GENKERNEL_OPTIONS='--lvm --mountboot --busybox'
 

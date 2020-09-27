@@ -17,9 +17,9 @@ echo hostname="$hostname" > /etc/conf.d/hostname
 blkid | grep 'boot' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t /boot \t swap \t sw \t 0 \t 0@'
 blkid | grep 'grub' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t /boot/grub \t vfat \t umask=0077 \t 0 \t 1@' >> /etc/fstab
 
-blkid | grep 'swap' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t none \t swap \t sw \t 0 \t 0@' >> /etc/fstab
-blkid | grep 'ext4' | grep 'rootfs' | sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t / \t ext4 \t noatime \t 0 \t 1@' >> /etc/fstab
-blkid | grep 'ext4' | grep 'home'   | sed "s@.*UUID=\"\([^\"]*\)\".*@UUID=\1 \t /home/$hostname \t ext4 \t noatime \t 0 \t 1@" >> /etc/fstab
+blkid | grep 'swap' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t none \t swap \t sw \t 0 \t 0@'               >> /etc/fstab
+blkid | grep 'ext4' | grep 'rootfs' | sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t / \t ext4 \t noatime \t 0 \t 1@'             >> /etc/fstab
+blkid | grep 'ext4' | grep 'home'   | sed "s@.*UUID=\"\([^\"]*\)\".*@UUID=\1 \t /home/ \t ext4 \t noatime \t 0 \t 1@"     >> /etc/fstab
 
 
 pushd /etc/init.d
@@ -54,4 +54,6 @@ echo 'GRUB_CMDLINE_LINUX="dolvm"' >> /etc/default/grub
 grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
-emerge sys-boot/os-prober
+./with_tmpfs.sh '--autounmask-write' 'sys-boot/os-prober'
+echo -5 | etc-update
+./with_tmpfs.sh '' 'sys-boot/os-prober'
