@@ -23,7 +23,7 @@ echo 'app-editors/vim X python vim-pager perl terminal' >> /etc/portage/package.
 
 echo "/dev/${BOOT_PARTITION} /boot fat32 defaults 0 2" >> /etc/fstab
 echo 'ACCEPT_LICENSE="*"'     >> /etc/portage/make.conf
-echo 'ACCEPTED_KEYWORDS="**"' >> /etc/portage/make.conf
+echo 'ACCEPT_KEYWORDS="**"' >> /etc/portage/make.conf
 echo 'USE="abi_x86_32 abi_x86_64 -gpm"' >> /etc/portage/make.conf
 
 ./with_tmpfs.sh ' ' 'sys-kernel/gentoo-sources'
