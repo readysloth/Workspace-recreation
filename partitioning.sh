@@ -82,7 +82,7 @@ time ./preinstallation.sh "${DISK}"
 # Removing our installation tmpfs from fstab
 sed -i '/\/var\/tmp\/portage/d' /etc/fstab && umount /var/tmp/portage
 
-passwd
+echo root:1 | chpasswd
 
 
 exit
