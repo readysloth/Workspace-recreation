@@ -1,6 +1,8 @@
 
 set -o errexit
 
+echo 'ACCEPT_KEYWORDS="**"' >> /etc/portage/make.conf
+
 mkdir ~/.config
 mkdir ~/env_installation_stages
 
