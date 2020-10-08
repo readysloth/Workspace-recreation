@@ -130,6 +130,14 @@ touch ~/env_installation_stages/office_installed
 emerge app-admin/sudo
 emerge x11-apps/xkill
 emerge x11-misc/rofi
+
+git clone https://github.com/cmauri/eviacam.git 
+pushd eviacam
+    ./autogen.sh
+    ./configure
+    make -j$(nproc)
+    make install
+popd
 touch ~/env_installation_stages/misc_installed
 
 
