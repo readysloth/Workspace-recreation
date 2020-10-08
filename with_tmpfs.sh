@@ -5,7 +5,7 @@ PKG="$2"
 source_size_in_kb=$(emerge -pv "$PKG" | grep 'Size of downloads' | sed 's/^.*[^:]*:[[:space:]]*\([0-9]*\)[[:space:]].*/\1/')
 
 free_ram=$(free | awk '{print $4}' | sed -n 2p)
-tmpfs_percent=200/100
+tmpfs_percent=80/100
 for_tmpfs=$(($free_ram*$tmpfs_percent))
 
 # If doubled source size is greater then size of tmpfs, then we remove tmpfs from fstab and umount it
