@@ -54,6 +54,8 @@ echo 'GRUB_CMDLINE_LINUX="dolvm"' >> /etc/default/grub
 grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
+set +o errexit
+
 ./with_tmpfs.sh '--autounmask-write' 'sys-boot/os-prober'
 echo -5 | etc-update
 ./with_tmpfs.sh '' 'sys-boot/os-prober'
