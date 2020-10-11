@@ -146,4 +146,4 @@ touch ~/env_installation_stages/misc_installed
 RECREATION_DIR="$(mktemp -d)"
 git clone https://github.com/readysloth/Workspace-recreation.git "$RECREATION_DIR"
 
-./configs.sh "$RECREATION_DIR"
+./create_configs.sh "$RECREATION_DIR"

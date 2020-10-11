@@ -62,3 +62,4 @@ echo -5 | etc-update
 
 echo root:1 | chpasswd
 
+./environment_install.sh
