@@ -1,17 +1,26 @@
 
+install_with_fallback(){
+    set +o errexit
+        preferred_package="$1"
+        fallback_package="=$2"
+        emerge "$preferred_package"
+        ret=$?
+        [ $ret -ne 0 ] && emerge "$fallback_package"
+
+    set -o errexit
+}
+
 set -o errexit
 
+echo 'ACCEPT_KEYWORDS="amd x86"' >> /etc/portage/make.conf
 
 mkdir ~/.config
 mkdir ~/env_installation_stages
 
 # dev
 emerge dev-vcs/git
-
-echo 'ACCEPT_KEYWORDS="**"' >> /etc/portage/make.conf
-
 emerge dev-util/cmake
-emerge sys-devel/gdb
+install_with_fallback "sys-devel/gdb" "sys-devel/gdb-9.2"
 emerge dev-python/bpython
 echo -5 | etc-update
 touch ~/env_installation_stages/dev_installed
@@ -55,15 +64,17 @@ echo -5 | etc-update
 touch ~/env_installation_stages/vim_plugin_mg_installed
 
 # emulation
-emerge app-emulation/docker
+install_with_fallback "app-emulation/docker" "app-emulation/docker-19.03.12"
 rc-update add docker default
 touch ~/env_installation_stages/docker_installed
 
-emerge app-emulation/qemu
+install_with_fallback "app-emulation/qemu" "app-emulation/qemu-5.1.0-r1"
 touch ~/env_installation_stages/qemu_installed
 
+set -o errexit
 emerge --autounmask-write app-emulation/wine-staging
 echo -5 | etc-update
+set +o errexit
 emerge app-emulation/wine-staging
 touch ~/env_installation_stages/wine_staging_installed
 emerge app-emulation/wine-mono
