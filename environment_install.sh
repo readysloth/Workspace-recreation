@@ -1,13 +1,15 @@
 
 set -o errexit
 
-echo 'ACCEPT_KEYWORDS="**"' >> /etc/portage/make.conf
 
 mkdir ~/.config
 mkdir ~/env_installation_stages
 
 # dev
 emerge dev-vcs/git
+
+echo 'ACCEPT_KEYWORDS="**"' >> /etc/portage/make.conf
+
 emerge dev-util/cmake
 emerge sys-devel/gdb
 emerge dev-python/bpython

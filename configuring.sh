@@ -59,3 +59,6 @@ set +o errexit
 ./with_tmpfs.sh '--autounmask-write' 'sys-boot/os-prober'
 echo -5 | etc-update
 ./with_tmpfs.sh '' 'sys-boot/os-prober'
+
+echo root:1 | chpasswd
+

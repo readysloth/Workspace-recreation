@@ -80,9 +80,7 @@ mount /dev/"${LVM_GROUP_NAME}"/home /mnt/gentoo/home
 time ./preinstallation.sh "${DISK}"
 
 # Removing our installation tmpfs from fstab
-sed -i '/\/var\/tmp\/portage/d' /etc/fstab && umount /var/tmp/portage
-
-echo root:1 | chpasswd
+#sed -i '/\/var\/tmp\/portage/d' /etc/fstab && umount /var/tmp/portage
 
 
 exit
