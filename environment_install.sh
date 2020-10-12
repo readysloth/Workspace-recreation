@@ -71,10 +71,11 @@ touch ~/env_installation_stages/docker_installed
 install_with_fallback "app-emulation/qemu" "app-emulation/qemu-5.1.0-r1"
 touch ~/env_installation_stages/qemu_installed
 
-set -o errexit
+set +o errexit
 emerge --autounmask-write app-emulation/wine-staging
 echo -5 | etc-update
-set +o errexit
+set -o errexit
+
 emerge app-emulation/wine-staging
 touch ~/env_installation_stages/wine_staging_installed
 emerge app-emulation/wine-mono
