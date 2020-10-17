@@ -13,6 +13,7 @@ install_with_fallback(){
 set -o errexit
 
 echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf
+echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 
 mkdir ~/.config
 mkdir ~/env_installation_stages
@@ -76,14 +77,14 @@ emerge --autounmask-write app-emulation/wine-staging
 echo -5 | etc-update
 set -o errexit
 
-emerge app-emulation/wine-staging
+emerge --backtrack=300 app-emulation/wine-staging
 touch ~/env_installation_stages/wine_staging_installed
 emerge app-emulation/wine-mono
 touch ~/env_installation_stages/wine_mono_installed
 emerge app-emulation/winetricks
 touch ~/env_installation_stages/winetricks_installed
 
-emerge app-emulation/virtualbox
+emerge --backtrack=300 app-emulation/virtualbox
 echo -5 | etc-update
 touch ~/env_installation_stages/virtualbox_installed
 
@@ -98,7 +99,7 @@ echo -5 | etc-update
 touch ~/env_installation_stages/feh_installed
 
 # rust
-echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
+#echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
 emerge dev-lang/rust
 echo -5 | etc-update
 touch ~/env_installation_stages/rust_installed
@@ -111,7 +112,7 @@ emerge sys-apps/bat
 emerge sys-apps/fd
 emerge sys-apps/ripgrep
 emerge x11-terms/alacritty
-emerge x11-terms/cool-retro-term
+emerge --backtrack=300 x11-terms/cool-retro-term
 emerge sys-apps/exa
 emerge sys-process/htop
 echo -5 | etc-update
@@ -121,17 +122,21 @@ cargo install procs
 touch ~/env_installation_stages/terminal_things_installed
 
 # librewolf
-echo '[librewolf]'                                                          >> /etc/portage/repos.conf/librewolf.conf
-echo 'priority = 50'                                                        >> /etc/portage/repos.conf/librewolf.conf
-echo 'location = /etc/librewolf'                                            >> /etc/portage/repos.conf/librewolf.conf
-echo 'sync-type = git'                                                      >> /etc/portage/repos.conf/librewolf.conf
-echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /etc/portage/repos.conf/librewolf.conf
-echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
-emaint -r librewolf sync
-USE="postproc" emerge librewolf
-echo -5 | etc-update
+#echo '[librewolf]'                                                          >> /etc/portage/repos.conf/librewolf.conf
+#echo 'priority = 50'                                                        >> /etc/portage/repos.conf/librewolf.conf
+#echo 'location = /etc/librewolf'                                            >> /etc/portage/repos.conf/librewolf.conf
+#echo 'sync-type = git'                                                      >> /etc/portage/repos.conf/librewolf.conf
+#echo 'sync-uri = https://gitlab.com/librewolf-community/browser/gentoo.git' >> /etc/portage/repos.conf/librewolf.conf
+#echo 'auto-sync = Yes'                                                      >> /etc/portage/repos.conf/librewolf.conf
+#emaint -r librewolf sync
+#USE="postproc" emerge librewolf
+#echo -5 | etc-update
+#
+#touch ~/env_installation_stages/librewolf_installed
 
-touch ~/env_installation_stages/librewolf_installed
+# firefox
+emerge www-client/firefox
+touch ~/env_installation_stages/firefox_installed
 
 # office
 emerge net-fs/samba
@@ -145,13 +150,13 @@ emerge app-admin/sudo
 emerge x11-apps/xkill
 emerge x11-misc/rofi
 
-git clone https://github.com/cmauri/eviacam.git 
-pushd eviacam
-    ./autogen.sh
-    ./configure
-    make -j$(nproc)
-    make install
-popd
+#git clone https://github.com/cmauri/eviacam.git 
+#pushd eviacam
+#    ./autogen.sh
+#    ./configure
+#    make -j$(nproc)
+#    make install
+#popd
 touch ~/env_installation_stages/misc_installed
 
 
