@@ -2,6 +2,7 @@
 
 RECREATION_DIR="$1"
 
+cd "$RECREATION_DIR"
 # misc
 mkdir ~/Images
 cp -r "${RECREATION_DIR}/wallpapers" ~/Images
@@ -181,6 +182,8 @@ touch ~/.config/sxhkd/sxhkdrc
 echo '#!/bin/sh'                               > ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
+echo ' firefox'                               >> ~/.config/sxhkd/sxhkdrc
 echo 'super + shift + Return'                 >> ~/.config/sxhkd/sxhkdrc
 echo ' pkill -USR1 -x sxhkd'                  >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc

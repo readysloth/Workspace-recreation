@@ -13,7 +13,6 @@ install_with_fallback(){
 set -o errexit
 
 echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf
-echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 
 mkdir ~/.config
 mkdir ~/env_installation_stages

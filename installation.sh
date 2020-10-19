@@ -32,6 +32,9 @@ eselect profile set "${profile_choice}"
 
 eselect profile list
 
+emerge app-portage/cpuid2cpuflags
+echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
+
 ./compiling.sh
 
 rc-update add dhcpcd default
