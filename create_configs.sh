@@ -180,6 +180,9 @@ mkdir ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
 echo '#!/bin/sh'                               > ~/.config/sxhkd/sxhkdrc
+
+echo 'super + shift + {z,a}'                  >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
 echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
@@ -196,5 +199,7 @@ echo 'super + shift + q'                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -{c,k}'                      >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {_,shift + }{1-9,0}'            >> ~/.config/sxhkd/sxhkdrc
 echo " bspc {desktop -f,node -d} '^{1-9,10}'" >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {1-9,0}'                        >> ~/.config/sxhkd/sxhkdrc
+echo " bspc desktop -f '^{1-9,10}'"           >> ~/.config/sxhkd/sxhkdrc
  
     
