@@ -17,6 +17,12 @@ echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf
 mkdir ~/.config
 mkdir ~/env_installation_stages
 
+# system
+emerge media-libs/libmpd
+emerge media-sound/alsa-utils
+emerge media-sound/mpd
+emerge net-wireless/wireless-tools
+
 # dev
 emerge dev-vcs/git
 emerge dev-util/cmake
