@@ -11,9 +11,9 @@ def call_cmd_and_print_content(cmd: str, *args):
     print(call_cmd(cmd, *args))
 
 
-def call_cmd_and_print_cmd(cmd: str, *args):
+def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
     print(' '.join(cmd.split() + list(args)))
-    call_cmd(cmd, *args)
+    return call_cmd(cmd, *args)
 
 
 def source(source_file: str):
