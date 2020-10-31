@@ -16,7 +16,7 @@ def emerge_base():
 
     profile_choice = profile_choice if profile_choice else 20
 
-    call_cmd_and_print_cmd('eselect profile set {profile_choice}')
+    call_cmd_and_print_cmd(f'eselect profile set {profile_choice}')
 
     print(call_cmd_and_print_cmd('eselect profile list'))
 
