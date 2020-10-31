@@ -18,8 +18,10 @@ def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
 
 def source(source_file: str):
     command = shlex.split(f"env -i bash -c 'source {source_file} && env'")
-    proc = subprocess.Popen(command, stdout = subprocess.PIPE).decode('utf-8')
+    print(command)
+    proc = sp.Popen(command, stdout = sp.PIPE)
     for line in proc.stdout:
-        (key, _, value) = line.partition("=")
+        print(line)
+        (key, _, value) = line.decode('utf-8').partition('=')
         os.environ[key] = value
 

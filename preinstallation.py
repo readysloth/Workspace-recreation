@@ -26,6 +26,5 @@ def preinstall(disk: str):
     launch_ntpd()
     stage3()
     chroot_to_install()
-    installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' |",
-                                                "grep -i 'efi' | awk '{print $1}'"))
+    installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' | grep -i 'efi' | awk '{{print $1}}'"))
 

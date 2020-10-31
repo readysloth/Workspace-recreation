@@ -7,7 +7,6 @@ pushd /mnt/gentoo
     PATH_TO_AUTOBUILDS="gentoo-distfiles/releases/${PROCESSOR}/autobuilds"
 
     SORTED_OUT=$(mktemp)
-    print_if_verbatim echo "sorted autobuilds are in : ${SORTED_OUT}"
 
     download_list(){
         URL="$1"

@@ -17,7 +17,7 @@ def wipefs(disk: str):
 def remove_lvm_groups():
     existing_lvm_groups = call_cmd_and_print_cmd("vgs | sed -n 2,\$p | awk '{print $1}'")
 
-    call_cmd_and_print_cmd('vgremove -y', existing_lvm_groups)
+    call_cmd_and_print_cmd(f'vgremove -y {existing_lvm_groups}')
 
 
 def make_partitions(disk: str) -> t.Tuple[str]:
@@ -44,9 +44,9 @@ def make_partitions(disk: str) -> t.Tuple[str]:
     make_boot()
     free_space_to_lvm()
 
-    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{{print $1}}'".format(d=disk))
-    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{{print $1}}'".format(d=disk))
-    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{{print $1}}'".format(d=disk))
+    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{{print $1}}'".format(d=disk)).strip()
+    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{{print $1}}'".format(d=disk)).strip()
+    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{{print $1}}'".format(d=disk)).strip()
 
     return (part1, part2, part3)
 
@@ -56,7 +56,7 @@ def start_lvm_daemon():
 
 
 def create_phy_volume(partition: str):
-    call_cmd_and_print_cmd('pvcreate', partition)
+    call_cmd_and_print_cmd(f'pvcreate -ff {partition}')
     call_cmd_and_print_cmd('vgcreate', LVM_GROUP_NAME, partition)
 
 
@@ -99,7 +99,7 @@ make_fs_and_swap(part2)
 mount_devices_for_os_install()
 
 start_time = datetime.datetime.now()
-preinstallation.preinstall(part1)
+preinstallation.preinstall(DISK)
 end_time = datetime.datetime.now()
 
 print('start time:', start_time)
