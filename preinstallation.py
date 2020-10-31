@@ -3,15 +3,15 @@ import glob
 import shutil
 import typing as t
 
-from utils import call_cmd
+from utils import call_cmd_and_print_cmd
 import installation
 
 def launch_ntpd():
-    call_cmd('ntpd -q -g')
+    call_cmd_and_print_cmd('ntpd -q -g')
 
 
 def stage3():
-    call_cmd('bash stage3.sh')
+    call_cmd_and_print_cmd('bash stage3.sh')
 
 
 def chroot_to_install(partition: str):
@@ -20,11 +20,12 @@ def chroot_to_install(partition: str):
         shutil.copy(script, '/mnt/gentoo')
 
     os.chroot('/mnt/gentoo')
-    installation.install(partition)
     
 
-def preinstall(partition: str):
+def preinstall(disk: str):
     launch_ntpd()
     stage3()
     chroot_to_install(partition)
+    installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' |",
+                                                "grep -i 'efi' | awk '{print $1}'").decode('utf-8'))
 
