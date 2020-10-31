@@ -3,7 +3,8 @@ import shlex
 import subprocess as sp
 
 def call_cmd(cmd: str, *args) -> bytes:
-    return sp.check_output(['bash', '-c'] + cmd.split() + list(args))
+    combined_args = ' '.join(cmd.split() + list(args))
+    return sp.check_output(['bash', '-c'] + [combined_args])
 
 
 def call_cmd_and_print_content(cmd: str, *args):
@@ -11,7 +12,7 @@ def call_cmd_and_print_content(cmd: str, *args):
 
 
 def call_cmd_and_print_cmd(cmd: str, *args):
-    print(cmd.split() + list(args))
+    print(' '.join(cmd.split() + list(args)))
     call_cmd(cmd, *args)
 
 

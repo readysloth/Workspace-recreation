@@ -81,27 +81,26 @@ def mount_devices_for_os_install():
     call_cmd_and_print_cmd(f'mount /dev/{LVM_GROUP_NAME}/home /mnt/gentoo/home')
 
 
-if __name__ == 'main':
-    try:
-        wipefs(DISK)
-    except sp.CalledProcessError as e:
-        print(e)
+try:
+    wipefs(DISK)
+except sp.CalledProcessError as e:
+    print(e)
 
-    try:
-        remove_lvm_groups()
-    except sp.CalledProcessError as e:
-        print(e)
+try:
+    remove_lvm_groups()
+except sp.CalledProcessError as e:
+    print(e)
 
-    part1, part2, part3 = make_partitions(DISK)
-    start_lvm_daemon()
-    create_phy_volume(part3)
-    allocate_space_for_lvm()
-    make_fs_and_swap(part2)
-    mount_devices_for_os_install()
+part1, part2, part3 = make_partitions(DISK)
+start_lvm_daemon()
+create_phy_volume(part3)
+allocate_space_for_lvm()
+make_fs_and_swap(part2)
+mount_devices_for_os_install()
 
-    start_time = datetime.datetime.now()
-    preinstallation.preinstall(part1)
-    end_time = datetime.datetime.now()
+start_time = datetime.datetime.now()
+preinstallation.preinstall(part1)
+end_time = datetime.datetime.now()
 
-    print('start time:', start_time)
-    print('end time  :', end_time)
+print('start time:', start_time)
+print('end time  :', end_time)
