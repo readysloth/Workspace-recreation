@@ -14,7 +14,7 @@ def wipefs(disk: str):
     call_cmd_and_print_cmd('wipefs -af', disk)
 
 
-def remove_lvm_groups()
+def remove_lvm_groups():
     existing_lvm_groups = call_cmd_and_print_cmd("vgs | sed -n 2,\$p | awk '{print $1}'")
 
     call_cmd_and_print_cmd('vgremove -y', existing_lvm_groups)
