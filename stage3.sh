@@ -1,26 +1,3 @@
-#!/usr/bin/env bash
-
-print_if_verbatim(){
-    if ! [ -z "$VERBOSE" ]; then
-        eval "$@"
-    fi
-}
-
-set -o errexit
-
-DISK="$1"
-
-# Disabling ipv6, as it breaks connection on my device
-echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
-
-print_if_verbatim set -x
-
-print_if_verbatim echo "date before ntpd launch: $(date)"
-
-ntpd -q -g
-
-print_if_verbatim echo "date after ntpd launch: $(date)"
-
 pushd /mnt/gentoo
 
     # downloading distfiles list
@@ -69,7 +46,7 @@ pushd /mnt/gentoo
     sed -i '/COMMON_FLAGS=/ s/\("[^"]*\)"/\1 -march=native"/' etc/portage/make.conf
     
     #removing -pipe flag, because we will use tmpfs
-    sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf
+    #sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf
 
 
     # selecting mirror interactively
@@ -88,14 +65,3 @@ pushd /mnt/gentoo
     mount --make-rslave       dev
 
 popd
-
-# Copying installation scripts before chroot
-
-cp *.sh /mnt/gentoo
-chroot /mnt/gentoo bash ./installation.sh $(fdisk -l | grep "${DISK}" | grep -i 'efi' | awk '{print $1}')
-
-# adding back -pipe flag
-sed -i '/COMMON_FLAGS=/ s/\("[^"]*\)"/\1 -pipe"/' etc/portage/make.conf
-    
-#removing -pipe flag, because we will use tmpfs
-sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf
