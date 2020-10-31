@@ -12,7 +12,8 @@ def call_cmd_and_print_content(cmd: str, *args):
 
 
 def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
-    print(' '.join(cmd.split() + list(args)))
+    full_cmd = ' '.join(cmd.split() + list(args))
+    print(f'### cmd: [{full_cmd}] ### cwd: [{os.getcwd()}] ###')
     return call_cmd(cmd, *args).decode('utf-8')
 
 
@@ -21,7 +22,8 @@ def source(source_file: str):
     print(command)
     proc = sp.Popen(command, stdout = sp.PIPE)
     for line in proc.stdout:
-        print(line)
-        (key, _, value) = line.decode('utf-8').partition('=')
+        formatted_line = line.decode('utf-8').strip()
+        print(formatted_line)
+        (key, _, value) = formatted_line.partition('=')
         os.environ[key] = value
 

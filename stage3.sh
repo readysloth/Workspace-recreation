@@ -1,3 +1,4 @@
+set -x
 pushd /mnt/gentoo
 
     # downloading distfiles list

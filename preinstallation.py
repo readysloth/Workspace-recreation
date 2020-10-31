@@ -20,6 +20,7 @@ def chroot_to_install():
         shutil.copy(script, '/mnt/gentoo')
 
     os.chroot('/mnt/gentoo')
+    os.chdir('/')
     
 
 def preinstall(disk: str):
