@@ -1,6 +1,7 @@
 import sys
 import select
 
+import compiling
 from utils import call_cmd_and_print_cmd, source
 
 def emerge_base():
