@@ -13,7 +13,7 @@ def call_cmd_and_print_content(cmd: str, *args):
 
 def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
     print(' '.join(cmd.split() + list(args)))
-    return call_cmd(cmd, *args)
+    return call_cmd(cmd, *args).decode('utf-8')
 
 
 def source(source_file: str):

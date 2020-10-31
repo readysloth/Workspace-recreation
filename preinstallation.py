@@ -27,5 +27,5 @@ def preinstall(disk: str):
     stage3()
     chroot_to_install(partition)
     installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' |",
-                                                "grep -i 'efi' | awk '{print $1}'").decode('utf-8'))
+                                                "grep -i 'efi' | awk '{print $1}'"))
 

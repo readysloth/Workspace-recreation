@@ -44,9 +44,9 @@ def make_partitions(disk: str) -> t.Tuple[str]:
     make_boot()
     free_space_to_lvm()
 
-    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{print $1}'".format(d=disk)).decode('utf-8')
-    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{print $1}'".format(d=disk)).decode('utf-8')
-    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{print $1}'".format(d=disk)).decode('utf-8')
+    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{print $1}'".format(d=disk))
+    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{print $1}'".format(d=disk))
+    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{print $1}'".format(d=disk))
 
     return (part1, part2, part3)
 
