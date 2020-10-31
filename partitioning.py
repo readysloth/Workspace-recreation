@@ -22,7 +22,7 @@ def remove_lvm_groups():
 
 def make_partitions(disk: str) -> t.Tuple[str]:
     def call_parted(cmd: str):
-        call_cmd_and_print_cmd('parted -a optimal --script', disk, cmd)
+        call_cmd_and_print_cmd('parted -a optimal --script', disk, f'"{cmd}"')
     
     def make_bootloader():
         call_parted('mklabel gpt')
@@ -44,9 +44,9 @@ def make_partitions(disk: str) -> t.Tuple[str]:
     make_boot()
     free_space_to_lvm()
 
-    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{print $1}'".format(d=disk))
-    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{print $1}'".format(d=disk))
-    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{print $1}'".format(d=disk))
+    part1 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 1p | awk '{{print $1}}'".format(d=disk))
+    part2 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 2p | awk '{{print $1}}'".format(d=disk))
+    part3 = call_cmd_and_print_cmd("fdisk -l | grep {d} | tail -n +2 | sed -n 3p | awk '{{print $1}}'".format(d=disk))
 
     return (part1, part2, part3)
 

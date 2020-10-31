@@ -14,6 +14,8 @@ def emerge_base():
     print('select profile:')
     profile_choice, _, _ = select.select([sys.stdin], [], [], 10)
 
+    profile_choice = profile_choice if profile_choice else 20
+
     call_cmd_and_print_cmd('eselect profile set "${profile_choice}')
 
     print(call_cmd_and_print_cmd('eselect profile list'))

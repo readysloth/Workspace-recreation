@@ -14,7 +14,7 @@ def stage3():
     call_cmd_and_print_cmd('bash stage3.sh')
 
 
-def chroot_to_install(partition: str):
+def chroot_to_install():
     scripts = glob.glob('*.sh') + glob.glob('*.py')
     for script in scripts:
         shutil.copy(script, '/mnt/gentoo')
@@ -25,7 +25,7 @@ def chroot_to_install(partition: str):
 def preinstall(disk: str):
     launch_ntpd()
     stage3()
-    chroot_to_install(partition)
+    chroot_to_install()
     installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' |",
                                                 "grep -i 'efi' | awk '{print $1}'"))
 
