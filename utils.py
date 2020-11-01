@@ -15,8 +15,12 @@ class Colors:
     UNDERLINE = '\033[4m'
 
 def call_cmd(cmd: str, *args) -> bytes:
-    combined_args = ' '.join(cmd.split() + list(args))
-    return sp.check_output(['bash', '-c'] + [combined_args])
+    with open('/dev/tty3', 'ab') as out_log:
+        with open('/dev/tty2', 'ab') as err_log:
+            combined_args = ' '.join(cmd.split() + list(args))
+            out = sp.check_output([combined_args], shell=True, stderr=err_log)
+            out_log.write(out)
+            return out
 
 
 def call_cmd_and_print_content(cmd: str, *args):
@@ -31,7 +35,6 @@ def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
 
 def source(source_file: str):
     command = shlex.split(f"env -i bash -c 'source {source_file} && env'")
-    print(command)
     proc = sp.Popen(command, stdout = sp.PIPE)
     for line in proc.stdout:
         formatted_line = line.decode('utf-8').strip()
