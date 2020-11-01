@@ -70,6 +70,7 @@ echo "Plug 'kovetskiy/sxhkd-vim'"             >> ~/.vimrc
 echo "Plug 'tpope/vim-repeat'"                >> ~/.vimrc
 echo "Plug 'junegunn/fzf.vim'"                >> ~/.vimrc
 echo "Plug 'blueyed/vim-diminactive'"         >> ~/.vimrc
+echo "Plug 'unblevable/quick-scope'"          >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
@@ -80,6 +81,7 @@ echo                                                 >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
 echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
+echo "let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']" >> ~/.vimrc
 echo                                                 >> ~/.vimrc
 echo 'autocmd VimEnter * DimInactiveOn'              >> ~/.vimrc
 
