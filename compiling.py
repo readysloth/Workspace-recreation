@@ -21,6 +21,9 @@ def compile(boot_device: str):
 
     call_cmd_and_print_cmd('emerge sys-kernel/linux-firmware')
 
+    configuring()
+    install_env()
+
 
 def configuring():
     call_cmd_and_print_cmd('echo hostname="gentoo" > /etc/conf.d/hostname')
