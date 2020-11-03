@@ -9,7 +9,7 @@ def compile(boot_device: str):
     call_cmd_and_print_cmd('echo "app-editors/vim X python vim-pager perl terminal" >> /etc/portage/package.use/vim')
     call_cmd_and_print_cmd('emerge app-editors/vim')
 
-    call_cmd_and_print_cmd(f'echo "/dev/{boot_device} /boot fat32 defaults 0 2" >> /etc/fstab')
+    call_cmd_and_print_cmd(f'echo "{boot_device} /boot fat32 defaults 0 2" >> /etc/fstab')
     call_cmd_and_print_cmd('''echo 'ACCEPT_LICENSE="*"'     >> /etc/portage/make.conf''')
     call_cmd_and_print_cmd('''echo 'USE="abi_x86_64"' >> /etc/portage/make.conf''')
 
