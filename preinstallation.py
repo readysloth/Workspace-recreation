@@ -25,8 +25,8 @@ def chroot_to_install():
 
 def preinstall(disk: str):
     launch_ntpd()
-    stage3()
     call_cmd_and_print_cmd('echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6')
+    stage3()
     chroot_to_install()
     installation.install(call_cmd_and_print_cmd(f"fdisk -l | grep '{disk}' | grep -i 'efi' | awk '{{print $1}}'"))
 

@@ -91,6 +91,9 @@ try:
 except sp.CalledProcessError as e:
     print(e)
 
+start_time = None
+end_time = None
+
 try:
     part1, part2, part3 = make_partitions(DISK)
     start_lvm_daemon()
@@ -107,4 +110,4 @@ except Exception as e:
 
 finally:
     print('start time:', start_time)
-    print('end time  :', end_time)
+    print('end time  :', end_time if end_time else datetime.datetime.now())
