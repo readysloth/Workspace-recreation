@@ -18,6 +18,7 @@ def env_install():
     # dev
     call_cmd_and_print_cmd('emerge dev-vcs/git')
     call_cmd_and_print_cmd('emerge dev-util/cmake')
+    call_cmd_and_print_cmd('emerge dev-python/pypy')
     try:
         call_cmd_and_print_cmd('emerge sys-devel/gdb')
     except Exception as e:
