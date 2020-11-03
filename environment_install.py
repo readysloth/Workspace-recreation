@@ -12,7 +12,7 @@ def env_install():
     # system
     call_cmd_and_print_cmd('emerge media-libs/libmpd')
     call_cmd_and_print_cmd('emerge media-sound/alsa-utils')
-    call_cmd_and_print_cmd('emerge media-sound/mpd')
+    call_cmd_and_print_cmd('USE="gles2" emerge media-sound/mpd')
     call_cmd_and_print_cmd('emerge net-wireless/wireless-tools')
 
     # dev

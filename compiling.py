@@ -62,7 +62,10 @@ def configuring():
 
     call_cmd_and_print_cmd('emerge --autounmask-write sys-boot/os-prober')
     call_cmd_and_print_cmd('echo -5 | etc-update')
-    call_cmd_and_print_cmd('emerge sys-boot/os-prober')
+    try:
+        call_cmd_and_print_cmd('emerge sys-boot/os-prober')
+    except Exception as e:
+        pass
 
 
 def install_env():
