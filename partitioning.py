@@ -91,16 +91,20 @@ try:
 except sp.CalledProcessError as e:
     print(e)
 
-part1, part2, part3 = make_partitions(DISK)
-start_lvm_daemon()
-create_phy_volume(part3)
-allocate_space_for_lvm()
-make_fs_and_swap(part2)
-mount_devices_for_os_install()
+try:
+    part1, part2, part3 = make_partitions(DISK)
+    start_lvm_daemon()
+    create_phy_volume(part3)
+    allocate_space_for_lvm()
+    make_fs_and_swap(part2)
+    mount_devices_for_os_install()
 
-start_time = datetime.datetime.now()
-preinstallation.preinstall(DISK)
-end_time = datetime.datetime.now()
+    start_time = datetime.datetime.now()
+    preinstallation.preinstall(DISK)
+    end_time = datetime.datetime.now()
+except Exception as e:
+    raise
 
-print('start time:', start_time)
-print('end time  :', end_time)
+finally:
+    print('start time:', start_time)
+    print('end time  :', end_time)
