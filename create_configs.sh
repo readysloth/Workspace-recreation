@@ -1,6 +1,7 @@
 # I'm aware about heredocuments, but don't like them
 
-RECREATION_DIR="$1"
+RECREATION_DIR="$(mktemp -d)"
+git clone https://github.com/readysloth/Workspace-recreation.git "$RECREATION_DIR"
 
 cd "$RECREATION_DIR"
 # misc

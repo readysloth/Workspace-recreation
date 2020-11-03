@@ -2,6 +2,7 @@ import sys
 import select
 
 from utils import call_cmd_and_print_cmd, source
+import environment_install as env_install
 
 def compile(boot_device: str):
     call_cmd_and_print_cmd('emerge --update --deep --newuse @world')
@@ -65,5 +66,5 @@ def configuring():
 
 
 def install_env():
-    call_cmd_and_print_cmd('bash environment_install.sh')
+    env_install.env_install()
 
