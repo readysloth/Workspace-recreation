@@ -47,15 +47,15 @@ def env_install():
     # Vim plugin manager
     call_cmd_and_print_cmd('curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 
-    call_cmd_and_print_cmd('''git clone https://github.com/grwlf/xkb-switch.git
-    pushd xkb-switch
-        mkdir build
-        pushd build
-            cmake ..
-            make -j$(nproc)
-            make -j$(nproc) install
-            ldconfig
-        popd
+    call_cmd_and_print_cmd('''git clone https://github.com/grwlf/xkb-switch.git;
+    pushd xkb-switch;
+        mkdir build;
+        pushd build;
+            cmake ..;
+            make -j$(nproc);
+            make -j$(nproc) install;
+            ldconfig;
+        popd;
     popd''')
     call_cmd_and_print_cmd('rm -rf xkb-switch')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/vim_plugin_mg_installed')
