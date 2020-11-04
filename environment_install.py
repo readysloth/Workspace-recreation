@@ -80,7 +80,8 @@ def env_install():
         pass
     call_cmd_and_print_cmd('echo -5 | etc-update')
 
-    call_cmd_and_print_cmd('emerge --backtrack=300 app-emulation/wine-staging')
+    call_cmd_and_print_cmd('USE="gles2 -gpm" emerge --backtrack=300 app-emulation/wine-staging')
+
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_staging_installed')
     call_cmd_and_print_cmd('emerge app-emulation/wine-mono')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_mono_installed')
