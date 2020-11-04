@@ -80,7 +80,13 @@ def env_install():
         pass
     call_cmd_and_print_cmd('echo -5 | etc-update')
 
-    call_cmd_and_print_cmd('USE="gles2 -gpm" emerge --backtrack=300 app-emulation/wine-staging')
+    try:
+        call_cmd_and_print_cmd('USE="gles2 -gpm" emerge --backtrack=300 app-emulation/wine-staging')
+    except Exception as e:
+        try:
+            call_cmd_and_print_cmd('USE="gles2 -ncurses" emerge --backtrack=300 =app-emulation/wine-staging-5.20')
+        except Exception as e:
+            call_cmd_and_print_cmd('USE="gles2 -ncurses" emerge --backtrack=300 =app-emulation/wine-staging-5.18')
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_staging_installed')
     call_cmd_and_print_cmd('emerge app-emulation/wine-mono')
@@ -88,7 +94,10 @@ def env_install():
     call_cmd_and_print_cmd('emerge app-emulation/winetricks')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/winetricks_installed')
 
-    call_cmd_and_print_cmd('emerge --backtrack=300 app-emulation/virtualbox')
+    try:
+        call_cmd_and_print_cmd('emerge app-emulation/virtualbox')
+    except Exception as e:
+        call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-6.0.24')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/virtualbox_installed')
 
     # graphics
