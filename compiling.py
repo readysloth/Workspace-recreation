@@ -60,12 +60,13 @@ def configuring():
     call_cmd_and_print_cmd('''grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot --removable''')
     call_cmd_and_print_cmd('''grub-mkconfig -o /boot/grub/grub.cfg''')
 
-    call_cmd_and_print_cmd('emerge --autounmask-write sys-boot/os-prober')
-    call_cmd_and_print_cmd('echo -5 | etc-update')
     try:
-        call_cmd_and_print_cmd('emerge sys-boot/os-prober')
+        call_cmd_and_print_cmd('emerge --autounmask-write sys-boot/os-prober')
     except Exception as e:
         pass
+
+    call_cmd_and_print_cmd('echo -5 | etc-update')
+    call_cmd_and_print_cmd('emerge sys-boot/os-prober')
 
 
 def install_env():
