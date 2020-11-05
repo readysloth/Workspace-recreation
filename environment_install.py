@@ -89,9 +89,15 @@ def env_install():
             call_cmd_and_print_cmd('USE="gles2 -ncurses" emerge --backtrack=300 =app-emulation/wine-staging-5.18')
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_staging_installed')
-    call_cmd_and_print_cmd('emerge app-emulation/wine-mono')
+    try:
+        call_cmd_and_print_cmd('emerge app-emulation/wine-mono')
+    except Exception as e:
+        pass
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_mono_installed')
-    call_cmd_and_print_cmd('emerge app-emulation/winetricks')
+    try:
+        call_cmd_and_print_cmd('emerge app-emulation/winetricks')
+    except Exception as e:
+        pass
     call_cmd_and_print_cmd('touch ~/env_installation_stages/winetricks_installed')
 
     try:
@@ -122,7 +128,6 @@ def env_install():
     call_cmd_and_print_cmd('emerge sys-apps/fd')
     call_cmd_and_print_cmd('emerge sys-apps/ripgrep')
     call_cmd_and_print_cmd('emerge x11-terms/alacritty')
-    call_cmd_and_print_cmd('emerge --backtrack=300 x11-terms/cool-retro-term')
     call_cmd_and_print_cmd('emerge sys-apps/exa')
     call_cmd_and_print_cmd('emerge sys-process/htop')
     call_cmd_and_print_cmd('echo -5 | etc-update')
@@ -131,7 +136,11 @@ def env_install():
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/terminal_things_installed')
 
-    call_cmd_and_print_cmd('emerge www-client/firefox')
+    try:
+        call_cmd_and_print_cmd('emerge www-client/firefox')
+    except Exception as e:
+        call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox')
+
     call_cmd_and_print_cmd('touch ~/env_installation_stages/firefox_installed')
 
     # office
