@@ -122,6 +122,12 @@ def env_install():
 
     # Terminal things
     call_cmd_and_print_cmd('emerge app-shells/bash-completion')
+    try:
+        call_cmd_and_print_cmd('emerge --autounmask-write app-shells/fish')
+    except Exception as e:
+        call_cmd_and_print_cmd('echo -5 | etc-update')
+        pass
+    call_cmd_and_print_cmd('emerge app-shells/fish')
     call_cmd_and_print_cmd('emerge app-shells/fzf')
     call_cmd_and_print_cmd('emerge app-misc/tmux')
     call_cmd_and_print_cmd('emerge sys-apps/bat')
@@ -130,7 +136,6 @@ def env_install():
     call_cmd_and_print_cmd('emerge x11-terms/alacritty')
     call_cmd_and_print_cmd('emerge sys-apps/exa')
     call_cmd_and_print_cmd('emerge sys-process/htop')
-    call_cmd_and_print_cmd('echo -5 | etc-update')
     call_cmd_and_print_cmd('cargo install ytop')
     call_cmd_and_print_cmd('cargo install procs')
 
