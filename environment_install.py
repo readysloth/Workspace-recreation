@@ -104,9 +104,16 @@ def env_install():
 
     try:
         call_cmd_and_print_cmd('USE="gles2 -abi_x86_32" emerge app-emulation/virtualbox')
+        call_cmd_and_print_cmd('emerge app-emulation/virtualbox-additions')
     except Exception as e:
-        call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-6.0.24')
+        try:
+            call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-6.0.24')
+            call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-additions-6.0.24')
+        except Exception as e:
+            pass
+        
     call_cmd_and_print_cmd('touch ~/env_installation_stages/virtualbox_installed')
+    call_cmd_and_print_cmd('USE="usb" emerge app-emulation/qemu')
 
     # graphics
     call_cmd_and_print_cmd("echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick")
