@@ -13,6 +13,8 @@ def env_install():
     call_cmd_and_print_cmd('emerge media-libs/libmpd')
     call_cmd_and_print_cmd('emerge media-sound/alsa-utils')
     call_cmd_and_print_cmd('USE="gles2" emerge media-sound/mpd')
+    call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/ncurses')
+    call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/gpm')
     call_cmd_and_print_cmd('emerge net-wireless/wireless-tools')
 
     # dev
@@ -75,33 +77,33 @@ def env_install():
     call_cmd_and_print_cmd('touch ~/env_installation_stages/qemu_installed')
 
     try:
-        call_cmd_and_print_cmd('emerge --autounmask-write app-emulation/wine-staging')
+        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge --autounmask-write app-emulation/wine-staging')
     except Exception as e:
         pass
     call_cmd_and_print_cmd('echo -5 | etc-update')
 
     try:
-        call_cmd_and_print_cmd('USE="gles2 -gpm" emerge --backtrack=300 app-emulation/wine-staging')
+        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge --backtrack=300 app-emulation/wine-staging')
     except Exception as e:
         try:
-            call_cmd_and_print_cmd('USE="gles2 -ncurses" emerge --backtrack=300 =app-emulation/wine-staging-5.20')
+            call_cmd_and_print_cmd('USE="gles2 -ncurses -abi_x86_32" emerge --backtrack=300 =app-emulation/wine-staging-5.20')
         except Exception as e:
-            call_cmd_and_print_cmd('USE="gles2 -ncurses" emerge --backtrack=300 =app-emulation/wine-staging-5.18')
+            call_cmd_and_print_cmd('USE="gles2 -ncurses -abi_x86_32" emerge --backtrack=300 =app-emulation/wine-staging-5.18')
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_staging_installed')
     try:
-        call_cmd_and_print_cmd('emerge app-emulation/wine-mono')
+        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/wine-mono')
     except Exception as e:
         pass
     call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_mono_installed')
     try:
-        call_cmd_and_print_cmd('emerge app-emulation/winetricks')
+        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/winetricks')
     except Exception as e:
         pass
     call_cmd_and_print_cmd('touch ~/env_installation_stages/winetricks_installed')
 
     try:
-        call_cmd_and_print_cmd('emerge app-emulation/virtualbox')
+        call_cmd_and_print_cmd('USE="gles2 -abi_x86_32" emerge app-emulation/virtualbox')
     except Exception as e:
         call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-6.0.24')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/virtualbox_installed')
@@ -151,7 +153,12 @@ def env_install():
     # office
     call_cmd_and_print_cmd('emerge net-fs/samba')
     call_cmd_and_print_cmd('emerge net-fs/cifs-utils')
-    call_cmd_and_print_cmd('emerge app-office/libreoffice')
+    try:
+        call_cmd_and_print_cmd('USE="-gpm -abi_x86_32" emerge --autounmask-write app-office/libreoffice')
+    except Exception as e:
+        call_cmd_and_print_cmd('echo -5 | etc-update')
+    call_cmd_and_print_cmd('USE="-gpm -abi_x86_32" emerge app-office/libreoffice')
+        
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/office_installed')
 
