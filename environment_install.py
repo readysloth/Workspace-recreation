@@ -145,6 +145,7 @@ def env_install():
 
     # office
     call_cmd_and_print_cmd('emerge net-fs/samba')
+    call_cmd_and_print_cmd('emerge net-fs/cifs-utils')
     call_cmd_and_print_cmd('emerge app-office/libreoffice')
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/office_installed')
