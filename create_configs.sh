@@ -165,7 +165,7 @@ popd
 # polybar
 mkdir ~/.config/polybar
 touch ~/.config/polybar/config
-polybar_chooser.sh 11
+/polybar_chooser.sh 11
 
 
 # bspwm
