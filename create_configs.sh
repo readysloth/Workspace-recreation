@@ -27,6 +27,9 @@ echo 'alias l=exa'                               >> ~/.bashrc
 echo 'alias cat=bat'                             >> ~/.bashrc
 echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
+# fishrc
+echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts' >> ~/.config/fish/config.fish
+
 # Xinit
 echo 'sxhkd &'      > ~/.xinitrc
 echo 'compton &'   >> ~/.xinitrc
@@ -91,6 +94,9 @@ vim +PlugInstall +qa
 
 # tmux
 echo 'set -g prefix C-a'                                       > ~/.tmux.conf
+echo ''                                                       >> ~/.tmux.conf
+echo 'set-option -g default-shell /bin/fish'                  >> ~/.tmux.conf
+echo ''                                                       >> ~/.tmux.conf
 echo 'bind C-a send-prefix'                                   >> ~/.tmux.conf
 echo 'unbind C-b'                                             >> ~/.tmux.conf
 echo 'set -sg escape-time 1'                                  >> ~/.tmux.conf
@@ -175,8 +181,9 @@ chmod +x ~/.config/bspwm/bspwmrc
 echo '#!/bin/sh'                                      > ~/.config/bspwm/bspwmrc
 echo 'bspc monitor -d I II III IV V VI VII VIII IX X' >> ~/.config/bspwm/bspwmrc
 echo 'bspc config border_width 2'                     >> ~/.config/bspwm/bspwmrc
-echo 'bspc borderless_monocle true'                     >> ~/.config/bspwm/bspwmrc
-echo 'bspc gapless_monocle true'                     >> ~/.config/bspwm/bspwmrc
+echo 'bspc borderless_monocle true'                   >> ~/.config/bspwm/bspwmrc
+echo 'bspc gapless_monocle true'                      >> ~/.config/bspwm/bspwmrc
+echo 'bspc config focus_follows_pointer true'         >> ~/.config/bspwm/bspwmrc
 
 # sxhkd
 mkdir ~/.config/sxhkd

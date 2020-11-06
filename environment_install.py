@@ -16,6 +16,7 @@ def env_install():
     call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/ncurses')
     call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/gpm')
     call_cmd_and_print_cmd('emerge net-wireless/wireless-tools')
+    call_cmd_and_print_cmd('emerge app-arch/unrar')
 
     # dev
     call_cmd_and_print_cmd('emerge dev-vcs/git')
