@@ -31,11 +31,12 @@ echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts' >> ~/.config/fish/config.fish
 
 # Xinit
-echo 'sxhkd &'      > ~/.xinitrc
-echo 'compton &'   >> ~/.xinitrc
-echo '~/.config/polybar/launch.sh &' >> ~/.xinitrc
-echo '~/.scripts/autochanging_wallpaper.sh &' >> ~/.xinitrc
-echo 'exec bspwm' >> ~/.xinitrc
+echo 'sxhkd &'                                      > ~/.xinitrc
+echo 'compton &'                                    >> ~/.xinitrc
+echo 'setxkbmap -option grp:alt_shift_toggle us,ru' >> ~/.xinitrc
+echo '~/.config/polybar/launch.sh &'                >> ~/.xinitrc
+echo '~/.scripts/autochanging_wallpaper.sh &'       >> ~/.xinitrc
+echo 'exec bspwm'                                   >> ~/.xinitrc
 
 # Vim
 echo 'set number'          > ~/.vimrc
@@ -211,5 +212,3 @@ echo 'super + {_,shift + }{1-9,0}'            >> ~/.config/sxhkd/sxhkdrc
 echo " bspc {desktop -f,node -d} '^{1-9,10}'" >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {1-9,0}'                        >> ~/.config/sxhkd/sxhkdrc
 echo " bspc desktop -f '^{1-9,10}'"           >> ~/.config/sxhkd/sxhkdrc
- 
-    

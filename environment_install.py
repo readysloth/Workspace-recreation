@@ -33,6 +33,8 @@ def env_install():
     # X11
     call_cmd_and_print_cmd("echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server")
     call_cmd_and_print_cmd('emerge x11-base/xorg-server')
+    call_cmd_and_print_cmd('emerge x11-apps/setxkbmap')
+    call_cmd_and_print_cmd('emerge x11-apps/xev')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/xorg_installed')
 
     # Tiling wm
