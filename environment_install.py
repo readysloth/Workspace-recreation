@@ -27,6 +27,11 @@ def env_install():
     except Exception as e:
         call_cmd_and_print_cmd('emerge sys-devel/gdb-9.2')
 
+    try:
+        call_cmd_and_print_cmd('emerge dev-scheme/racket')
+    except Exception as e:
+        pass
+
     call_cmd_and_print_cmd('emerge dev-python/bpython')
     call_cmd_and_print_cmd('touch ~/env_installation_stages/dev_installed')
 
