@@ -82,6 +82,11 @@ def env_install():
         call_cmd_and_print_cmd('emerge app-emulation/qemu')
     except Exception as e:
         call_cmd_and_print_cmd('emerge app-emulation/qemu-5.1.0-r1')
+    try:
+        call_cmd_and_print_cmd('emerge app-emulation/virt-manager')
+    except Exception as e:
+        call_cmd_and_print_cmd('emerge app-emulation/virt-manager-2.2.1-r3')
+
     call_cmd_and_print_cmd('touch ~/env_installation_stages/qemu_installed')
 
     try:
