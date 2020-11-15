@@ -175,7 +175,10 @@ def env_install():
     try:
         call_cmd_and_print_cmd('emerge www-client/firefox')
     except Exception as e:
-        call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox')
+        try:
+            call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox')
+        except Exception as e:
+            call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge =www-client/firefox-78.4.1')
 
     call_cmd_and_print_cmd('touch ~/env_installation_stages/firefox_installed')
 
