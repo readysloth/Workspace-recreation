@@ -182,8 +182,8 @@ chmod +x ~/.config/bspwm/bspwmrc
 echo '#!/bin/sh'                                      > ~/.config/bspwm/bspwmrc
 echo 'bspc monitor -d I II III IV V VI VII VIII IX X' >> ~/.config/bspwm/bspwmrc
 echo 'bspc config border_width 2'                     >> ~/.config/bspwm/bspwmrc
-echo 'bspc borderless_monocle true'                   >> ~/.config/bspwm/bspwmrc
-echo 'bspc gapless_monocle true'                      >> ~/.config/bspwm/bspwmrc
+echo 'bspc config borderless_monocle true'            >> ~/.config/bspwm/bspwmrc
+echo 'bspc config gapless_monocle true'               >> ~/.config/bspwm/bspwmrc
 echo 'bspc config focus_follows_pointer true'         >> ~/.config/bspwm/bspwmrc
 
 # sxhkd
