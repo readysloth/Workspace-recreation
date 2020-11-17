@@ -54,8 +54,19 @@ echo 'set expandtab'      >> ~/.vimrc
 echo 'set shiftwidth=4'   >> ~/.vimrc
 echo 'set smarttab'       >> ~/.vimrc
 echo                      >> ~/.vimrc
+echo                      >> ~/.vimrc
 echo 'syntax on'          >> ~/.vimrc
 echo                      >> ~/.vimrc
+
+echo 'nnoremap <C-j> :m .+1<CR>'          >> ~/.vimrc
+echo 'nnoremap <C-k> :m .-2<CR>'          >> ~/.vimrc
+echo                                      >> ~/.vimrc
+echo 'inoremap <C-j> <ESC>:m .+1<CR>==gi' >> ~/.vimrc
+echo 'inoremap <C-k> <ESC>:m .-2<CR>==gi' >> ~/.vimrc
+echo                                      >> ~/.vimrc
+echo "vnoremap <C-j> :m '>1<CR>gv=gv"     >> ~/.vimrc
+echo "vnoremap <C-k> :m '<2<CR>gv=gv"     >> ~/.vimrc
+echo                                      >> ~/.vimrc
 
 echo "call plug#begin('~/.vim/plugged')"      >> ~/.vimrc
 echo                                          >> ~/.vimrc
