@@ -21,8 +21,10 @@ def env_install():
     # dev
     do_with_fallback('emerge dev-vcs/git')
     do_with_fallback('emerge dev-util/cmake')
-    do_with_fallback('emerge dev-python/pypy')
+    do_with_fallback('emerge dev-python/pypy3', 'emerge =dev-python/pypy3-7.3.1-r3')
     do_with_fallback('emerge sys-devel/gdb', 'emerge sys-devel/gdb-9.2')
+
+    do_with_fallback('emerge dev-python/pip', 'emerge =dev-python/pip-20.2.2-r1')
 
     do_with_fallback('emerge dev-scheme/racket')
 
