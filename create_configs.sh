@@ -94,6 +94,7 @@ echo 'map <C-n> :NERDTreeToggle<CR>'                 >> ~/.vimrc
 echo 'map U :UndotreeToggle<CR>'                     >> ~/.vimrc
 echo 'map gG :G<CR>'                                 >> ~/.vimrc
 echo                                                 >> ~/.vimrc
+echo 'let g:rainbow_active = 1'                      >> ~/.vimrc
 echo 'let g:indent_guides_enable_on_vim_startup = 1' >> ~/.vimrc
 echo 'let g:XkbSwitchEnabled = 1'                    >> ~/.vimrc
 echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
