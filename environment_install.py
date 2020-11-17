@@ -1,63 +1,57 @@
 import sys
 
-from utils import call_cmd_and_print_cmd, source
+from utils import do_with_fallback, source
 
 
 def env_install():
-    call_cmd_and_print_cmd('''echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf''')
+    do_with_fallback('''echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf''')
 
-    call_cmd_and_print_cmd('mkdir ~/.config')
-    call_cmd_and_print_cmd('mkdir ~/env_installation_stages')
+    do_with_fallback('mkdir ~/.config')
+    do_with_fallback('mkdir ~/env_installation_stages')
 
     # system
-    call_cmd_and_print_cmd('emerge media-libs/libmpd')
-    call_cmd_and_print_cmd('emerge media-sound/alsa-utils')
-    call_cmd_and_print_cmd('USE="gles2" emerge media-sound/mpd')
-    call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/ncurses')
-    call_cmd_and_print_cmd('USE="-abi_x86_32" emerge sys-libs/gpm')
-    call_cmd_and_print_cmd('emerge net-wireless/wireless-tools')
-    call_cmd_and_print_cmd('emerge app-arch/unrar')
+    do_with_fallback('emerge media-libs/libmpd')
+    do_with_fallback('emerge media-sound/alsa-utils')
+    do_with_fallback('USE="gles2" emerge media-sound/mpd')
+    do_with_fallback('USE="-abi_x86_32" emerge sys-libs/ncurses')
+    do_with_fallback('USE="-abi_x86_32" emerge sys-libs/gpm')
+    do_with_fallback('emerge net-wireless/wireless-tools')
+    do_with_fallback('emerge app-arch/unrar')
 
     # dev
-    call_cmd_and_print_cmd('emerge dev-vcs/git')
-    call_cmd_and_print_cmd('emerge dev-util/cmake')
-    call_cmd_and_print_cmd('emerge dev-python/pypy')
-    try:
-        call_cmd_and_print_cmd('emerge sys-devel/gdb')
-    except Exception as e:
-        call_cmd_and_print_cmd('emerge sys-devel/gdb-9.2')
+    do_with_fallback('emerge dev-vcs/git')
+    do_with_fallback('emerge dev-util/cmake')
+    do_with_fallback('emerge dev-python/pypy')
+    do_with_fallback('emerge sys-devel/gdb', 'emerge sys-devel/gdb-9.2')
 
-    try:
-        call_cmd_and_print_cmd('emerge dev-scheme/racket')
-    except Exception as e:
-        pass
+    do_with_fallback('emerge dev-scheme/racket')
 
-    call_cmd_and_print_cmd('emerge dev-python/bpython')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/dev_installed')
+    do_with_fallback('emerge dev-python/bpython')
+    do_with_fallback('touch ~/env_installation_stages/dev_installed')
 
     # X11
-    call_cmd_and_print_cmd("echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server")
-    call_cmd_and_print_cmd('emerge x11-base/xorg-server')
-    call_cmd_and_print_cmd('emerge x11-apps/setxkbmap')
-    call_cmd_and_print_cmd('emerge x11-apps/xev')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/xorg_installed')
+    do_with_fallback("echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server")
+    do_with_fallback('emerge x11-base/xorg-server')
+    do_with_fallback('emerge x11-apps/setxkbmap')
+    do_with_fallback('emerge x11-apps/xev')
+    do_with_fallback('touch ~/env_installation_stages/xorg_installed')
 
     # Tiling wm
-    call_cmd_and_print_cmd('emerge x11-wm/bspwm')
-    call_cmd_and_print_cmd('emerge x11-misc/sxhkd')
+    do_with_fallback('emerge x11-wm/bspwm')
+    do_with_fallback('emerge x11-misc/sxhkd')
 
-    call_cmd_and_print_cmd("echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton")
-    call_cmd_and_print_cmd('emerge x11-misc/compton')
-    call_cmd_and_print_cmd('emerge x11-misc/polybar')
+    do_with_fallback("echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton")
+    do_with_fallback('emerge x11-misc/compton')
+    do_with_fallback('emerge x11-misc/polybar')
 
-    call_cmd_and_print_cmd("echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu")
-    call_cmd_and_print_cmd('emerge x11-misc/dmenu')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/tiling_installed')
+    do_with_fallback("echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu")
+    do_with_fallback('emerge x11-misc/dmenu')
+    do_with_fallback('touch ~/env_installation_stages/tiling_installed')
 
     # Vim plugin manager
-    call_cmd_and_print_cmd('curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+    do_with_fallback('curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 
-    call_cmd_and_print_cmd('''git clone https://github.com/grwlf/xkb-switch.git;
+    do_with_fallback('''git clone https://github.com/grwlf/xkb-switch.git;
     pushd xkb-switch;
         mkdir build;
         pushd build;
@@ -67,138 +61,101 @@ def env_install():
             ldconfig;
         popd;
     popd''')
-    call_cmd_and_print_cmd('rm -rf xkb-switch')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/vim_plugin_mg_installed')
+    do_with_fallback('rm -rf xkb-switch')
+    do_with_fallback('touch ~/env_installation_stages/vim_plugin_mg_installed')
 
     # emulation
-    try:
-        call_cmd_and_print_cmd('emerge app-emulation/docker')
-    except Exception as e:
-        call_cmd_and_print_cmd('emerge app-emulation/docker-19.03.12')
-    call_cmd_and_print_cmd('rc-update add docker default')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/docker_installed')
+    do_with_fallback('emerge app-emulation/docker', 'emerge app-emulation/docker-19.03.12')
+    do_with_fallback('rc-update add docker default')
+    do_with_fallback('touch ~/env_installation_stages/docker_installed')
 
-    try:
-        call_cmd_and_print_cmd('emerge app-emulation/qemu')
-    except Exception as e:
-        call_cmd_and_print_cmd('emerge app-emulation/qemu-5.1.0-r1')
-    try:
-        call_cmd_and_print_cmd('emerge --autounmask-write app-emulation/virt-manager')
-    except Exception as e:
-        pass
+    do_with_fallback('emerge app-emulation/qemu', 'emerge app-emulation/qemu-5.1.0-r1')
+    do_with_fallback('emerge --autounmask-write app-emulation/virt-manager')
+    do_with_fallback('echo -5 | etc-update')
 
-    call_cmd_and_print_cmd('echo -5 | etc-update')
-    try:
-        call_cmd_and_print_cmd('emerge app-emulation/virt-manager')
-    except Exception as e:
-        try:
-            call_cmd_and_print_cmd('emerge app-emulation/virt-manager-2.2.1-r3')
-        except Exception as e:
-            pass
+    do_with_fallback('emerge app-emulation/virt-manager', 'emerge app-emulation/virt-manager-2.2.1-r3')
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/qemu_installed')
+    do_with_fallback('touch ~/env_installation_stages/qemu_installed')
 
-    try:
-        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge --autounmask-write app-emulation/wine-staging')
-    except Exception as e:
-        pass
-    call_cmd_and_print_cmd('echo -5 | etc-update')
+    do_with_fallback('USE="gles2 -gpm -abi_x86_32" emerge --autounmask-write app-emulation/wine-staging')
+    do_with_fallback('echo -5 | etc-update')
 
-    try:
-        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge --backtrack=300 app-emulation/wine-staging')
-    except Exception as e:
-        try:
-            call_cmd_and_print_cmd('USE="gles2 -ncurses -abi_x86_32" emerge --backtrack=300 =app-emulation/wine-staging-5.20')
-        except Exception as e:
-            call_cmd_and_print_cmd('USE="gles2 -ncurses -abi_x86_32" emerge --backtrack=300 =app-emulation/wine-staging-5.18')
+    do_with_fallback('USE="gles2 -gpm -abi_x86_32" emerge --backtrack=300 app-emulation/wine-staging',
+                     'USE="gles2 -ncurses -abi_x86_32" do_with_fallback --backtrack=300 =app-emulation/wine-staging-5.20',
+                     'USE="gles2 -ncurses -abi_x86_32" do_with_fallback --backtrack=300 =app-emulation/wine-staging-5.18')
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_staging_installed')
-    try:
-        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/wine-mono')
-    except Exception as e:
-        pass
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/wine_mono_installed')
-    try:
-        call_cmd_and_print_cmd('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/winetricks')
-    except Exception as e:
-        pass
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/winetricks_installed')
+    do_with_fallback('touch ~/env_installation_stages/wine_staging_installed')
 
-    try:
-        call_cmd_and_print_cmd('USE="gles2 -abi_x86_32" emerge app-emulation/virtualbox')
-        call_cmd_and_print_cmd('emerge app-emulation/virtualbox-additions')
-    except Exception as e:
-        try:
-            call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-6.0.24')
-            call_cmd_and_print_cmd('emerge =app-emulation/virtualbox-additions-6.0.24')
-        except Exception as e:
-            pass
+    do_with_fallback('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/wine-mono')
+
+    do_with_fallback('touch ~/env_installation_stages/wine_mono_installed')
+
+    do_with_fallback('USE="gles2 -gpm -abi_x86_32" emerge app-emulation/winetricks')
+    do_with_fallback('touch ~/env_installation_stages/winetricks_installed')
+
+    do_with_fallback('USE="gles2 -abi_x86_32" emerge app-emulation/virtualbox', 'emerge =app-emulation/virtualbox-6.0.24')
+    do_with_fallback('emerge app-emulation/virtualbox-additions', 'emerge =app-emulation/virtualbox-additions-6.0.24')
         
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/virtualbox_installed')
-    call_cmd_and_print_cmd('USE="usb" emerge app-emulation/qemu')
+    do_with_fallback('touch ~/env_installation_stages/virtualbox_installed')
+
+    do_with_fallback('USE="usb" emerge app-emulation/qemu')
 
     # graphics
-    call_cmd_and_print_cmd("echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick")
-    call_cmd_and_print_cmd('emerge media-gfx/imagemagick')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/imagemagick_installed')
+    do_with_fallback("echo 'media-gfx/imagemagick djvu jpeg lzma openmp png raw svg webp X zlib' >> /etc/portage/package.use/imagemagick")
+    do_with_fallback('emerge media-gfx/imagemagick')
+    do_with_fallback('touch ~/env_installation_stages/imagemagick_installed')
 
-    call_cmd_and_print_cmd("echo 'media-gfx/feh xinerama' >> /etc/portage/package.use/feh")
-    call_cmd_and_print_cmd('emerge media-gfx/feh')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/feh_installed')
+    do_with_fallback("echo 'media-gfx/feh xinerama' >> /etc/portage/package.use/feh")
+    do_with_fallback('emerge media-gfx/feh')
+    do_with_fallback('touch ~/env_installation_stages/feh_installed')
 
     # rust
     #echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
-    call_cmd_and_print_cmd('emerge dev-lang/rust')
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/rust_installed')
+    do_with_fallback('emerge dev-lang/rust')
+    do_with_fallback('touch ~/env_installation_stages/rust_installed')
 
     # Terminal things
-    call_cmd_and_print_cmd('emerge app-shells/bash-completion')
-    try:
-        call_cmd_and_print_cmd('emerge --autounmask-write app-shells/fish')
-    except Exception as e:
-        call_cmd_and_print_cmd('echo -5 | etc-update')
-        pass
-    call_cmd_and_print_cmd('emerge app-shells/fish')
-    call_cmd_and_print_cmd('emerge app-shells/fzf')
-    call_cmd_and_print_cmd('emerge app-misc/tmux')
-    call_cmd_and_print_cmd('emerge sys-apps/bat')
-    call_cmd_and_print_cmd('emerge sys-apps/fd')
-    call_cmd_and_print_cmd('emerge sys-apps/ripgrep')
-    call_cmd_and_print_cmd('emerge x11-terms/alacritty')
-    call_cmd_and_print_cmd('emerge sys-apps/exa')
-    call_cmd_and_print_cmd('emerge sys-process/htop')
-    call_cmd_and_print_cmd('cargo install ytop')
-    call_cmd_and_print_cmd('cargo install procs')
+    do_with_fallback('emerge app-shells/bash-completion')
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/terminal_things_installed')
+    do_with_fallback('emerge --autounmask-write app-shells/fish')
+    do_with_fallback('echo -5 | etc-update')
 
-    try:
-        call_cmd_and_print_cmd('emerge www-client/firefox')
-    except Exception as e:
-        try:
-            call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox')
-        except Exception as e:
-            call_cmd_and_print_cmd('USE=">=media-libs/libvpx-1.9.0 postproc" emerge =www-client/firefox-78.4.1')
+    do_with_fallback('emerge app-shells/fish')
+    do_with_fallback('emerge app-shells/fzf')
+    do_with_fallback('emerge app-misc/tmux')
+    do_with_fallback('emerge sys-apps/bat')
+    do_with_fallback('emerge sys-apps/fd')
+    do_with_fallback('emerge sys-apps/ripgrep')
+    do_with_fallback('emerge x11-terms/alacritty')
+    do_with_fallback('emerge sys-apps/exa')
+    do_with_fallback('emerge sys-process/htop')
+    do_with_fallback('cargo install ytop')
+    do_with_fallback('cargo install procs')
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/firefox_installed')
+    do_with_fallback('touch ~/env_installation_stages/terminal_things_installed')
+
+    do_with_fallback('emerge www-client/firefox',
+                     'USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox',
+                     'USE=">=media-libs/libvpx-1.9.0 postproc" emerge =www-client/firefox-78.4.1')
+
+    do_with_fallback('touch ~/env_installation_stages/firefox_installed')
 
     # office
-    call_cmd_and_print_cmd('emerge net-fs/samba')
-    call_cmd_and_print_cmd('emerge net-fs/cifs-utils')
-    try:
-        call_cmd_and_print_cmd('USE="-gpm -abi_x86_32" emerge --autounmask-write app-office/libreoffice')
-    except Exception as e:
-        call_cmd_and_print_cmd('echo -5 | etc-update')
-    call_cmd_and_print_cmd('USE="-gpm -abi_x86_32" emerge app-office/libreoffice')
+    do_with_fallback('emerge net-fs/samba')
+    do_with_fallback('emerge net-fs/cifs-utils')
+
+    do_with_fallback('USE="-gpm -abi_x86_32" emerge --autounmask-write app-office/libreoffice')
+    do_with_fallback('echo -5 | etc-update')
+    do_with_fallback('USE="-gpm -abi_x86_32" emerge app-office/libreoffice')
         
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/office_installed')
+    do_with_fallback('touch ~/env_installation_stages/office_installed')
 
     # misc
-    call_cmd_and_print_cmd('emerge app-admin/sudo')
-    call_cmd_and_print_cmd('emerge x11-apps/xkill')
-    call_cmd_and_print_cmd('emerge x11-misc/rofi')
+    do_with_fallback('emerge app-admin/sudo')
+    do_with_fallback('emerge x11-apps/xkill')
+    do_with_fallback('emerge x11-misc/rofi')
 
-    call_cmd_and_print_cmd('touch ~/env_installation_stages/misc_installed')
+    do_with_fallback('touch ~/env_installation_stages/misc_installed')
 
-    call_cmd_and_print_cmd('./create_configs.sh')
+    do_with_fallback('./create_configs.sh')

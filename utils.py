@@ -33,6 +33,22 @@ def call_cmd_and_print_cmd(cmd: str, *args) -> bytes:
     return call_cmd(cmd, *args).decode('utf-8')
 
 
+def do_with_fallback(cmd: str, *fallback) -> bytes:
+    try:
+        return call_cmd_and_print_cmd(cmd)
+    except Exception as e:
+        print('Error occured!')
+        if not fallback:
+            print('No fallback specified')
+        for f in fallback:
+            try:
+                print('Using fallback for', cmd)
+                return call_cmd_and_print_cmd(f)
+            except Exception as e:
+                continue
+
+
+
 def source(source_file: str):
     command = shlex.split(f"env -i bash -c 'source {source_file} && env'")
     proc = sp.Popen(command, stdout = sp.PIPE)
