@@ -28,6 +28,7 @@ echo 'alias cat=bat'                             >> ~/.bashrc
 echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
 # fishrc
+mkdir -p ~/.config/fish/
 echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts' >> ~/.config/fish/config.fish
 
 # Xinit

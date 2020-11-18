@@ -10,7 +10,12 @@ def env_install():
     do_with_fallback('mkdir ~/env_installation_stages')
 
     # system
+    do_with_fallback('emerge media-fonts/noto')
+    do_with_fallback('emerge media-fonts/noto-emoji')
+
     do_with_fallback('emerge media-libs/libmpd')
+    do_with_fallback('emerge acct-user/mpd')
+
     do_with_fallback('emerge media-sound/alsa-utils')
     do_with_fallback('USE="gles2" emerge media-sound/mpd')
     do_with_fallback('USE="-abi_x86_32" emerge sys-libs/ncurses')
@@ -35,6 +40,7 @@ def env_install():
     do_with_fallback("echo 'x11-base/xorg-server xnest xvfb' >> /etc/portage/package.use/xorg-server")
     do_with_fallback('emerge x11-base/xorg-server')
     do_with_fallback('emerge x11-apps/setxkbmap')
+    do_with_fallback('emerge x11-apps/xrandr')
     do_with_fallback('emerge x11-apps/xev')
     do_with_fallback('touch ~/env_installation_stages/xorg_installed')
 
@@ -44,7 +50,7 @@ def env_install():
 
     do_with_fallback("echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton")
     do_with_fallback('emerge x11-misc/compton')
-    do_with_fallback('emerge x11-misc/polybar')
+    do_with_fallback('USE="mpd network pulseaudio curl" emerge x11-misc/polybar', 'emerge x11-misc/polybar')
 
     do_with_fallback("echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu")
     do_with_fallback('emerge x11-misc/dmenu')
