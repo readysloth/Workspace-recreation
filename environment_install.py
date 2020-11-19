@@ -17,6 +17,9 @@ def env_install():
     do_with_fallback('emerge acct-user/mpd')
 
     do_with_fallback('emerge media-sound/alsa-utils')
+    do_with_fallback('rc-update add alsasound boot')
+
+
     do_with_fallback('USE="gles2" emerge media-sound/mpd')
     do_with_fallback('USE="-abi_x86_32" emerge sys-libs/ncurses')
     do_with_fallback('USE="-abi_x86_32" emerge sys-libs/gpm')
@@ -82,6 +85,7 @@ def env_install():
     do_with_fallback('echo -5 | etc-update')
 
     do_with_fallback('emerge app-emulation/virt-manager', 'emerge app-emulation/virt-manager-2.2.1-r3')
+    do_with_fallback('rc-update add libvirtd default')
 
     do_with_fallback('touch ~/env_installation_stages/qemu_installed')
 
@@ -142,9 +146,10 @@ def env_install():
 
     do_with_fallback('touch ~/env_installation_stages/terminal_things_installed')
 
-    do_with_fallback('emerge www-client/firefox',
-                     'USE=">=media-libs/libvpx-1.9.0 postproc" emerge www-client/firefox',
-                     'USE=">=media-libs/libvpx-1.9.0 postproc" emerge =www-client/firefox-78.4.1')
+    firefox_use = 'pgo pulseaudio'
+    do_with_fallback(f'USE="{firefox_use}"emerge www-client/firefox',
+                     f'USE=">=media-libs/libvpx-1.9.0 postproc {firefox_use}" emerge www-client/firefox',
+                     f'USE=">=media-libs/libvpx-1.9.0 postproc {firefox_use}" emerge =www-client/firefox-78.4.1')
 
     do_with_fallback('touch ~/env_installation_stages/firefox_installed')
 

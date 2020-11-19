@@ -212,6 +212,8 @@ echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
 echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' firefox'                               >> ~/.config/sxhkd/sxhkdrc
+echo 'super + f'                              >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node -t ~fullscreen'              >> ~/.config/sxhkd/sxhkdrc
 echo 'super + shift + Return'                 >> ~/.config/sxhkd/sxhkdrc
 echo ' pkill -USR1 -x sxhkd'                  >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc
