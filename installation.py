@@ -1,5 +1,5 @@
 import sys
-import select
+import subprocess as sp
 
 import compiling
 from utils import call_cmd_and_print_cmd, source
@@ -13,9 +13,8 @@ def emerge_base():
     print(call_cmd_and_print_cmd('eselect profile list'))
 
     print('select profile:')
-    profile_choice, _, _ = select.select([sys.stdin], [], [], 10)
 
-    profile_choice = profile_choice if profile_choice else 20
+    profile_choice = sp.check_output('read -t 20 CHOICE; [ -z $CHOICE ] && echo 6 || echo $CHOICE', shell=True).strip().decode()
 
     call_cmd_and_print_cmd(f'eselect profile set {profile_choice}')
 

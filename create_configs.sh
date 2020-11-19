@@ -5,6 +5,7 @@ git clone https://github.com/readysloth/Workspace-recreation.git "$RECREATION_DI
 
 cd "$RECREATION_DIR"
 # misc
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
 mkdir ~/Images
 cp -r "${RECREATION_DIR}/wallpapers" ~/Images
 
