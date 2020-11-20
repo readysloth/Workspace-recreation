@@ -211,6 +211,9 @@ echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
+echo 'super + t'                                      >> ~/.config/sxhkd/sxhkdrc
+echo ' bash ~/.config/polybar/scripts/colors_rofi.sh' >> ~/.config/sxhkd/sxhkdrc
+echo                                                  >> ~/.config/sxhkd/sxhkdrc
 echo 'XF86MonBrightnessUp'                    >> ~/.config/sxhkd/sxhkdrc
 echo ' xbacklight +5'                         >> ~/.config/sxhkd/sxhkdrc
 echo 'XF86MonBrightnessDown'                  >> ~/.config/sxhkd/sxhkdrc
