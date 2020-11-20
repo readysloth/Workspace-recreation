@@ -13,6 +13,8 @@ def env_install():
     do_with_fallback('emerge media-fonts/noto')
     do_with_fallback('emerge media-fonts/noto-emoji')
 
+    do_with_fallback('emerge x11-apps/xbacklight')
+
     do_with_fallback('emerge media-libs/libmpd')
     do_with_fallback('emerge acct-user/mpd')
 

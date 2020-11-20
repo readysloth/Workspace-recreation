@@ -210,6 +210,12 @@ echo 'super + shift + {z,a}'                  >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo                                          >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86MonBrightnessUp'                    >> ~/.config/sxhkd/sxhkdrc
+echo ' xbacklight +5'                         >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86MonBrightnessDown'                  >> ~/.config/sxhkd/sxhkdrc
+echo ' xbacklight -5'                         >> ~/.config/sxhkd/sxhkdrc
+echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' firefox'                               >> ~/.config/sxhkd/sxhkdrc
 echo 'super + f'                              >> ~/.config/sxhkd/sxhkdrc
