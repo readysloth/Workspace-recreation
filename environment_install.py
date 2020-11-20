@@ -53,7 +53,7 @@ def env_install():
 
     do_with_fallback("echo 'x11-misc/compton xinerama' >> /etc/portage/package.use/compton")
     do_with_fallback('emerge x11-misc/compton')
-    do_with_fallback('USE="mpd network pulseaudio curl" emerge x11-misc/polybar', 'emerge x11-misc/polybar')
+    do_with_fallback('USE="mpd network pulseaudio curl ipc" emerge x11-misc/polybar', 'emerge x11-misc/polybar')
 
     do_with_fallback("echo 'x11-misc/dmenu xinerama' >> /etc/portage/package.use/dmenu")
     do_with_fallback('emerge x11-misc/dmenu')
