@@ -18,7 +18,17 @@ echo '  feh --randomize --bg-fill ~/Images/wallpapers' >> ~/.scripts/autochangin
 echo '  sleep 1h'                                      >> ~/.scripts/autochanging_wallpaper.sh
 echo 'done'                                            >> ~/.scripts/autochanging_wallpaper.sh
 
+
+echo '#!/bin/bash'                                           > ~/.scripts/make_screenshot.sh
+echo ''                                                     >> ~/.scripts/make_screenshot.sh
+echo 'TEMP_DIR=$(mktemp -d)'                                >> ~/.scripts/make_screenshot.sh
+echo 'pushd $TEMP_DIR'                                      >> ~/.scripts/make_screenshot.sh
+echo '    scrot'                                            >> ~/.scripts/make_screenshot.sh
+echo '    xclip -i -selection clipboard -t image/png *.png' >> ~/.scripts/make_screenshot.sh
+echo 'popd'                                                 >> ~/.scripts/make_screenshot.sh
+
 chmod +x ~/.scripts/autochanging_wallpaper.sh
+chmod +x ~/.scripts/make_screenshot.sh
 
 # bashrc
 echo "bind 'set completion-ignore-case on'"       > ~/.bashrc
@@ -210,6 +220,9 @@ echo 'super + shift + {z,a}'                  >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo                                          >> ~/.config/sxhkd/sxhkdrc
+echo 'Print'                                  >> ~/.config/sxhkd/sxhkdrc
+echo ' bash ~/.scripts/make_screenshot.sh'    >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + t'                                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bash ~/.config/polybar/scripts/colors_rofi.sh' >> ~/.config/sxhkd/sxhkdrc
