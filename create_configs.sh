@@ -248,3 +248,5 @@ echo 'super + shift + q'                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -{c,k}'                      >> ~/.config/sxhkd/sxhkdrc
 echo 'super + {_,shift + }{1-9,0}'            >> ~/.config/sxhkd/sxhkdrc
 echo " bspc {desktop -f,node -d} '^{1-9,10}'" >> ~/.config/sxhkd/sxhkdrc
+echo 'super + r'                              >> ~/.config/sxhkd/sxhkdrc
+echo ' bspc node @/ -R 90'                    >> ~/.config/sxhkd/sxhkdrc
