@@ -221,6 +221,9 @@ echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
+echo 'super + Tab'                            >> ~/.config/sxhkd/sxhkdrc
+echo ' setxkbmap -option grp:alt_shift_toggle {us, dvorak},ru' >> ~/.config/sxhkd/sxhkdrc
+echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'Print'                                  >> ~/.config/sxhkd/sxhkdrc
 echo ' bash ~/.scripts/make_screenshot.sh'    >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
