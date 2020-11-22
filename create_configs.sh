@@ -3,6 +3,12 @@
 RECREATION_DIR="$(mktemp -d)"
 git clone https://github.com/readysloth/Workspace-recreation.git "$RECREATION_DIR"
 
+SIJI_FONT_DIR="$(mktemp -d)"
+git clone https://github.com/stark/siji "$SIJI_FONT_DIR"
+pushd "$SIJI_FONT_DIR"
+    ./install.sh -d ~/.fonts
+popd
+
 cd "$RECREATION_DIR"
 # misc
 echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
@@ -44,6 +50,8 @@ echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts' >> ~/.config/fish/config.fish
 
 # Xinit
 echo 'sxhkd &'                                      > ~/.xinitrc
+echo "xset +fp $(echo ~/.fonts)"                    >> ~/.xinitrc
+echo "xset fp rehash"                               >> ~/.xinitrc
 echo 'compton &'                                    >> ~/.xinitrc
 echo 'setxkbmap -option grp:alt_shift_toggle us,ru' >> ~/.xinitrc
 echo '~/.config/polybar/launch.sh &'                >> ~/.xinitrc
@@ -197,6 +205,7 @@ popd
 mkdir ~/.config/polybar
 touch ~/.config/polybar/config
 /polybar_chooser.sh 11
+sed -i '/font-1.*=.*"/ s/"[^"]*"/"Wuncon Siji:size=11"/' ~/.config/polybar/config.ini
 
 
 # bspwm
