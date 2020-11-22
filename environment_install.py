@@ -48,6 +48,7 @@ def env_install():
     do_with_fallback('emerge x11-apps/xrandr')
     do_with_fallback('emerge x11-apps/xev')
     do_with_fallback('emerge media-gfx/scrot')
+    do_with_fallback('emerge x11-misc/clipmenu')
     do_with_fallback('touch ~/env_installation_stages/xorg_installed')
 
     # Tiling wm

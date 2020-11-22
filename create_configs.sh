@@ -53,6 +53,7 @@ echo 'sxhkd &'                                      > ~/.xinitrc
 echo "xset +fp $(echo ~/.fonts)"                    >> ~/.xinitrc
 echo "xset fp rehash"                               >> ~/.xinitrc
 echo 'compton &'                                    >> ~/.xinitrc
+echo 'clipmenud &'                                  >> ~/.xinitrc
 echo 'setxkbmap -option grp:alt_shift_toggle us,ru' >> ~/.xinitrc
 echo '~/.config/polybar/launch.sh &'                >> ~/.xinitrc
 echo '~/.scripts/autochanging_wallpaper.sh &'       >> ~/.xinitrc
@@ -229,6 +230,9 @@ echo 'super + shift + {z,a}'                  >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
 echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo                                          >> ~/.config/sxhkd/sxhkdrc
+echo 'super + c'                              >> ~/.config/sxhkd/sxhkdrc
+echo ' CM_LAUNCHER=rofi clipmenu -i'          >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Tab'                            >> ~/.config/sxhkd/sxhkdrc
 echo ' setxkbmap -option grp:alt_shift_toggle {us, dvorak},ru' >> ~/.config/sxhkd/sxhkdrc
