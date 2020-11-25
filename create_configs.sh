@@ -243,10 +243,16 @@ echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + t'                                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bash ~/.config/polybar/scripts/colors_rofi.sh' >> ~/.config/sxhkd/sxhkdrc
 echo                                                  >> ~/.config/sxhkd/sxhkdrc
-echo 'XF86MonBrightnessUp'                    >> ~/.config/sxhkd/sxhkdrc
-echo ' xbacklight +5'                         >> ~/.config/sxhkd/sxhkdrc
-echo 'XF86MonBrightnessDown'                  >> ~/.config/sxhkd/sxhkdrc
-echo ' xbacklight -5'                         >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86AudioRaiseVolume'      >> ~/.config/sxhkd/sxhkdrc
+echo ' amixer set Master 2%+'    >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86AudioLowerVolume'      >> ~/.config/sxhkd/sxhkdrc
+echo ' amixer set Master 2%-'    >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86AudioMute'             >> ~/.config/sxhkd/sxhkdrc
+echo ' amixer set Master toggle' >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86MonBrightnessUp'       >> ~/.config/sxhkd/sxhkdrc
+echo ' xbacklight +5'            >> ~/.config/sxhkd/sxhkdrc
+echo 'XF86MonBrightnessDown'     >> ~/.config/sxhkd/sxhkdrc
+echo ' xbacklight -5'            >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' firefox'                               >> ~/.config/sxhkd/sxhkdrc
