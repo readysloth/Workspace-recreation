@@ -110,6 +110,7 @@ echo "Plug 'blueyed/vim-diminactive'"         >> ~/.vimrc
 echo "Plug 'unblevable/quick-scope'"          >> ~/.vimrc
 echo "Plug 'wlangstroth/vim-racket'"          >> ~/.vimrc
 echo "Plug 'calebsmith/vim-lambdify'"         >> ~/.vimrc
+echo "Plug 'ntpeters/vim-better-whitespace'"  >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
