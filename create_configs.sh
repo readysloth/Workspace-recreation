@@ -244,7 +244,7 @@ echo 'super + Tab'                            >> ~/.config/sxhkd/sxhkdrc
 echo ' setxkbmap -option grp:alt_shift_toggle {us, dvorak},ru' >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'Print'                                  >> ~/.config/sxhkd/sxhkdrc
-echo ' bash ~/.scripts/make_screenshot.sh'    >> ~/.config/sxhkd/sxhkdrc
+echo ' flameshot gui'                         >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + t'                                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bash ~/.config/polybar/scripts/colors_rofi.sh' >> ~/.config/sxhkd/sxhkdrc
