@@ -85,7 +85,7 @@ def env_install():
     do_with_fallback('rc-update add docker default')
     do_with_fallback('touch ~/env_installation_stages/docker_installed')
 
-    do_with_fallback('emerge app-emulation/qemu', 'emerge app-emulation/qemu-5.1.0-r1')
+    do_with_fallback('emerge app-emulation/qemu', 'emerge =app-emulation/qemu-5.1.0-r1')
     do_with_fallback('emerge --autounmask-write app-emulation/virt-manager')
     do_with_fallback('echo -5 | etc-update')
 
