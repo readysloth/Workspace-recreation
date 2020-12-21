@@ -172,6 +172,7 @@ pushd ~/.config/alacritty
     sed -i  -e 's/#env:/env:/' \
             -e 's/#TERM:/TERM:/' \
             -e 's/#window:/window:/' \
+            -e 's/#background_opacity:.*/background_opacity: 0.7/' \
             -e 's/#decorations:.*/decorations: none/' alacritty.yml
 
     # theme
