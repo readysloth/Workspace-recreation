@@ -31,3 +31,4 @@ def install(boot_device: str):
     emerge_base()
     compiling.compile(boot_device)
     call_cmd_and_print_cmd('rc-update add dhcpcd default')
+    call_cmd_and_print_cmd('rc-update add lvmetad boot')
