@@ -151,7 +151,7 @@ def env_install():
 
     do_with_fallback('touch ~/env_installation_stages/terminal_things_installed')
 
-    firefox_use = 'pgo pulseaudio'
+    firefox_use = 'pgo -pulseaudio -abi_x86_32 geckodriver'
     do_with_fallback(f'USE="{firefox_use}"emerge www-client/firefox',
                      f'USE=">=media-libs/libvpx-1.9.0 postproc {firefox_use}" emerge www-client/firefox',
                      f'USE=">=media-libs/libvpx-1.9.0 postproc {firefox_use}" emerge =www-client/firefox-78.4.1')
