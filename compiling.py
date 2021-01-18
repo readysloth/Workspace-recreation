@@ -30,8 +30,6 @@ def configuring():
     call_cmd_and_print_cmd('echo hostname="gentoo" > /etc/conf.d/hostname')
 
     call_cmd_and_print_cmd(r'''blkid | grep 'boot' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t /boot \t swap \t sw \t 0 \t 0@' ''')
-    call_cmd_and_print_cmd(r'''blkid | grep 'grub' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t /boot/grub \t vfat \t umask=0077 \t 0 \t 1@' >> /etc/fstab''')
-
     call_cmd_and_print_cmd(r'''blkid | grep 'swap' |                 sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t none \t swap \t sw \t 0 \t 0@'               >> /etc/fstab''')
     call_cmd_and_print_cmd(r'''blkid | grep 'ext4' | grep 'rootfs' | sed 's@.*UUID="\([^"]*\)".*@UUID=\1 \t / \t ext4 \t noatime \t 0 \t 1@'             >> /etc/fstab''')
     call_cmd_and_print_cmd(r'''blkid | grep 'ext4' | grep 'home'   | sed "s@.*UUID=\"\([^\"]*\)\".*@UUID=\1 \t /home/ \t ext4 \t noatime \t 0 \t 1@"     >> /etc/fstab''')
