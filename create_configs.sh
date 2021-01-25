@@ -128,6 +128,9 @@ echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
 echo "let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']" >> ~/.vimrc
 echo                                                 >> ~/.vimrc
 echo 'autocmd VimEnter * DimInactiveOn'              >> ~/.vimrc
+echo                                                 >> ~/.vimrc
+echo 'let g:diminactive_use_syntax = 1'              >> ~/.vimrc
+echo 'let g:diminactive_use_colorcolumn = 0'         >> ~/.vimrc
 
 vim +PlugInstall +qa
 
