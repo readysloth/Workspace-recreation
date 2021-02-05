@@ -46,7 +46,7 @@ echo 'export PATH=$PATH:~/.cargo/bin:~/.scripts' >> ~/.bashrc
 
 # fishrc
 mkdir -p ~/.config/fish/
-echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts' >> ~/.config/fish/config.fish
+echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts ~/.local/bin' >> ~/.config/fish/config.fish
 
 # Xinit
 echo 'sxhkd &'                                      > ~/.xinitrc
