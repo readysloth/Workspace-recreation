@@ -166,6 +166,7 @@ echo 'bind -r K resize-pane -U 5'                             >> ~/.tmux.conf
 echo 'bind -r L resize-pane -R 5'                             >> ~/.tmux.conf
 echo                                                          >> ~/.tmux.conf
 echo 'set -g default-terminal "screen-256color"'              >> ~/.tmux.conf
+echo 'set-window-option -g mode-keys vi'                      >> ~/.tmux.conf
 
 
 # alacritty
