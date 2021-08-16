@@ -113,6 +113,7 @@ echo "Plug 'calebsmith/vim-lambdify'"         >> ~/.vimrc
 echo "Plug 'ntpeters/vim-better-whitespace'"  >> ~/.vimrc
 echo "Plug 'mhinz/vim-signify'"               >> ~/.vimrc
 echo "Plug 'wsdjeg/vim-fetch'"                >> ~/.vimrc
+echo "Plug 'Galicarnax/vim-regex-syntax'"     >> ~/.vimrc
 echo                                          >> ~/.vimrc
 echo "call plug#end()"                        >> ~/.vimrc
 echo                                          >> ~/.vimrc
