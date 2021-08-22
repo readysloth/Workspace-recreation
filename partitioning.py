@@ -62,14 +62,14 @@ def create_phy_volume(partition: str):
 
 def allocate_space_for_lvm():
     call_cmd_and_print_cmd('lvcreate -y -L 2048M   -n swap', LVM_GROUP_NAME)
-    call_cmd_and_print_cmd('lvcreate -y -l 50%FREE -n rootfs', LVM_GROUP_NAME)
-    call_cmd_and_print_cmd('lvcreate -y -l 50%FREE -n home', LVM_GROUP_NAME)
+    call_cmd_and_print_cmd('lvcreate -y -l 100%FREE -n rootfs', LVM_GROUP_NAME)
+    #call_cmd_and_print_cmd('lvcreate -y -l 50%FREE -n home', LVM_GROUP_NAME)
 
 
 def make_fs_and_swap(partition: str):
     call_cmd_and_print_cmd('mkfs.fat -F 32', partition)
     call_cmd_and_print_cmd(f'mkfs.ext4 /dev/{LVM_GROUP_NAME}/rootfs')
-    call_cmd_and_print_cmd(f'mkfs.ext4 /dev/{LVM_GROUP_NAME}/home')
+    #call_cmd_and_print_cmd(f'mkfs.ext4 /dev/{LVM_GROUP_NAME}/home')
 
     call_cmd_and_print_cmd(f'mkswap /dev/{LVM_GROUP_NAME}/swap')
     call_cmd_and_print_cmd(f'swapon /dev/{LVM_GROUP_NAME}/swap')
@@ -77,8 +77,8 @@ def make_fs_and_swap(partition: str):
 
 def mount_devices_for_os_install():
     call_cmd_and_print_cmd(f'mount /dev/{LVM_GROUP_NAME}/rootfs /mnt/gentoo')
-    call_cmd_and_print_cmd(f'mkdir /mnt/gentoo/home')
-    call_cmd_and_print_cmd(f'mount /dev/{LVM_GROUP_NAME}/home /mnt/gentoo/home')
+    #call_cmd_and_print_cmd(f'mkdir /mnt/gentoo/home')
+    #call_cmd_and_print_cmd(f'mount /dev/{LVM_GROUP_NAME}/home /mnt/gentoo/home')
 
 
 try:
