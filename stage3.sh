@@ -16,10 +16,10 @@ pushd /mnt/gentoo
              --read-timeout=20 \
              --timeout=15 \
              -t 0 \
-            "${URL}" -O - 2>/dev/null | 
-            sed -n -e '/^<a[[:space:]]\+href/p' | 
+            "${URL}" -O - 2>/dev/null |
+            sed -n -e '/^<a[[:space:]]\+href/p' |
             sed 's/<[^>]*>//g' |
-            sort -k 2,2r 
+            sort -k 2,2r
     }
 
     download_list "${MIRROR}/${PATH_TO_AUTOBUILDS}" | sed '/\//!d' > "${SORTED_OUT}"
@@ -28,7 +28,7 @@ pushd /mnt/gentoo
     FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}' | sed 1q)
 
     URL_TO_CHOOSED_STAGE="${MIRROR}/${PATH_TO_AUTOBUILDS}/${FOLDER}"
-    URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/$(download_list "${URL_TO_CHOOSED_STAGE}" | 
+    URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/$(download_list "${URL_TO_CHOOSED_STAGE}" |
                                                     grep "${FOLDER_COOSER}" |
                                                     grep "stage3-amd64-${FOLDER_COOSER}" |
                                                     sed -e '/CONTENTS/Id'\

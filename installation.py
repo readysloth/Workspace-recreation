@@ -29,6 +29,6 @@ def install(boot_device: str):
     call_cmd_and_print_cmd(f'mount {boot_device} /boot')
     call_cmd_and_print_cmd('mkdir /home/gentoo')
     emerge_base()
-    compiling.compile(boot_device)
+    compiling.compile()
     call_cmd_and_print_cmd('rc-update add dhcpcd default')
     call_cmd_and_print_cmd('rc-update add lvmetad boot')
