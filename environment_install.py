@@ -177,7 +177,7 @@ def env_install():
     do_with_fallback('touch ~/env_installation_stages/office_installed')
 
     # misc
-    do_with_fallback('emerge app-admin/sudo')
+    do_with_fallback('emerge net-im/telegram-desktop')
     do_with_fallback('emerge x11-apps/xkill')
     do_with_fallback('emerge x11-misc/rofi')
 
