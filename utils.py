@@ -58,3 +58,12 @@ def source(source_file: str):
         (key, _, value) = formatted_line.partition('=')
         os.environ[key] = value
 
+def emerge():
+    return 'emerge --deep'
+
+
+def USE_emerge(*args):
+    return f'USE="{" ".join(args)}" ' + emerge()
+
+def USE_emerge_pkg(pkg, *use_flags):
+    return f"{USE_emerge(*use_flags) + ' --autounmask-write ' + pkg} ; ret_code=$? ; echo -5 | etc-update && [ $ret_code -eq 0 ] || {USE_emerge(*use_flags) + ' ' + pkg}"

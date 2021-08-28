@@ -1,31 +1,37 @@
 import sys
 import select
 
-from utils import call_cmd_and_print_cmd, source
+from utils import call_cmd_and_print_cmd, do_with_fallback, source, USE_emerge_pkg
 import environment_install as env_install
 
 def compile():
-    call_cmd_and_print_cmd('emerge --update --deep --newuse @world')
-    call_cmd_and_print_cmd('echo "app-editors/vim X python vim-pager perl terminal" >> /etc/portage/package.use/vim')
-    call_cmd_and_print_cmd('emerge app-editors/vim')
+    # quirks
+    call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
+    call_cmd_and_print_cmd('USE="-harfbuzz" emerge media-libs/freetype')
+
+    call_cmd_and_print_cmd('perl-cleaner --all')
+    do_with_fallback('emerge -uDNv --with-bdeps=y --backtrack=100 --autounmask-write @world')
+    call_cmd_and_print_cmd('echo -5 | etc-update')
+    call_cmd_and_print_cmd('emerge -uDNv --with-bdeps=y --backtrack=100 @world')
+    call_cmd_and_print_cmd(USE_emerge_pkg('app-editors/vim', 'X', 'python', 'vim-pager', 'perl', 'terminal'))
 
     call_cmd_and_print_cmd('''echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf''')
     portage_features = 'FEATURES="{}"'.format(' '.join(['parallel-install',
                                                         'parallel-fetch']))
     call_cmd_and_print_cmd('''echo '{}' >> /etc/portage/make.conf'''.format(portage_features))
-    call_cmd_and_print_cmd('''echo 'USE="abi_x86_64"' >> /etc/portage/make.conf''')
+    call_cmd_and_print_cmd('''echo 'USE="abi_x86_64 lto pgo"' >> /etc/portage/make.conf''')
+    call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 4 ))\"" >> /etc/portage/make.conf''')
 
-    call_cmd_and_print_cmd('''echo 'sys-devel/gcc pgo' >> /etc/portage/package.use/gcc''')
-    call_cmd_and_print_cmd('''emerge sys-devel/gcc''')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-devel/gcc', 'pgo'))
 
-    call_cmd_and_print_cmd('emerge sys-kernel/gentoo-sources')
-    call_cmd_and_print_cmd('emerge --autounmask-write sys-kernel/genkernel')
-    call_cmd_and_print_cmd('echo -5 | etc-update')
-    call_cmd_and_print_cmd('emerge sys-kernel/genkernel')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-kernel/gentoo-sources'))
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-kernel/genkernel'))
+
+    call_cmd_and_print_cmd('ln -s /usr/src/linux* /usr/src/linux')
 
     call_cmd_and_print_cmd('genkernel --lvm --mountboot --busybox all')
 
-    call_cmd_and_print_cmd('emerge sys-kernel/linux-firmware')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-kernel/linux-firmware'))
 
     configuring()
     install_env()
@@ -41,20 +47,20 @@ def configuring():
     call_cmd_and_print_cmd('pushd /etc/init.d && ln -s net.lo net.eth0 && rc-update add net.eth0 default && popd')
 
 
-    call_cmd_and_print_cmd('emerge app-admin/sysklogd')
+    call_cmd_and_print_cmd(USE_emerge_pkg('app-admin/sysklogd'))
     call_cmd_and_print_cmd('rc-update add sysklogd default')
 
-    call_cmd_and_print_cmd('emerge sys-process/cronie')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-process/cronie'))
     call_cmd_and_print_cmd('rc-update add cronie default')
 
-    call_cmd_and_print_cmd('emerge sys-apps/mlocate')
-    call_cmd_and_print_cmd('emerge sys-fs/e2fsprogs')
-    call_cmd_and_print_cmd('emerge net-misc/dhcpcd')
-    call_cmd_and_print_cmd('emerge net-wireless/iw')
-    call_cmd_and_print_cmd('emerge net-wireless/wpa_supplicant')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-apps/mlocate'))
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-fs/e2fsprogs'))
+    call_cmd_and_print_cmd(USE_emerge_pkg('net-misc/dhcpcd'))
+    call_cmd_and_print_cmd(USE_emerge_pkg('net-wireless/iw'))
+    call_cmd_and_print_cmd(USE_emerge_pkg('net-wireless/wpa_supplicant'))
 
     call_cmd_and_print_cmd('''echo 'GRUB_PLATFORMS="emu efi-32 efi-64 pc"' >> /etc/portage/make.conf''')
-    call_cmd_and_print_cmd('emerge sys-boot/grub:2')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-boot/grub:2'))
 
 
     call_cmd_and_print_cmd('''echo 'GRUB_CMDLINE_LINUX="dolvm"' >> /etc/default/grub''')
@@ -62,13 +68,7 @@ def configuring():
     call_cmd_and_print_cmd('''grub-install --target=$(lscpu | head -n1 | sed 's/^[^:]*:[[:space:]]*//')-efi --efi-directory=/boot --removable''')
     call_cmd_and_print_cmd('''grub-mkconfig -o /boot/grub/grub.cfg''')
 
-    try:
-        call_cmd_and_print_cmd('emerge --autounmask-write sys-boot/os-prober')
-    except Exception as e:
-        pass
-
-    call_cmd_and_print_cmd('echo -5 | etc-update')
-    call_cmd_and_print_cmd('emerge sys-boot/os-prober')
+    call_cmd_and_print_cmd(USE_emerge_pkg('sys-boot/os-prober'))
 
 
 def install_env():

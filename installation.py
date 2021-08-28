@@ -16,7 +16,7 @@ def emerge_base():
 
     profile_choice = sp.check_output('read -t 20 CHOICE; [ -z $CHOICE ] && echo 6 || echo $CHOICE', shell=True).strip().decode()
 
-    call_cmd_and_print_cmd(f'eselect profile set {profile_choice}')
+    call_cmd_and_print_cmd(f'eselect profile set --force {profile_choice}')
 
     print(call_cmd_and_print_cmd('eselect profile list'))
 

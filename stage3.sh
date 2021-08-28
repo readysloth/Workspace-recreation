@@ -24,18 +24,18 @@ pushd /mnt/gentoo
 
     download_list "${MIRROR}/${PATH_TO_AUTOBUILDS}" | sed '/\//!d' > "${SORTED_OUT}"
 
-    FOLDER_COOSER='[0-9]\{8\}T[0-9]\{6\}Z'
+    FOLDER_COOSER="current-stage3-${PROCESSOR}/"
     FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}' | sed 1q)
 
     URL_TO_CHOOSED_STAGE="${MIRROR}/${PATH_TO_AUTOBUILDS}/${FOLDER}"
-    URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/$(download_list "${URL_TO_CHOOSED_STAGE}" |
-                                                    grep "${FOLDER_COOSER}" |
-                                                    grep "stage3-amd64-${FOLDER_COOSER}" |
-                                                    sed -e '/CONTENTS/Id'\
-                                                        -e '/DIGESTS/Id' \
-                                                        -e '/nomultilib/Id' |
-                                                    sed 1q |
-                                                    awk '{print $1}')"
+    STAGE_3_TAR="$(download_list "${URL_TO_CHOOSED_STAGE}" |
+                     grep "stage3-${PROCESSOR}-[0-9]\{8\}T[0-9]\{6\}" |
+                     sed -e '/CONTENTS/Id'\
+                         -e '/DIGESTS/Id' \
+                         -e '/nomultilib/Id' |
+                     sed 1q |
+                     awk '{print $1}')"
+    URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/${STAGE_3_TAR}"
 
     wget "${URL_TO_STAGE_FILES}"
 
@@ -43,7 +43,7 @@ pushd /mnt/gentoo
 
     # adding -march=native flag
     sed -i '/COMMON_FLAGS=/ s/\("[^"]*\)"/\1 -march=native"/' etc/portage/make.conf
-    
+
     #removing -pipe flag, because we will use tmpfs
     #sed -i '/COMMON_FLAGS=/ s/-pipe//' etc/portage/make.conf
 
