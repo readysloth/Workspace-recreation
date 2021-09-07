@@ -5,22 +5,26 @@ from utils import call_cmd_and_print_cmd, do_with_fallback, source, USE_emerge_p
 import environment_install as env_install
 
 def compile():
-    # quirks
-    call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
-    call_cmd_and_print_cmd('USE="-harfbuzz" emerge media-libs/freetype')
-
-    call_cmd_and_print_cmd('perl-cleaner --all')
-    do_with_fallback('emerge -uDNv --with-bdeps=y --backtrack=100 --autounmask-write @world')
-    call_cmd_and_print_cmd('echo -5 | etc-update')
-    call_cmd_and_print_cmd('emerge -uDNv --with-bdeps=y --backtrack=100 @world')
-    call_cmd_and_print_cmd(USE_emerge_pkg('app-editors/vim', 'X', 'python', 'vim-pager', 'perl', 'terminal'))
-
     call_cmd_and_print_cmd('''echo 'ACCEPT_LICENSE="*"' >> /etc/portage/make.conf''')
     portage_features = 'FEATURES="{}"'.format(' '.join(['parallel-install',
                                                         'parallel-fetch']))
     call_cmd_and_print_cmd('''echo '{}' >> /etc/portage/make.conf'''.format(portage_features))
     call_cmd_and_print_cmd('''echo 'USE="abi_x86_64 lto pgo"' >> /etc/portage/make.conf''')
-    call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 4 ))\"" >> /etc/portage/make.conf''')
+    call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 2 ))\"" >> /etc/portage/make.conf''')
+    call_cmd_and_print_cmd('''echo 'INPUT_DEVICES="synaptics libinput"' >> /etc/portage/make.conf''')
+
+    call_cmd_and_print_cmd('perl-cleaner --all')
+    do_with_fallback('emerge -uDNv --with-bdeps=y --backtrack=100 --autounmask-write @world')
+    call_cmd_and_print_cmd('echo -5 | etc-update')
+    call_cmd_and_print_cmd('emerge -uDNv --with-bdeps=y --backtrack=100 @world')
+
+    call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
+    call_cmd_and_print_cmd('USE="-harfbuzz" emerge -O1 freetype')
+    call_cmd_and_print_cmd('emerge freetype harfbuzz')
+
+
+    call_cmd_and_print_cmd(USE_emerge_pkg('app-editors/vim', 'X', 'python', 'vim-pager', 'perl', 'terminal'))
+
 
     call_cmd_and_print_cmd(USE_emerge_pkg('sys-devel/gcc', 'pgo'))
 

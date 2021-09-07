@@ -161,7 +161,6 @@ def env_install():
     do_with_fallback('touch ~/env_installation_stages/feh_installed')
 
     # rust
-    #echo 'dev-lang/rust parallel-compiler' >> /etc/portage/package.use/rust
     do_with_fallback(USE_emerge_pkg('dev-lang/rust'))
     do_with_fallback('touch ~/env_installation_stages/rust_installed')
 

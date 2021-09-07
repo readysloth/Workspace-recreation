@@ -248,7 +248,7 @@ echo 'super + c'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' CM_LAUNCHER=rofi clipmenu -i'          >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Tab'                            >> ~/.config/sxhkd/sxhkdrc
-echo ' setxkbmap -option grp:alt_shift_toggle {us, dvorak},ru' >> ~/.config/sxhkd/sxhkdrc
+echo ' setxkbmap -option grp:alt_shift_toggle {dvorak, us},ru' >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'Print'                                  >> ~/.config/sxhkd/sxhkdrc
 echo ' flameshot gui'                         >> ~/.config/sxhkd/sxhkdrc
@@ -267,13 +267,13 @@ echo ' xbacklight +5'            >> ~/.config/sxhkd/sxhkdrc
 echo 'XF86MonBrightnessDown'     >> ~/.config/sxhkd/sxhkdrc
 echo ' xbacklight -5'            >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
-echo 'super + b'                              >> ~/.config/sxhkd/sxhkdrc
+echo 'super + n'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' firefox'                               >> ~/.config/sxhkd/sxhkdrc
 echo 'super + f'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -t ~fullscreen'              >> ~/.config/sxhkd/sxhkdrc
 echo 'super + shift + Return'                 >> ~/.config/sxhkd/sxhkdrc
 echo ' pkill -USR1 -x sxhkd'                  >> ~/.config/sxhkd/sxhkdrc
-echo 'super + {h,j,k,l}'                      >> ~/.config/sxhkd/sxhkdrc
+echo 'super + {j,k,j,p}'                      >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -f {west,south,north,east}'  >> ~/.config/sxhkd/sxhkdrc
 echo 'super + d'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' rofi -show run'                        >> ~/.config/sxhkd/sxhkdrc
@@ -287,3 +287,7 @@ echo 'super + r'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node @/ -R 90'                    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + space'                          >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node -t {floating, tiled}'        >> ~/.config/sxhkd/sxhkdrc
+
+
+
+git config --global core.editor vim
