@@ -59,6 +59,26 @@ echo '~/.config/polybar/launch.sh &'                    >> ~/.xinitrc
 echo '~/.scripts/autochanging_wallpaper.sh &'           >> ~/.xinitrc
 echo 'exec bspwm'                                       >> ~/.xinitrc
 
+# synaptics
+
+echo 'Section "InputClass"'                           > /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Identifier "touchpad catchall"'        >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Driver "synaptics"'                    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        MatchIsTouchpad "on"'                  >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "VertEdgeScroll" "on"'          >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "CircularScrolling"     "on"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "CircScrollTrigger"     "0"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "CircScrollDelta"       "0.01"' >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "VertTwoFingerScroll"   "on"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "VertScrollDelta"       "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "HorizScrollDelta"      "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "TapButton1"       	   "1"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "TapButton2"       	   "3"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "TapButton3"       	   "2"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo 'EndSection
+
 # Vim
 echo 'set number'          > ~/.vimrc
 echo 'set relativenumber' >> ~/.vimrc
