@@ -14,6 +14,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('media-fonts/noto-emoji'))
 
     do_with_fallback(USE_emerge_pkg('x11-apps/xbacklight'))
+    do_with_fallback(USE_emerge_pkg('media-libs/mesa', 'classic', 'd3d9', 'egl', 'gallium', 'opencl', 'vdpau', 'vulkan'))
 
 
     do_with_fallback(USE_emerge_pkg('media-sound/alsa-utils'))
