@@ -74,10 +74,10 @@ echo                                                 >> /etc/X11/xorg.conf.d/50-
 echo '        Option "VertTwoFingerScroll"   "on"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "VertScrollDelta"       "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "HorizScrollDelta"      "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
-echo '        Option "TapButton1"       	   "1"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
-echo '        Option "TapButton2"       	   "3"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
-echo '        Option "TapButton3"       	   "2"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
-echo 'EndSection
+echo '        Option "TapButton1"            "1"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "TapButton2"            "3"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "TapButton3"            "2"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo 'EndSection'                                    >> /etc/X11/xorg.conf.d/50-synaptics.conf
 
 # Vim
 echo 'set number'          > ~/.vimrc
