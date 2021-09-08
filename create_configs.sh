@@ -59,6 +59,44 @@ echo '~/.config/polybar/launch.sh &'                    >> ~/.xinitrc
 echo '~/.scripts/autochanging_wallpaper.sh &'           >> ~/.xinitrc
 echo 'exec bspwm'                                       >> ~/.xinitrc
 
+# compton
+
+echo "shadow = true;"                                                             >> ~/.config/compton.conf
+echo "no-dnd-shadow = true;"                                                      >> ~/.config/compton.conf
+echo "no-dock-shadow = true;"                                                     >> ~/.config/compton.conf
+echo "clear-shadow = true;"                                                       >> ~/.config/compton.conf
+echo "shadow-radius = 7;"                                                         >> ~/.config/compton.conf
+echo "shadow-offset-x = -7;"                                                      >> ~/.config/compton.conf
+echo "shadow-offset-y = -7;"                                                      >> ~/.config/compton.conf
+echo "shadow-exclude = ["                                                         >> ~/.config/compton.conf
+echo "	\"name = 'Notification'\","                                               >> ~/.config/compton.conf
+echo "	\"class_g = 'Conky'\","                                                   >> ~/.config/compton.conf
+echo "	\"class_g ?= 'Notify-osd'\","                                             >> ~/.config/compton.conf
+echo "	\"class_g = 'Cairo-clock'\","                                             >> ~/.config/compton.conf
+echo "	\"_GTK_FRAME_EXTENTS@:c\""                                                >> ~/.config/compton.conf
+echo "];"                                                                         >> ~/.config/compton.conf
+echo ""                                                                           >> ~/.config/compton.conf
+echo "menu-opacity = 0.8;"                                                        >> ~/.config/compton.conf
+echo "inactive-opacity = 0.9;"                                                    >> ~/.config/compton.conf
+echo "frame-opacity = 0.7;"                                                       >> ~/.config/compton.conf
+echo "inactive-opacity-override = true;"                                          >> ~/.config/compton.conf
+echo "alpha-step = 0.06;"                                                         >> ~/.config/compton.conf
+echo "blur-kern = \"3x3box\";"                                                    >> ~/.config/compton.conf
+echo "blur-background-exclude = ["                                                >> ~/.config/compton.conf
+echo "	\"window_type = 'dock'\","                                                >> ~/.config/compton.conf
+echo "	\"window_type = 'desktop'\","                                             >> ~/.config/compton.conf
+echo "	\"_GTK_FRAME_EXTENTS@:\""                                                 >> ~/.config/compton.conf
+echo "];"                                                                         >> ~/.config/compton.conf
+echo ""                                                                           >> ~/.config/compton.conf
+echo "glx-copy-from-front = false;"                                               >> ~/.config/compton.conf
+echo "glx-swap-method = \"undefined\";"                                           >> ~/.config/compton.conf
+echo ""                                                                           >> ~/.config/compton.conf
+echo "wintypes:"                                                                  >> ~/.config/compton.conf
+echo "{"                                                                          >> ~/.config/compton.conf
+echo "  tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; };" >> ~/.config/compton.conf
+echo "};"                                                                         >> ~/.config/compton.conf
+
+
 # synaptics
 
 echo 'Section "InputClass"'                           > /etc/X11/xorg.conf.d/50-synaptics.conf
