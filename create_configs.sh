@@ -49,15 +49,15 @@ mkdir -p ~/.config/fish/
 echo 'set -gx PATH $PATH ~/.cargo/bin ~/.scripts ~/.local/bin' >> ~/.config/fish/config.fish
 
 # Xinit
-echo 'sxhkd &'                                      > ~/.xinitrc
-echo "xset +fp $(echo ~/.fonts)"                    >> ~/.xinitrc
-echo "xset fp rehash"                               >> ~/.xinitrc
-echo 'compton &'                                    >> ~/.xinitrc
-echo 'clipmenud &'                                  >> ~/.xinitrc
-echo 'setxkbmap -option grp:alt_shift_toggle us,ru' >> ~/.xinitrc
-echo '~/.config/polybar/launch.sh &'                >> ~/.xinitrc
-echo '~/.scripts/autochanging_wallpaper.sh &'       >> ~/.xinitrc
-echo 'exec bspwm'                                   >> ~/.xinitrc
+echo 'sxhkd &'                                           > ~/.xinitrc
+echo "xset +fp $(echo ~/.fonts)"                        >> ~/.xinitrc
+echo "xset fp rehash"                                   >> ~/.xinitrc
+echo 'compton &'                                        >> ~/.xinitrc
+echo 'clipmenud &'                                      >> ~/.xinitrc
+echo 'setxkbmap -option grp:alt_shift_toggle dvorak,ru' >> ~/.xinitrc
+echo '~/.config/polybar/launch.sh &'                    >> ~/.xinitrc
+echo '~/.scripts/autochanging_wallpaper.sh &'           >> ~/.xinitrc
+echo 'exec bspwm'                                       >> ~/.xinitrc
 
 # Vim
 echo 'set number'          > ~/.vimrc
