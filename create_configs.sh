@@ -229,50 +229,6 @@ echo 'set -g default-terminal "screen-256color"'              >> ~/.tmux.conf
 echo 'set-window-option -g mode-keys vi'                      >> ~/.tmux.conf
 
 
-# alacritty
-mkdir ~/.config/alacritty
-pushd ~/.config/alacritty
-    wget https://github.com/alacritty/alacritty/releases/download/v0.5.0/alacritty.yml
-    sed -i  -e 's/#env:/env:/' \
-            -e 's/#TERM:/TERM:/' \
-            -e 's/#window:/window:/' \
-            -e 's/#background_opacity:.*/background_opacity: 0.7/' \
-            -e 's/#decorations:.*/decorations: none/' alacritty.yml
-
-    # theme
-    echo "# Colors (Hyper)"           >> alacritty.yml
-    echo "colors:"                    >> alacritty.yml
-    echo "  # Default colors"         >> alacritty.yml
-    echo "  primary:"                 >> alacritty.yml
-    echo "    background: '0x000000'" >> alacritty.yml
-    echo "    foreground: '0xffffff'" >> alacritty.yml
-    echo "  cursor:"                  >> alacritty.yml
-    echo "    text: '0xF81CE5'"       >> alacritty.yml
-    echo "    cursor: '0xffffff'"     >> alacritty.yml
-    echo ""                           >> alacritty.yml
-    echo "  # Normal colors"          >> alacritty.yml
-    echo "  normal:"                  >> alacritty.yml
-    echo "    black:   '0x000000'"    >> alacritty.yml
-    echo "    red:     '0xfe0100'"    >> alacritty.yml
-    echo "    green:   '0x33ff00'"    >> alacritty.yml
-    echo "    yellow:  '0xfeff00'"    >> alacritty.yml
-    echo "    blue:    '0x0066ff'"    >> alacritty.yml
-    echo "    magenta: '0xcc00ff'"    >> alacritty.yml
-    echo "    cyan:    '0x00ffff'"    >> alacritty.yml
-    echo "    white:   '0xd0d0d0'"    >> alacritty.yml
-    echo ""                           >> alacritty.yml
-    echo "  # Bright colors"          >> alacritty.yml
-    echo "  bright:"                  >> alacritty.yml
-    echo "    black:   '0x808080'"    >> alacritty.yml
-    echo "    red:     '0xfe0100'"    >> alacritty.yml
-    echo "    green:   '0x33ff00'"    >> alacritty.yml
-    echo "    yellow:  '0xfeff00'"    >> alacritty.yml
-    echo "    blue:    '0x0066ff'"    >> alacritty.yml
-    echo "    magenta: '0xcc00ff'"    >> alacritty.yml
-    echo "    cyan:    '0x00ffff'"    >> alacritty.yml
-    echo "    white:   '0xFFFFFF'"    >> alacritty.yml
-popd
-
 # polybar
 mkdir ~/.config/polybar
 touch ~/.config/polybar/config
@@ -300,7 +256,7 @@ echo '#!/bin/sh'                               > ~/.config/sxhkd/sxhkdrc
 echo 'super + shift + {z,a}'                  >> ~/.config/sxhkd/sxhkdrc
 echo ' bspc node @/ -C {forward,backward}'    >> ~/.config/sxhkd/sxhkdrc
 echo 'super + Return'                         >> ~/.config/sxhkd/sxhkdrc
-echo ' alacritty -e tmux'                     >> ~/.config/sxhkd/sxhkdrc
+echo ' st -e tmux'                            >> ~/.config/sxhkd/sxhkdrc
 echo                                          >> ~/.config/sxhkd/sxhkdrc
 echo 'super + c'                              >> ~/.config/sxhkd/sxhkdrc
 echo ' CM_LAUNCHER=rofi clipmenu -i'          >> ~/.config/sxhkd/sxhkdrc
