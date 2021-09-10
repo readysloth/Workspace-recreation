@@ -21,7 +21,7 @@ def chroot_to_install():
 
     os.chroot('/mnt/gentoo')
     os.chdir('/')
-    
+
 
 def preinstall(disk: str):
     launch_ntpd()

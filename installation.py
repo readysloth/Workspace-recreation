@@ -27,7 +27,6 @@ def emerge_base():
 def install(boot_device: str):
     source('/etc/profile')
     call_cmd_and_print_cmd(f'mount {boot_device} /boot')
-    call_cmd_and_print_cmd('mkdir /home/gentoo')
     emerge_base()
     compiling.compile()
     call_cmd_and_print_cmd('rc-update add dhcpcd default')
