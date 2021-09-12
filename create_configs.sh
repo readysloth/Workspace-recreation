@@ -305,3 +305,4 @@ echo ' bspc node -t {floating, tiled}'        >> ~/.config/sxhkd/sxhkdrc
 
 
 git config --global core.editor vim
+cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime
