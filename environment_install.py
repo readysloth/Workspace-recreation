@@ -4,6 +4,8 @@ from utils import do_with_fallback, source, USE_emerge_pkg
 
 
 def env_install():
+    do_with_fallback("touch /etc/udev/rules.d/80-net-name-slot.rules")
+
     do_with_fallback('''echo 'ACCEPT_KEYWORDS="~amd64 amd64 x86"' >> /etc/portage/make.conf''')
 
     do_with_fallback('mkdir ~/.config')
