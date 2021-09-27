@@ -182,6 +182,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('x11-terms/st', 'savedconfig'))
     do_with_fallback(USE_emerge_pkg('sys-apps/exa'))
     do_with_fallback(USE_emerge_pkg('sys-process/htop'))
+    do_with_fallback(USE_emerge_pkg('net-fs/sshfs'))
     do_with_fallback('cargo install ytop')
     do_with_fallback('cargo install procs')
 
