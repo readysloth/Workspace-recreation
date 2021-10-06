@@ -109,6 +109,8 @@ echo '        Option "CircularScrolling"     "on"'   >> /etc/X11/xorg.conf.d/50-
 echo '        Option "CircScrollTrigger"     "0"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "CircScrollDelta"       "0.01"' >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "PalmDetect"            "0.01"' >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "VertTwoFingerScroll"   "on"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "VertScrollDelta"       "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "HorizScrollDelta"      "30"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
