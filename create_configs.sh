@@ -106,7 +106,7 @@ echo '        MatchIsTouchpad "on"'                  >> /etc/X11/xorg.conf.d/50-
 echo '        Option "VertEdgeScroll" "on"'          >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "CircularScrolling"     "on"'   >> /etc/X11/xorg.conf.d/50-synaptics.conf
-echo '        Option "CircScrollTrigger"     "0"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
+echo '        Option "CircScrollTrigger"     "3"'    >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "CircScrollDelta"       "0.01"' >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo                                                 >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Option "PalmDetect"            "0.01"' >> /etc/X11/xorg.conf.d/50-synaptics.conf
