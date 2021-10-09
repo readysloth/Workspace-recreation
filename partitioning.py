@@ -23,7 +23,7 @@ def remove_lvm_groups():
 def make_partitions(disk: str) -> t.Tuple[str]:
     def call_parted(cmd: str):
         call_cmd_and_print_cmd('parted -a optimal --script', disk, f'"{cmd}"')
-    
+
     def make_bootloader():
         call_parted('mklabel gpt')
         call_parted('mkpart primary 1MiB 3MiB')
@@ -81,6 +81,13 @@ def mount_devices_for_os_install():
     #call_cmd_and_print_cmd(f'mount /dev/{LVM_GROUP_NAME}/home /mnt/gentoo/home')
 
 
+def start_ssh_server():
+    call_cmd_and_print_cmd('sed -i "s/everyone/none/" /etc/security/passwdqc.conf')
+    call_cmd_and_print_cmd(r'echo -e "1\n1" | passwd root')
+    call_cmd_and_print_cmd('rc-service sshd start')
+
+
+
 try:
     wipefs(DISK)
 except sp.CalledProcessError as e:
@@ -95,6 +102,7 @@ start_time = None
 end_time = None
 
 try:
+    start_ssh_server()
     part1, part2, part3 = make_partitions(DISK)
     start_lvm_daemon()
     create_phy_volume(part3)
