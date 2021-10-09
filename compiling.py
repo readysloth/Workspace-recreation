@@ -16,11 +16,11 @@ def compile():
     call_cmd_and_print_cmd('perl-cleaner --all')
     call_cmd_and_print_cmd('USE="apng" emerge media-libs/libpng')
     call_cmd_and_print_cmd('USE="-harfbuzz" emerge -O1 freetype')
-    call_cmd_and_print_cmd('emerge freetype harfbuzz')
 
     do_with_fallback('emerge -uDNv --with-bdeps=y --backtrack=100 --autounmask-write @world')
     call_cmd_and_print_cmd('echo -5 | etc-update')
     call_cmd_and_print_cmd('emerge -uDNv --with-bdeps=y --backtrack=100 @world')
+    call_cmd_and_print_cmd('emerge freetype harfbuzz')
 
     call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
 
