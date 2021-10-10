@@ -178,6 +178,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('sys-apps/bat'))
     do_with_fallback(USE_emerge_pkg('sys-apps/fd'))
     do_with_fallback(USE_emerge_pkg('sys-apps/ripgrep'))
+    do_with_fallback("mkdir -p /etc/portage/savedconfig/x11-terms")
     with open('/etc/portage/savedconfig/x11-terms/st-0.8.4', 'w') as conf:
         conf.write(ST_CONFIG)
     do_with_fallback(USE_emerge_pkg('x11-terms/st', 'savedconfig'))
