@@ -38,6 +38,11 @@ def do_with_fallback(cmd: str, *fallback) -> bytes:
         return call_cmd_and_print_cmd(cmd)
     except Exception as e:
         print('Error occured!')
+        try:
+            lines = e.output.decode().split()
+            print('\n'.join(lines[-50:]))
+        except Exception:
+            pass
         if not fallback:
             print('No fallback specified')
         for f in fallback:
