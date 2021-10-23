@@ -13,6 +13,8 @@ def compile():
     call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 2 ))\"" >> /etc/portage/make.conf''')
     call_cmd_and_print_cmd('''echo 'INPUT_DEVICES="synaptics libinput"' >> /etc/portage/make.conf''')
 
+    call_cmd_and_print_cmd('''echo '>=sys-devel/gcc-10.3.0-r2' >> /etc/portage/package.mask''')
+
     call_cmd_and_print_cmd('perl-cleaner --all')
     call_cmd_and_print_cmd('USE="apng" emerge media-libs/libpng')
     call_cmd_and_print_cmd('USE="-harfbuzz" emerge -O1 media-libs/freetype')
