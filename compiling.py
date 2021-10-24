@@ -22,7 +22,7 @@ def compile():
     do_with_fallback('emerge -uDNv --with-bdeps=y --backtrack=100 --autounmask-write @world')
     call_cmd_and_print_cmd('echo -5 | etc-update')
     call_cmd_and_print_cmd('emerge -uDNv --with-bdeps=y --backtrack=100 @world')
-    call_cmd_and_print_cmd('USE=-gpm emerge media-libs/freetype media-libs/harfbuzz dev-util/gdbus-codegen dev-libs/glib')
+    call_cmd_and_print_cmd('USE=-gpm emerge media-libs/freetype media-libs/harfbuzz dev-libs/libffi dev-util/gdbus-codegen dev-libs/glib')
 
     call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
 
