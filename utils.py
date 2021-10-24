@@ -39,8 +39,10 @@ def do_with_fallback(cmd: str, *fallback) -> bytes:
     except Exception as e:
         print('Error occured!')
         try:
-            lines = e.output.decode().split()
-            print('\n'.join(lines[-50:]))
+            with open('install.log', 'a') as log:
+                log.write(f"===={cmd}====\n")
+                log.write(e.output.decode())
+                log.write(f"-------------\n")
         except Exception:
             pass
         if not fallback:
