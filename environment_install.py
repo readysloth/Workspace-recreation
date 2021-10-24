@@ -146,8 +146,6 @@ def env_install():
 
     do_with_fallback('touch ~/env_installation_stages/virtualbox_installed')
 
-    do_with_fallback('USE="usb" emerge app-emulation/qemu')
-
     # graphics
     do_with_fallback(USE_emerge_pkg('media-gfx/imagemagick', 'djvu',
                                     'jpeg',
