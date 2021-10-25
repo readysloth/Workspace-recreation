@@ -66,7 +66,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('x11-wm/bspwm'))
     do_with_fallback(USE_emerge_pkg('x11-misc/sxhkd'))
 
-    do_with_fallback(USE_emerge_pkg('x11-misc/compton', 'xinerama'))
+    do_with_fallback(USE_emerge_pkg('x11-misc/picom', 'config-file', 'drm', 'opengl'))
     do_with_fallback(USE_emerge_pkg('x11-misc/polybar', 'mpd', 'network', 'pulseaudio', 'curl', 'ipc'))
 
     do_with_fallback(USE_emerge_pkg('x11-misc/dmenu', 'xinerama'))
