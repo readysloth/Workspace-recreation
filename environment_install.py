@@ -188,7 +188,7 @@ def env_install():
 
     do_with_fallback('touch ~/env_installation_stages/terminal_things_installed')
 
-    do_with_fallback(USE_emerge_pkg('www-client/firefox', '-gpm' 'lto', 'pgo', 'pulseaudio', 'geckodriver'))
+    do_with_fallback(USE_emerge_pkg('www-client/firefox', '-gpm', 'lto', 'pgo', 'pulseaudio', 'geckodriver'))
 
     do_with_fallback('touch ~/env_installation_stages/firefox_installed')
     do_with_fallback(USE_emerge_pkg('www-client/links',
