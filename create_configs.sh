@@ -12,11 +12,11 @@ popd
 cd "$RECREATION_DIR"
 # misc
 echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
-mkdir ~/Images
+mkdir -p ~/Images
 cp -r "${RECREATION_DIR}/wallpapers" ~/Images
 
 # scripts
-mkdir ~/.scripts
+mkdir -p ~/.scripts
 echo '#!/bin/bash'                                      > ~/.scripts/autochanging_wallpaper.sh
 echo 'while true'                                      >> ~/.scripts/autochanging_wallpaper.sh
 echo 'do'                                              >> ~/.scripts/autochanging_wallpaper.sh
@@ -101,6 +101,7 @@ echo "};"                                                                       
 
 # synaptics
 
+mkdir -p /etc/X11/xorg.conf.d/
 echo 'Section "InputClass"'                           > /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Identifier "touchpad catchall"'        >> /etc/X11/xorg.conf.d/50-synaptics.conf
 echo '        Driver "synaptics"'                    >> /etc/X11/xorg.conf.d/50-synaptics.conf
@@ -234,14 +235,14 @@ echo 'set-window-option -g mode-keys vi'                      >> ~/.tmux.conf
 
 
 # polybar
-mkdir ~/.config/polybar
+mkdir -p ~/.config/polybar
 touch ~/.config/polybar/config
 /polybar_chooser.sh 11
 sed -i '/font-1.*=.*"/ s/"[^"]*"/"Wuncon Siji:size=11"/' ~/.config/polybar/config.ini
 
 
 # bspwm
-mkdir ~/.config/bspwm
+mkdir -p ~/.config/bspwm
 touch ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/bspwm/bspwmrc
 echo '#!/bin/sh'                                      > ~/.config/bspwm/bspwmrc
@@ -252,7 +253,7 @@ echo 'bspc config gapless_monocle true'               >> ~/.config/bspwm/bspwmrc
 echo 'bspc config focus_follows_pointer true'         >> ~/.config/bspwm/bspwmrc
 
 # sxhkd
-mkdir ~/.config/sxhkd
+mkdir -p ~/.config/sxhkd
 touch ~/.config/sxhkd/sxhkdrc
 
 echo '#!/bin/sh'                               > ~/.config/sxhkd/sxhkdrc
