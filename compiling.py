@@ -13,7 +13,7 @@ def compile():
     call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 2 ))\"" >> /etc/portage/make.conf''')
     call_cmd_and_print_cmd('''echo 'INPUT_DEVICES="synaptics libinput"' >> /etc/portage/make.conf''')
 
-    call_cmd_and_print_cmd('''echo '>=sys-devel/gcc-10.3.0-r2' >> /etc/portage/package.mask''')
+    call_cmd_and_print_cmd('''echo '>sys-devel/gcc-10.3.0-r2' >> /etc/portage/package.mask''')
 
     call_cmd_and_print_cmd('perl-cleaner --all')
     call_cmd_and_print_cmd('USE="apng" emerge media-libs/libpng')
@@ -28,9 +28,9 @@ def compile():
                            'dev-libs/libffi ' +
                            'dev-util/gdbus-codegen ' +
                            'dev-libs/glib ' +
-                           '$(equery -q d harfbuzz freetype | sed -e "/^[[:space:]]*$/d" -e "s/.*/=&/g")')
+                           '$(equery -q d harfbuzz freetype libffi | sed -e "/^[[:space:]]*$/d" -e "s/.*/=&/g")')
 
-    call_cmd_and_print_cmd('USE="-gpm" emerge sys-libs/ncurses')
+    call_cmd_and_print_cmd('USE="-gpm" emerge -ND sys-libs/ncurses')
 
 
     call_cmd_and_print_cmd(USE_emerge_pkg('app-editors/vim', 'X', 'python', 'vim-pager', 'perl', 'terminal'))
