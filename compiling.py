@@ -43,7 +43,7 @@ def compile():
 
     call_cmd_and_print_cmd('ln -s /usr/src/linux* /usr/src/linux')
 
-    call_cmd_and_print_cmd('genkernel --lvm --mountboot --busybox all')
+    call_cmd_and_print_cmd('genkernel --lvm --mountboot --busybox --install all')
 
     call_cmd_and_print_cmd(USE_emerge_pkg('sys-kernel/linux-firmware'))
 
