@@ -55,7 +55,7 @@ echo "xset +fp $(echo ~/.fonts)"                        >> ~/.xinitrc
 echo "xset fp rehash"                                   >> ~/.xinitrc
 echo 'compton &'                                        >> ~/.xinitrc
 echo 'clipmenud &'                                      >> ~/.xinitrc
-echo 'pulseaudio --start'                               >> ~/.xinitrc
+echo 'pulseaudio --start --disallow-exit'               >> ~/.xinitrc
 echo 'setxkbmap -option grp:alt_shift_toggle dvorak,ru' >> ~/.xinitrc
 echo '~/.config/polybar/launch.sh --forest &'           >> ~/.xinitrc
 echo '~/.scripts/autochanging_wallpaper.sh &'           >> ~/.xinitrc
