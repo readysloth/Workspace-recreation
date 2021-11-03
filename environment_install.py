@@ -220,6 +220,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('x11-apps/xkill'))
     do_with_fallback(USE_emerge_pkg('x11-misc/rofi'))
     do_with_fallback(USE_emerge_pkg('x11-misc/xclip'))
+    do_with_fallback(USE_emerge_pkg('net-wireless/wireless-tools'))
 
     do_with_fallback('touch ~/env_installation_stages/misc_installed')
 
