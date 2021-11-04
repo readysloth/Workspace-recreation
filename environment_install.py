@@ -50,6 +50,8 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('dev-lang/clojure'))
 
     do_with_fallback(USE_emerge_pkg('dev-python/bpython'))
+
+    do_with_fallback(USE_emerge_pkg('dev-util/android-tools'))
     do_with_fallback('touch ~/env_installation_stages/dev_installed')
 
     # X11
