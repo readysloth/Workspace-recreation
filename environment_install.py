@@ -41,10 +41,9 @@ def env_install():
     # dev
     do_with_fallback(USE_emerge_pkg('dev-vcs/git'))
     do_with_fallback(USE_emerge_pkg('dev-util/cmake'))
-    do_with_fallback(USE_emerge_pkg('dev-python/pypy3', 'emerge =dev-python/pypy3-7.3.1-r3'))
-    do_with_fallback(USE_emerge_pkg('sys-devel/gdb', 'emerge sys-devel/gdb-10.2'))
-
-    do_with_fallback(USE_emerge_pkg('dev-python/pip', 'emerge =dev-python/pip-20.2.2-r1'))
+    do_with_fallback(USE_emerge_pkg('dev-lang/python', 'gdbm', 'ncurses', 'readline', 'sqlite', 'tk'))
+    do_with_fallback(USE_emerge_pkg('dev-python/pypy3'), 'emerge =dev-python/pypy3-7.3.1-r3')
+    do_with_fallback(USE_emerge_pkg('sys-devel/gdb'), 'emerge sys-devel/gdb-10.2')
 
     do_with_fallback(USE_emerge_pkg('dev-scheme/racket'))
     do_with_fallback(USE_emerge_pkg('dev-lang/clojure'))
