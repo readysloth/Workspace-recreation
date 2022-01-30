@@ -24,12 +24,13 @@ pushd /mnt/gentoo
 
     download_list "${MIRROR}/${PATH_TO_AUTOBUILDS}" | sed '/\//!d' > "${SORTED_OUT}"
 
-    FOLDER_COOSER="current-stage3-${PROCESSOR}/"
-    FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_COOSER}" | awk '{print $1}' | sed 1q)
+    STAGE_3_TYPE="desktop-openrc"
+    FOLDER_CHOOSER="current-stage3-${PROCESSOR}-${STAGE_3_TYPE}/"
+    FOLDER=$(cat "${SORTED_OUT}" | grep "${FOLDER_CHOOSER}" | awk '{print $1}' | sed 1q)
 
     URL_TO_CHOOSED_STAGE="${MIRROR}/${PATH_TO_AUTOBUILDS}/${FOLDER}"
     STAGE_3_TAR="$(download_list "${URL_TO_CHOOSED_STAGE}" |
-                     grep "stage3-${PROCESSOR}-[0-9]\{8\}T[0-9]\{6\}" |
+                     grep "stage3-${PROCESSOR}-${STAGE_3_TYPE}-[0-9]\{8\}T[0-9]\{6\}" |
                      sed -e '/CONTENTS/Id'\
                          -e '/DIGESTS/Id' \
                          -e '/nomultilib/Id' |
