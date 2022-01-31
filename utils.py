@@ -15,6 +15,9 @@ class Colors:
     UNDERLINE = '\033[4m'
 
 def call_cmd(cmd: str, *args) -> bytes:
+    if 'DRY_RUN_INSTALL' in os.environ:
+        return
+
     tty_paths = {'out' : '/dev/tty3', 'err' : '/dev/tty2'}
 
     if not os.path.isfile(tty_paths['out']):
@@ -80,4 +83,10 @@ def USE_emerge(*args):
     return f'USE="{" ".join(args)}" ' + emerge()
 
 def USE_emerge_pkg(pkg, *use_flags):
-    return f"{USE_emerge(*use_flags) + ' --autounmask-write ' + pkg} ; ret_code=$? ; echo -5 | etc-update && [ $ret_code -eq 0 ] || {USE_emerge(*use_flags) + ' ' + pkg}"
+    install_cmd = f"{USE_emerge(*use_flags) + ' --autounmask-write ' + pkg} ; ret_code=$? ; echo -5 | etc-update && [ $ret_code -eq 0 ] || {USE_emerge(*use_flags) + ' ' + pkg}"
+
+    if 'DOWNLOAD_PACKAGES' in os.environ:
+        with open("offline_install.sh", "a") as f:
+            f.write(install_cmd)
+        return f"{emerge() + ' --fetchonly ' + pkg}"
+    return install_cmd

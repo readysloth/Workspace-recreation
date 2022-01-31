@@ -6,6 +6,11 @@ These scripts together are used to install Gentoo linux:
  + `compiling.py` -- updates world, installs Vim, kernel and grub. Configures `/etc/fstab`. *Calls* `environment_install.py`
  + `environment_install.py` -- installs my preferred apps and configures them. **Can be safely removed**
 
+You can specify environment variables (flags) to alter installation script behaviour:
++ `DRY_RUN_INSTALL` -- will not execute any subprocesses
++ `DOWNLOAD_PACKAGES` -- will only download packages which use `USE_emerge_pkg` function and
+   create `offline_install.sh` script with install commands.
+
 `download_scripts.sh` can easily download all scripts from above steps into `installation` folder
 
 
@@ -18,5 +23,10 @@ These scripts together are used to install Gentoo linux:
  + `installation.py` -- выбирает профиль (стандартный -- desktop [20]), добавляет флаги процессора и *вызывает* `compiling.py`
  + `compiling.py` -- обновляет мир, устанавливает Vim, ядро и grub. Настраивает `/etc/fstab`. *Вызывает* `environment_install.py`
  + `environment_install.py` -- устанавливает и конфигурирует лично мое программное окружение. **Спокойно можно удалить**
+
+Можно создать переменные окружения (флаги), чтобы изменить поведение скриптов:
++ `DRY_RUN_INSTALL` -- не будет запускать никакие подпроцессы
++ `DOWNLOAD_PACKAGES` -- скачает пакеты, которые используют функцию `USE_emerge_pkg` и 
+   создаст скрипт `offline_install.sh` с командами установки.
 
 `download_scripts.sh` скачивает скрипты из шагов выше в папку `installation`
