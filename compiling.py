@@ -9,7 +9,7 @@ def compile():
     portage_features = 'FEATURES="{}"'.format(' '.join(['parallel-install',
                                                         'parallel-fetch']))
     call_cmd_and_print_cmd('''echo '{}' >> /etc/portage/make.conf'''.format(portage_features))
-    call_cmd_and_print_cmd('''echo 'USE="abi_x86_64 lto pgo X openmp"' >> /etc/portage/make.conf''')
+    call_cmd_and_print_cmd('''echo 'USE="abi_x86_64 lto pgo X openmp zstd"' >> /etc/portage/make.conf''')
     call_cmd_and_print_cmd(r'''echo "EMERGE_DEFAULT_OPTS=\"--jobs=$(( $(nproc) / 2 ))\"" >> /etc/portage/make.conf''')
     call_cmd_and_print_cmd('''echo 'INPUT_DEVICES="synaptics libinput"' >> /etc/portage/make.conf''')
 

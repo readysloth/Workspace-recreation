@@ -205,8 +205,7 @@ def env_install():
                                     'tiff',
                                     'unicode',
                                     'X',
-                                    'zlib',
-                                    'zstd'))
+                                    'zlib'))
 
     # office
     do_with_fallback(USE_emerge_pkg('net-fs/samba'))
@@ -222,6 +221,8 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('x11-misc/rofi'))
     do_with_fallback(USE_emerge_pkg('x11-misc/xclip'))
     do_with_fallback(USE_emerge_pkg('net-wireless/wireless-tools'))
+    do_with_fallback(USE_emerge_pkg('net-misc/proxychains'))
+    do_with_fallback(USE_emerge_pkg('net-vpn/tor', 'tor-hardening'))
 
     do_with_fallback('touch ~/env_installation_stages/misc_installed')
 
