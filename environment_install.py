@@ -223,6 +223,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('net-wireless/wireless-tools'))
     do_with_fallback(USE_emerge_pkg('net-misc/proxychains'))
     do_with_fallback(USE_emerge_pkg('net-vpn/tor', 'tor-hardening'))
+    do_with_fallback(USE_emerge_pkg('app-text/html-xml-utils'))
 
     do_with_fallback('touch ~/env_installation_stages/misc_installed')
 
