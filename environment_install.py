@@ -36,6 +36,7 @@ def env_install():
 
     do_with_fallback(USE_emerge_pkg('sys-fs/mtools'))
     do_with_fallback(USE_emerge_pkg('sys-fs/ncdu'))
+    do_with_fallback(USE_emerge_pkg('sys-fs/exfat'))
     do_with_fallback(USE_emerge_pkg('sys-apps/lshw'))
 
     # dev

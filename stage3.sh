@@ -34,6 +34,7 @@ pushd /mnt/gentoo
                      sed -e '/CONTENTS/Id'\
                          -e '/DIGESTS/Id' \
                          -e '/nomultilib/Id' |
+                     sed '/asc/d' |
                      sed 1q |
                      awk '{print $1}')"
     URL_TO_STAGE_FILES="${URL_TO_CHOOSED_STAGE}/${STAGE_3_TAR}"
