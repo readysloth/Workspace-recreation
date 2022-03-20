@@ -179,7 +179,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('sys-apps/fd'))
     do_with_fallback(USE_emerge_pkg('sys-apps/ripgrep'))
     do_with_fallback("mkdir -p /etc/portage/savedconfig/x11-terms")
-    with open('/etc/portage/savedconfig/x11-terms/st-0.8.4', 'w') as conf:
+    with open('/etc/portage/savedconfig/x11-terms/st-0.8.5', 'w') as conf:
         conf.write(ST_CONFIG)
     do_with_fallback(USE_emerge_pkg('x11-terms/st', 'savedconfig'))
     do_with_fallback(USE_emerge_pkg('sys-apps/exa'))
@@ -225,7 +225,9 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('net-misc/proxychains'))
     do_with_fallback(USE_emerge_pkg('net-vpn/tor', 'tor-hardening'))
     do_with_fallback(USE_emerge_pkg('app-text/html-xml-utils'))
-
+    do_with_fallback(USE_emerge_pkg('net-libs/libnetfilter_queue'))
+    do_with_fallback(USE_emerge_pkg('net-dns/bind-tools'))
+    do_with_fallback(USE_emerge_pkg('sys-apps/net-tools'))
     do_with_fallback('touch ~/env_installation_stages/misc_installed')
 
     do_with_fallback('./create_configs.sh')
