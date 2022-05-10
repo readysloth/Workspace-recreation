@@ -172,6 +172,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('app-shells/bash-completion'))
 
     do_with_fallback(USE_emerge_pkg('app-shells/fish'))
+    do_with_fallback(USE_emerge_pkg('app-text/tree'))
 
     do_with_fallback(USE_emerge_pkg('app-shells/fzf'))
     do_with_fallback(USE_emerge_pkg('app-misc/tmux'))
