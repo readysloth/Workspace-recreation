@@ -173,6 +173,7 @@ def env_install():
     do_with_fallback(USE_emerge_pkg('app-shells/bash-completion'))
 
     do_with_fallback(USE_emerge_pkg('app-shells/fish'))
+    do_with_fallback(USE_emerge_pkg('app-shells/dash'))
     do_with_fallback(USE_emerge_pkg('app-text/tree'))
 
     do_with_fallback(USE_emerge_pkg('app-shells/fzf'))
@@ -220,9 +221,11 @@ def env_install():
 
     # misc
     do_with_fallback(USE_emerge_pkg('net-im/telegram-desktop'))
-    do_with_fallback(USE_emerge_pkg('x11-apps/xkill'))
     do_with_fallback(USE_emerge_pkg('x11-misc/rofi'))
     do_with_fallback(USE_emerge_pkg('x11-misc/xclip'))
+    do_with_fallback(USE_emerge_pkg('x11-apps/xdpyinfo'))
+    do_with_fallback(USE_emerge_pkg('sys-apps/lm-sensors'))
+    do_with_fallback(USE_emerge_pkg('sys-power/acpi'))
     do_with_fallback(USE_emerge_pkg('net-wireless/wireless-tools'))
     do_with_fallback(USE_emerge_pkg('net-misc/proxychains'))
     do_with_fallback(USE_emerge_pkg('net-vpn/tor', 'tor-hardening'))
